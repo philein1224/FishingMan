@@ -12,6 +12,7 @@
 
 #import <CoreMotion/CoreMotion.h>
 
+#import "CDServerAPIs+MainPage.h"
 
 @interface DiscoveryPageTableViewController ()
 {
@@ -42,6 +43,8 @@
     tempfooterview.backgroundColor = ZXHColorRGB(248, 248, 248, 1);
     self.tableView.tableFooterView = tempfooterview;
     
+    /*** 加载数据 ***/
+    [self loadListData];
     
 //    _altimeter = [[CMAltimeter alloc]init];
 //    
@@ -61,8 +64,8 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
-    /*** 加载数据 ***/
-    [self loadListData];
+    
+    [self loadArticleTypeListData];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     
@@ -96,6 +99,7 @@
 }
 
 #pragma mark - 数据生成
+
 - (void)loadListData{
     
     NSMutableArray * allTypes = ALL_ARTICLE_TYPE_NAME_ARRAY;
@@ -121,6 +125,20 @@
     }
 }
 
+//文章大类型信息列表
+- (void)loadArticleTypeListData{
+    
+    [[CDServerAPIs shareAPI] articleTypesInfoListSuccess:^(NSURLSessionDataTask *dataTask, id responseObject) {
+        
+        CLog(@"文章大类型信息列表 : %@", responseObject);
+        
+        if([CDServerAPIs httpResponse:responseObject showAlert:NO DataTask:dataTask]){
+            
+        }
+    } Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
+        [CDServerAPIs httpDataTask:dataTask error:error.error];
+    }];
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

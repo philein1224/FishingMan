@@ -746,7 +746,7 @@ typedef NS_ENUM(NSInteger, FishManLocalType) {
         case FishManLocalFishSiteType:
         {
             FMSiteHomepageController * siteHP = [[FMSiteHomepageController alloc] initWithNibName:@"FMSiteHomepageController" bundle:nil];
-            siteHP.model = [self.allSiteModelArray objectAtIndex:indexPath.row];
+            siteHP.fishSiteModel = [self.allSiteModelArray objectAtIndex:indexPath.row];
             [self.navigationController pushViewController:siteHP animated:YES];
         }
             break;

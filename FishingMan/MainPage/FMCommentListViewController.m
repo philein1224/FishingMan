@@ -43,8 +43,7 @@
     [ZXHViewTool addMJRefreshGifFooter:self.tableView selector:@selector(bottomUploadListData) target:self];
     
     //第一次获取
-#warning mark
-//    [self topDownloadListData];
+    [self topDownloadListData];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -80,7 +79,7 @@
 - (void)reloadDataWithPosition:(BOOL)downward Page:(int)currentPage{
     
     ZXH_WEAK_SELF
-    [[CDServerAPIs shareAPI] commentListWithArticleId:_articleModel.ID ArticleType:_articleModel.articleType CurrentPage:_currentPage Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
+    [[CDServerAPIs shareAPI] commentListWithSourceId:_articleModel.ID sourceType:FMSourceArticleType currentPage:_currentPage Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
         
         CLog(@"requestCommentList = %@", responseObject);
         

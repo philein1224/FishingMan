@@ -67,4 +67,14 @@ typedef NS_OPTIONS(NSInteger, FMArticleType) {
     FMArticleTypeChatCasually     = 7,    //随便侃侃
 };
 
+/**
+ 公共资源模块类型【文章1\钓点2\渔具店3】
+ **/
+typedef NS_OPTIONS(NSInteger, FMSourceType) {
+    
+    FMSourceArticleType          = 1,    //文章类型
+    FMSourceFishSiteType         = 2,    //钓点类型
+    FMSourceFishStoreType        = 3,    //渔具店类型
+};
+
 #endif

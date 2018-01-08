@@ -11,5 +11,5 @@
 @class FMFishSiteModel;
 
 @interface FMSiteHomepageController : UIViewController
-@property (strong, nonatomic) FMFishSiteModel * model;
+@property (strong, nonatomic) FMFishSiteModel * fishSiteModel;
 @end

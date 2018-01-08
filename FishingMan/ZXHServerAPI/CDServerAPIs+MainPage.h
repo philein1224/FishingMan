@@ -12,9 +12,9 @@
 
 #pragma mark 发现-文章大分类
 /**
- 文章发布
+ 发现-文章大分类入口列表
  */
-- (NSURLSessionDataTask *)articlePublishWithType:(int)articleType ArticleContent:(NSMutableDictionary *)articleDic Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
+- (NSURLSessionDataTask *)articleTypesInfoListSuccess:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
 
 #pragma mark 文章
 /**
@@ -35,7 +35,7 @@
 /**
  取消收藏/收藏
  //id:收藏ID
- //type:类型1\钓点2\渔具店3
+ //type:文章1\钓点2\渔具店3
  //userId:用户的suerId
  */
 - (NSURLSessionDataTask *)articleFavorit:(BOOL)colected sourceId:(long)sourceId type:(NSInteger)type userId:(long)userId Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
@@ -65,7 +65,7 @@
 /**
  获取评论列表
  */
-- (NSURLSessionDataTask *)commentListWithArticleId:(long)topicId ArticleType:(int)topicType CurrentPage:(long)currentPage Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
+- (NSURLSessionDataTask *)commentListWithSourceId:(long)sourceId sourceType:(FMSourceType)sourceType currentPage:(long)currentPage Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
 
 /**
  删除评论

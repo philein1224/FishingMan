@@ -68,7 +68,7 @@
                         LeftAction:@selector(backButtonClicked)
                        RightAction:nil];
     
-    //统一加载整个页面数据
+    //统一加载整个页面数据（列表记录）
     [self reloadData];
 }
 
@@ -111,7 +111,7 @@
     
     [_naviBarView updateWithScrollViewContentOffsetY:10000];
     
-    [self reloadData];
+    [self reloadFishSiteDetailWithID:[NSString stringWithFormat:@"%ld", _fishSiteModel.ID]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -187,7 +187,7 @@
     
     FMLoginUser * user = [FMLoginUser getCacheUserInfo];
     BOOL isLike = YES;
-    [[CDServerAPIs shareAPI] articleLikeWithSourceId:self.model.ID
+    [[CDServerAPIs shareAPI] articleLikeWithSourceId:_fishSiteModel.ID
                                                 type:2
                                                 like:isLike
                                               userId:[user.userId longLongValue]
@@ -228,17 +228,6 @@
 
 
 #pragma mark ----------------数据请求处理
-- (void)reloadData{
-    
-    if(![ZXHTool isNilNullObject:self.model]){
-        //1、header的数据
-        self.siteHomeHeader.siteModel = self.model;
-        [self.siteHomeHeader reloadData];
-        
-        //2、cell的数据
-        [self.tableView reloadData];
-    }
-}
 - (void)reloadFishSiteDetailWithID:(NSString *) siteId{
     
     ZXH_WEAK_SELF
@@ -246,7 +235,7 @@
         
         if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
             
-            weakself.model = [FMFishSiteModel mj_objectWithKeyValues:responseObject[@"data"]];
+            weakself.fishSiteModel = [FMFishSiteModel mj_objectWithKeyValues:responseObject[@"data"]];
             [weakself reloadData];
         }
         else{
@@ -258,6 +247,18 @@
     }];
 }
 
+//页面刷新
+- (void)reloadData{
+    
+    if(![ZXHTool isNilNullObject:_fishSiteModel]){
+            //1、header的数据
+        self.siteHomeHeader.siteModel = _fishSiteModel;
+        [self.siteHomeHeader reloadData];
+        
+            //2、cell的数据
+        [self.tableView reloadData];
+    }
+}
 
 
 
@@ -280,7 +281,7 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"FMSiteHomeInfoCell" owner:nil options:nil] firstObject];
     }
     
-    cell.siteModel = self.model;
+    cell.siteModel = _fishSiteModel;
     [cell reloadData];
     
     ZXH_WEAK_SELF
@@ -290,8 +291,8 @@
                 
             case FMTargetPageEventTypeCall:
             {
-                if(![ZXHTool isEmptyString:weakself.model.sitePhone]){
-                    NSString * telURL = [NSString stringWithFormat:@"tel:%@", weakself.model.sitePhone];
+                if(![ZXHTool isEmptyString:weakself.fishSiteModel.sitePhone]){
+                    NSString * telURL = [NSString stringWithFormat:@"tel:%@", weakself.fishSiteModel.sitePhone];
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telURL]];
                 }
             }

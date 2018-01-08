@@ -23,9 +23,11 @@
 @property (copy, nonatomic) NSString * pic2;      //图片地址
 @property (copy, nonatomic) NSString * pic3;      //图片地址
 @property (copy, nonatomic) NSString * sitePhone;      //钓点联系电话
-@property (assign, nonatomic) long        userId;  //用户id
+
+@property (assign, nonatomic) int      publishType;//发布类型（钓友、场主、平台）
+@property (assign, nonatomic) long     userId;  //用户id
 
 @property (copy, nonatomic) NSString * orderFieldNextType;      //ASC排序方式
-@property (assign, nonatomic) long        yn;      //是否已经软删除
+@property (assign, nonatomic) long     yn;      //是否已经软删除
 
 @end

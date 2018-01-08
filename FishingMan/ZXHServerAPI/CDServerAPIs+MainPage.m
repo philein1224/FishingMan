@@ -10,6 +10,19 @@
 
 @implementation CDServerAPIs (MainPage)
 
+#pragma mark 发现-文章大分类
+/**
+ 发现-文章大分类入口列表
+ */
+- (NSURLSessionDataTask *)articleTypesInfoListSuccess:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
+    
+    NSString *APIName = @"/articalFish/typeList";
+    
+    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
+    
+    return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
+}
+
 #pragma mark 文章相关
 /**
  文章发布
@@ -110,7 +123,7 @@
     return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
 }
 
-#pragma mark 文章评论相关接口
+#pragma mark 公共-评论相关接口
 
 /**
  发表评论
@@ -148,14 +161,14 @@
 /**
  获取评论列表
  */
-- (NSURLSessionDataTask *)commentListWithArticleId:(long)topicId ArticleType:(int)topicType CurrentPage:(long)currentPage Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
+- (NSURLSessionDataTask *)commentListWithSourceId:(long)sourceId sourceType:(FMSourceType)sourceType currentPage:(long)currentPage Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
     
     NSString *APIName = @"/comment/getComment";
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
     
-    [requestDic setObject:[NSNumber numberWithLong:topicId] forKey:@"topicId"];//文章类型
-    [requestDic setObject:[NSNumber numberWithInteger:topicType] forKey:@"topicType"];//文章类型
-    [requestDic setObject:[NSNumber numberWithLong:currentPage] forKey:@"currentPage"];
+    [requestDic setObject:[NSNumber numberWithInteger:sourceType] forKey:@"type"];//资源类型
+    [requestDic setObject:[NSNumber numberWithLong:sourceId] forKey:@"topicId"];//资源id
+    [requestDic setObject:[NSNumber numberWithLong:currentPage] forKey:@"currrentPage"];//当前页
     
     return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
 }
