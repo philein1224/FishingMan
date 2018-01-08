@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditFishStoreViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ciA-eg-eJr" userLabel="NavBarView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHL-Ve-ZR6" userLabel="BackButton">
+                            <rect key="frame" x="8" y="18" width="46" height="40"/>
+                            <color key="backgroundColor" red="0.21220110880000001" green="0.84561219970000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="cHL-Ve-ZR6" secondAttribute="height" multiplier="23:20" id="8RY-mW-qQg"/>
+                                <constraint firstAttribute="height" constant="40" id="vht-fk-qKF"/>
+                            </constraints>
+                            <state key="normal" title="返回"/>
+                            <connections>
+                                <action selector="cancelButtonAction:" destination="-1" eventType="touchUpInside" id="skq-Q2-Kux"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAn-FE-8cq" userLabel="RuleButton">
+                            <rect key="frame" x="321" y="18" width="46" height="40"/>
+                            <color key="backgroundColor" red="0.21220110880000001" green="0.84561219970000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="6gD-F1-Ttc"/>
+                                <constraint firstAttribute="width" secondItem="WAn-FE-8cq" secondAttribute="height" multiplier="23:20" id="lov-64-o4R"/>
+                            </constraints>
+                            <state key="normal" title="规则"/>
+                            <connections>
+                                <action selector="ruleButtonAction:" destination="-1" eventType="touchUpInside" id="mjw-Ur-Fph"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DYL-ds-e6q" userLabel="navBottomLine">
+                            <rect key="frame" x="0.0" y="65" width="375" height="0.5"/>
+                            <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="jK8-Xp-HEP"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="66" id="1Xj-Oc-hZO"/>
+                        <constraint firstAttribute="bottom" secondItem="WAn-FE-8cq" secondAttribute="bottom" constant="8" id="5em-dP-N8f"/>
+                        <constraint firstAttribute="trailing" secondItem="DYL-ds-e6q" secondAttribute="trailing" id="Aqn-x8-Eu0"/>
+                        <constraint firstItem="cHL-Ve-ZR6" firstAttribute="width" secondItem="cHL-Ve-ZR6" secondAttribute="height" multiplier="23:20" id="BNE-7H-AcQ"/>
+                        <constraint firstAttribute="bottom" secondItem="DYL-ds-e6q" secondAttribute="bottom" id="GYS-wO-8bt"/>
+                        <constraint firstItem="cHL-Ve-ZR6" firstAttribute="leading" secondItem="ciA-eg-eJr" secondAttribute="leading" constant="8" id="HlD-hS-60R"/>
+                        <constraint firstItem="DYL-ds-e6q" firstAttribute="leading" secondItem="ciA-eg-eJr" secondAttribute="leading" id="O6t-Su-Y5U"/>
+                        <constraint firstAttribute="trailing" secondItem="WAn-FE-8cq" secondAttribute="trailing" constant="8" id="ZeW-g7-wLZ"/>
+                        <constraint firstAttribute="bottom" secondItem="cHL-Ve-ZR6" secondAttribute="bottom" constant="8" id="xLF-PH-aar"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ciA-eg-eJr" secondAttribute="trailing" id="72Q-MU-4pW"/>
+                <constraint firstItem="ciA-eg-eJr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8mf-fG-vtj"/>
+                <constraint firstItem="ciA-eg-eJr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="NZM-Un-6Ta"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,20 @@
+//
+//  FishingMan.pch
+//  FishingMan
+//
+//  Created by zhangxh on 2016/11/16.
+//  Copyright © 2016年 HongFan. All rights reserved.
+//
+
+#ifndef FishingMan_pch
+#define FishingMan_pch
+
+#import "MacroDefine.h"
+#import "ZXHTool.h"
+#import "ZXHViewTool.h"
+#import "UIViewController+Category.h"
+#import "CDTopAlertView.h"
+#import "PHProgressHUD.h"
+#import "CDServerAPIs.h"
+
+#endif /* FishingMan_pch */

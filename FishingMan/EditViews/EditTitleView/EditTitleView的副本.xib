@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="EditTitleView">
+            <rect key="frame" x="0.0" y="0.0" width="380" height="557"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入标题或简要描述" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ibJ-tx-AyP">
+                    <rect key="frame" x="8" y="8" width="359" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ibJ-tx-AyP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="0kz-Vu-Awz"/>
+                <constraint firstAttribute="trailing" secondItem="ibJ-tx-AyP" secondAttribute="trailing" constant="8" id="5pd-uN-LUf"/>
+                <constraint firstItem="ibJ-tx-AyP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="aVb-8r-S7x"/>
+                <constraint firstAttribute="bottom" secondItem="ibJ-tx-AyP" secondAttribute="bottom" constant="8" id="cds-fl-Fu0"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="299" y="404.5"/>
+        </view>
+    </objects>
+</document>
