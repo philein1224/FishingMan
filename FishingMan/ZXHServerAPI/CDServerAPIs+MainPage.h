@@ -30,7 +30,7 @@
  */
 - (NSURLSessionDataTask *)articleDetailWithArticleId:(NSInteger)articleId Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
 
-#pragma mark 公共（文章、钓点、渔具店）收藏相关接口
+#pragma mark 公共 - 收藏相关接口（文章、钓点、渔具店）
 
 /**
  取消收藏/收藏
