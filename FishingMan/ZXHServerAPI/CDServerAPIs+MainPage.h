@@ -10,6 +10,12 @@
 
 @interface CDServerAPIs (MainPage)
 
+#pragma mark 发现-文章大分类
+/**
+ 文章发布
+ */
+- (NSURLSessionDataTask *)articlePublishWithType:(int)articleType ArticleContent:(NSMutableDictionary *)articleDic Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
+
 #pragma mark 文章
 /**
  文章发布
@@ -38,7 +44,7 @@
  */
 - (NSURLSessionDataTask *)articleFavoritListWithSourceType:(NSInteger)type userId:(long)userId page:(NSInteger)page rows:(NSInteger)rows Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
 
-#pragma mark 公共（文章、钓点、渔具店）点赞相关接口
+#pragma mark 公共 - 点赞相关接口（文章、钓点、渔具店）
 
 /**
  点赞
@@ -49,7 +55,7 @@
 - (NSURLSessionDataTask *)articleLikeWithSourceId:(long)sourceId type:(int)type like:(BOOL)like userId:(long)userId Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
 
 
-#pragma mark 文章评论相关接口
+#pragma mark 公共 - 评论相关接口（文章、钓点、渔具店）
 
 /**
  发表评论
