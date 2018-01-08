@@ -49,25 +49,31 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="评论icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="A97-AS-SA9">
-                            <rect key="frame" x="211.5" y="12" width="20" height="20"/>
+                            <rect key="frame" x="257.5" y="12" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="20" id="p3A-5K-D8u"/>
                                 <constraint firstAttribute="width" secondItem="A97-AS-SA9" secondAttribute="height" multiplier="1:1" id="tmS-Cp-5Cf"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAr-Lj-OJa">
-                            <rect key="frame" x="233.5" y="14" width="32" height="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAr-Lj-OJa">
+                            <rect key="frame" x="279.5" y="14" width="9" height="17"/>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="点赞_normal.png" translatesAutoresizingMaskIntoConstraints="NO" id="jQW-Rt-vGq">
-                            <rect key="frame" x="275.5" y="12.5" width="20" height="20"/>
+                            <rect key="frame" x="298.5" y="12.5" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="Lp3-iZ-SaG"/>
                                 <constraint firstAttribute="width" constant="20" id="kwe-Ol-PaZ"/>
                             </constraints>
                         </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m73-MH-fzp">
+                            <rect key="frame" x="320" y="14" width="9" height="17"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="收藏_normal.png" translatesAutoresizingMaskIntoConstraints="NO" id="mJK-vH-Jg9">
                             <rect key="frame" x="339" y="12.5" width="20" height="20"/>
                             <constraints>
@@ -75,12 +81,6 @@
                                 <constraint firstAttribute="width" constant="20" id="hRQ-8Y-QYT"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m73-MH-fzp">
-                            <rect key="frame" x="297.5" y="14" width="32" height="17"/>
-                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NrJ-4D-gSS" userLabel="comment">
                             <rect key="frame" x="8" y="0.0" width="93.5" height="44"/>
                             <connections>
@@ -88,7 +88,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pG4-xO-qct" userLabel="commentList">
-                            <rect key="frame" x="166.5" y="1" width="98.5" height="43"/>
+                            <rect key="frame" x="189.5" y="1" width="98.5" height="43"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="98.5" id="yxN-Pj-Xze"/>
                             </constraints>
@@ -97,7 +97,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OiI-ah-F9z" userLabel="enjoy">
-                            <rect key="frame" x="264.5" y="1" width="64.5" height="43"/>
+                            <rect key="frame" x="287.5" y="1" width="41.5" height="43"/>
                             <connections>
                                 <action selector="enjoyButtonClicked:" destination="-1" eventType="touchUpInside" id="etx-qK-fJZ"/>
                             </connections>
