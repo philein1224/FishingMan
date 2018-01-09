@@ -60,7 +60,9 @@
 /**
  发表评论
  */
-- (NSURLSessionDataTask *)commentPublishWithArticleId:(long)topicId ArticleType:(int)topicType Content:(NSString *)content FromUserId:(long)fromUserId FromUserName:(NSString *)fromUserName FromUserAvtor:(NSString *)fromUserAvtor  ToUserId:(long)ToUserId Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
+//- (NSURLSessionDataTask *)commentPublishWithArticleId:(long)topicId ArticleType:(int)topicType Content:(NSString *)content FromUserId:(long)fromUserId FromUserName:(NSString *)fromUserName FromUserAvtor:(NSString *)fromUserAvtor  ToUserId:(long)ToUserId Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
+
+- (NSURLSessionDataTask *)commentPublishWithSourceId:(long)sourceId sourceType:(FMSourceType)sourceType Content:(NSString *)content FromUserId:(long)fromUserId FromUserName:(NSString *)fromUserName FromUserAvtor:(NSString *)fromUserAvtor  ToUserId:(long)ToUserId Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
 
 /**
  获取评论列表

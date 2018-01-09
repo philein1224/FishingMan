@@ -11,6 +11,7 @@
 @implementation CDServerAPIs (MainPage)
 
 #pragma mark 发现-文章大分类
+#warning 发现-文章大分类入口列表
 /**
  发现-文章大分类入口列表
  */
@@ -128,13 +129,13 @@
 /**
  发表评论
  */
-- (NSURLSessionDataTask *)commentPublishWithArticleId:(long)topicId ArticleType:(int)topicType Content:(NSString *)content FromUserId:(long)fromUserId FromUserName:(NSString *)fromUserName FromUserAvtor:(NSString *)fromUserAvtor ToUserId:(long)toUserId Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
+- (NSURLSessionDataTask *)commentPublishWithSourceId:(long)sourceId sourceType:(FMSourceType)sourceType Content:(NSString *)content FromUserId:(long)fromUserId FromUserName:(NSString *)fromUserName FromUserAvtor:(NSString *)fromUserAvtor ToUserId:(long)toUserId Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
     
     NSString *APIName = @"/comment/publish";
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
     
-    [requestDic setObject:[NSNumber numberWithLong:topicId] forKey:@"topicId"];//文章ID
-    [requestDic setObject:[NSNumber numberWithInteger:topicType] forKey:@"topicType"];//文章类型
+    [requestDic setObject:[NSNumber numberWithLong:sourceId] forKey:@"topicId"];//文章ID
+    [requestDic setObject:[NSNumber numberWithInteger:sourceType] forKey:@"topicType"];//文章类型
     [requestDic setObject:content forKey:@"content"];
     
     [requestDic setObject:[NSNumber numberWithLong:fromUserId] forKey:@"fromUserId"];

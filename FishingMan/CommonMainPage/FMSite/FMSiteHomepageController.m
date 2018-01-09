@@ -216,7 +216,41 @@
                                          callback:^(BOOL show) {
                                          }
                                          callback:^(NSString *content) {
+                                             if (![ZXHTool isEmptyString:content]) {
+                                                 [weakself sendComment: content];
+                                             }
                                          }];
+    
+    
+}
+-(void)sendComment:(NSString *)content{
+    
+    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
+    
+    [[CDServerAPIs shareAPI] commentPublishWithSourceId:_fishSiteModel.ID
+                                             sourceType:FMSourceFishSiteType
+                                                 Content:content
+                                              FromUserId:[user.userId longLongValue]
+                                            FromUserName:user.nickName
+                                           FromUserAvtor:user.avatarUrl
+                                                ToUserId:18
+                                                 Success:^(NSURLSessionDataTask *dataTask, id responseObject)
+     {
+     if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
+         
+         [CDTopAlertView showMsg:@"发送成功" alertType:TopAlertViewSuccessType];
+     }else if (![ZXHTool isEmptyString:responseObject[@"msg"]]){
+         [CDTopAlertView showMsg:responseObject[@"msg"] alertType:TopAlertViewFailedType];
+     }
+     else{
+         [CDTopAlertView showMsg:@"发送失败" alertType:TopAlertViewFailedType];
+     }
+     }
+                                                 Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error)
+     {
+     [CDServerAPIs httpDataTask:dataTask error:error.error];
+     [CDTopAlertView showMsg:@"发送失败" alertType:TopAlertViewFailedType];
+     }];
 }
 
 - (IBAction)favoritesAction:(id)sender {
@@ -227,7 +261,8 @@
 }
 
 
-#pragma mark ----------------数据请求处理
+#pragma mark ----------------钓点详情请求处理
+
 - (void)reloadFishSiteDetailWithID:(NSString *) siteId{
     
     ZXH_WEAK_SELF

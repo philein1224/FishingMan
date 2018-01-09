@@ -217,16 +217,18 @@
         return;
     }
     
+#warning ToUserId
+    
     FMLoginUser * user = [FMLoginUser getCacheUserInfo];
     
-    [[CDServerAPIs shareAPI] commentPublishWithArticleId:_articleModel.ID
-                                             ArticleType:_articleModel.articleType
-                                                 Content:content
-                                              FromUserId:[user.userId longLongValue]
-                                            FromUserName:user.nickName
-                                           FromUserAvtor:user.avatarUrl
-                                                ToUserId:18
-                                                 Success:^(NSURLSessionDataTask *dataTask, id responseObject)
+    [[CDServerAPIs shareAPI] commentPublishWithSourceId:_articleModel.ID
+                                             sourceType:FMSourceArticleType
+                                                Content:content
+                                             FromUserId:[user.userId longLongValue]
+                                           FromUserName:user.nickName
+                                          FromUserAvtor:user.avatarUrl
+                                               ToUserId:18
+                                                Success:^(NSURLSessionDataTask *dataTask, id responseObject)
     {
         if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
             
