@@ -43,17 +43,6 @@
     //初始化分享
     [self initShareSDK];
     
-    NSMutableDictionary *dict  = [[NSMutableDictionary alloc]init];
-    [dict setValue:@"1070430532@qq.com" forKey:@"email"];
-    [dict setValue:@"ios工程师" forKey:@"profession"];
-    NSData *dictData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
-    NSString *jsonString = [[NSString alloc]initWithData:dictData encoding:NSUTF8StringEncoding];
-    
-        //第一种方法，是把要传的参数组合成一个数组，然后由JSONKit把字典转为字符串
-    NSDictionary* jsonDic = [NSDictionary dictionaryWithObjectsAndKeys:@"李华",@"name",@"女",@"sex",@"20",@"age",nil];
-    NSString *jsonStr = [jsonDic JSONString];
-    NSLog(@"---jsonString----%@",jsonStr);
-    
     return YES;
 }
 
