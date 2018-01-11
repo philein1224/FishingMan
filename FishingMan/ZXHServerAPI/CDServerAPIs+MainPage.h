@@ -75,9 +75,11 @@
 - (NSURLSessionDataTask *)commentDeleteWithCommentId:(long)commentId Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
 
 
-
-
-
+#pragma mark 公共 - 文章举报／钓点渔具店反馈 相关接口（文章、钓点、渔具店）
+/**
+ 文章举报／钓点渔具店反馈
+ */
+- (NSURLSessionDataTask *)reportAndFeedbackWithReportType:(FMReportType)reportType sourceId:(long)sourceId sourceType:(FMSourceType)sourceType userId:(long)userId Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
 
 
 

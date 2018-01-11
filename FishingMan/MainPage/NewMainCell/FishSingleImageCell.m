@@ -82,8 +82,6 @@
                CompletedBlock:nil];
         //用户的昵称
     self.nickNameLabel.text = [NSString stringWithFormat:@"%@", self.articleModel.user.nickName];
-    
-    NSLog(@"user name == %@", self.articleModel.user.address);
 }
 
 @end

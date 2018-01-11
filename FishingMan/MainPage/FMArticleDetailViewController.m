@@ -175,6 +175,7 @@
     self.scrollView.contentSize = CGSizeMake(ZXHScreenWidth * 2, ZXHScreenHeight-64-44);
 }
 
+#pragma mark ----------------返回上一页
 - (void)backButtonClicked:(UIButton *)sender{
     
     if(_isInCommentEditMode == YES){
@@ -196,16 +197,110 @@
     }
 }
 
+#pragma mark ----------------分享
 - (void)shareButtonClicked:(UIButton *)sender{
     
     if(_isInCommentEditMode == YES){
         return;
     }
     
-    FMShareView *announceView = [[[NSBundle mainBundle] loadNibNamed:@"FMShareView" owner:self options:nil] firstObject];
-    [announceView setFrame:self.view.bounds];
+    FMShareView *shareView = [[[NSBundle mainBundle] loadNibNamed:@"FMShareView" owner:self options:nil] firstObject];
+    [shareView setFrame:self.view.bounds];
+    
+    ZXH_WEAK_SELF
+    shareView.articleReportBlock = ^{
+        [weakself feedbackAction];
+    };
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    [window addSubview:announceView];
+    [window addSubview:shareView];
+}
+
+#pragma mark ----------------举报
+- (IBAction)feedbackAction{
+    
+    if(!IS_LOGIN_WITHOUT_ALERT) return;
+    
+    ZXH_WEAK_SELF
+    
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"举报"
+                                                                     message:nil
+                                                              preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"取消"
+                                                            style:UIAlertActionStyleCancel
+                                                          handler:nil];
+    
+    UIAlertAction * action1 = [UIAlertAction actionWithTitle:@"政治"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+                                                         
+                                                         [weakself sendReportType:FMReportPolitics];
+                                                     }];
+    UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"宗教"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+                                                         
+                                                         [weakself sendReportType:FMReportReligion];
+                                                     }];
+    UIAlertAction * action3 = [UIAlertAction actionWithTitle:@"恐怖极端"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+                                                         
+                                                         [weakself sendReportType:FMReportHorror];
+                                                     }];
+    UIAlertAction * action4 = [UIAlertAction actionWithTitle:@"暴力"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+                                                         
+                                                         [weakself sendReportType:FMReportViolence];
+                                                     }];
+    UIAlertAction * action5 = [UIAlertAction actionWithTitle:@"色情"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+                                                         
+                                                         [weakself sendReportType:FMReportPornographic];
+                                                     }];
+    UIAlertAction * action6 = [UIAlertAction actionWithTitle:@"其他"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+                                                         
+                                                         [weakself sendReportType:FMReportOther];
+                                                     }];
+    
+    [alertVC addAction:cancelAction];
+    [alertVC addAction:action1];
+    [alertVC addAction:action2];
+    [alertVC addAction:action3];
+    [alertVC addAction:action4];
+    [alertVC addAction:action5];
+    [alertVC addAction:action6];
+    
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
+
+- (void)sendReportType:(FMReportType)reportType{
+    
+    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
+    
+    [[CDServerAPIs shareAPI] reportAndFeedbackWithReportType:reportType
+                                                    sourceId:_articleModel.ID
+                                                  sourceType:FMSourceArticleType
+                                                      userId:[user.userId longLongValue]
+                                                     Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
+                                                         
+                                                         if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
+                                                             
+                                                             [CDTopAlertView showMsg:@"举报成功" alertType:TopAlertViewSuccessType];
+                                                         }else if (![ZXHTool isEmptyString:responseObject[@"msg"]]){
+                                                             [CDTopAlertView showMsg:responseObject[@"msg"] alertType:TopAlertViewFailedType];
+                                                         }
+                                                         else{
+                                                             [CDTopAlertView showMsg:@"举报失败，请稍后再试" alertType:TopAlertViewFailedType];
+                                                         }
+                                                     } Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
+                                                         [CDServerAPIs httpDataTask:dataTask error:error.error];
+                                                         [CDTopAlertView showMsg:@"举报失败，请稍后再试" alertType:TopAlertViewFailedType];
+                                                     }];
 }
 
 

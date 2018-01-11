@@ -325,6 +325,10 @@
         case 7:
         {
             //举报
+            if (self.articleReportBlock) {
+                self.articleReportBlock();
+            }
+        
             [self closeShareView];
             PlatformType = SSDKPlatformTypeUnknown;
         }

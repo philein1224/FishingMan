@@ -186,4 +186,20 @@
     return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
 }
 
+#pragma mark 公共 - 文章举报／钓点渔具店反馈 相关接口（文章、钓点、渔具店）
+/**
+ 文章举报／钓点渔具店反馈
+ */
+- (NSURLSessionDataTask *)reportAndFeedbackWithReportType:(FMReportType)reportType sourceId:(long)sourceId sourceType:(FMSourceType)sourceType userId:(long)userId Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
+    
+    NSString *APIName = @"/report/report";
+    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
+    [requestDic setObject:[NSNumber numberWithLong:reportType] forKey:@"reportType"];
+    [requestDic setObject:[NSNumber numberWithLong:sourceId] forKey:@"sourceId"];
+    [requestDic setObject:[NSNumber numberWithLong:sourceType] forKey:@"sourceType"];
+    [requestDic setObject:[NSNumber numberWithLong:userId] forKey:@"userId"];
+    
+    return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
+}
+
 @end

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FMShareView : UIView
+typedef void (^ArticleReportBlock) (void);
 
+@interface FMShareView : UIView
+@property (copy, nonatomic) ArticleReportBlock articleReportBlock;
 @end

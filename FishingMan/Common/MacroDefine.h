@@ -77,4 +77,26 @@ typedef NS_OPTIONS(NSInteger, FMSourceType) {
     FMSourceFishStoreType        = 3,    //渔具店类型
 };
 
+/**
+ 公共资源模块举报类型【文章、钓点、渔具店通用】
+ **/
+typedef NS_OPTIONS(NSInteger, FMReportType) {
+    FMReportPolitics          = 1,    //政治
+    FMReportReligion          = 2,    //宗教
+    FMReportHorror            = 3,    //恐怖极端
+    FMReportViolence          = 4,    //暴力
+    FMReportPornographic      = 5,    //色情
+    FMReportOther             = 6,    //其他举报
+    //以上主要用于文章内容举报
+    
+    FMFeedbackLocationError     = 11,   //位置错误
+    FMFeedbackInfoError         = 12,   //钓点、商店信息错误
+    FMFeedbackInfoRepeated      = 13,   //钓点、商店重复
+    FMFeedbackClosed            = 14,   //钓点、商店已经关闭
+    FMFeedbackOther             = 15,   //其他信息
+    //以上主要用于钓点和渔具店信息的反馈
+    
+};
+
+
 #endif

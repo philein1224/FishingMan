@@ -130,8 +130,14 @@
 
 
 #pragma mark - 底部菜单栏事件
+
+#pragma mark ----------------钓点的反馈
+
 - (IBAction)feedbackAction:(id)sender {
+    
     if(!IS_LOGIN_WITHOUT_ALERT) return;
+    
+    ZXH_WEAK_SELF
     
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"反馈"
                                                                      message:nil
@@ -145,31 +151,31 @@
                                                              style:UIAlertActionStyleDefault
                                                            handler:^(UIAlertAction * _Nonnull action) {
                                                                
-                                                               
+                                                               [weakself sendReportType:FMFeedbackLocationError];
                                                            }];
     UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"信息有误"
                                                              style:UIAlertActionStyleDefault
                                                            handler:^(UIAlertAction * _Nonnull action) {
                                                                
-                                                               
+                                                               [weakself sendReportType:FMFeedbackInfoError];
                                                            }];
     UIAlertAction * action3 = [UIAlertAction actionWithTitle:@"钓点重复"
                                                        style:UIAlertActionStyleDefault
                                                      handler:^(UIAlertAction * _Nonnull action) {
                                                          
-                                                         
+                                                         [weakself sendReportType:FMFeedbackInfoRepeated];
                                                      }];
     UIAlertAction * action4 = [UIAlertAction actionWithTitle:@"钓点已关闭"
                                                              style:UIAlertActionStyleDefault
                                                            handler:^(UIAlertAction * _Nonnull action) {
                                                                
-                                                               
+                                                               [weakself sendReportType:FMFeedbackClosed];
                                                            }];
     UIAlertAction * action5 = [UIAlertAction actionWithTitle:@"其他反馈"
                                                              style:UIAlertActionStyleDefault
                                                            handler:^(UIAlertAction * _Nonnull action) {
                                                                
-                                                               //意见反馈
+                                                               [weakself sendReportType:FMFeedbackOther];
                                                            }];
     [alertVC addAction:cancelAction];
     [alertVC addAction:action1];
@@ -180,6 +186,33 @@
 
     [self presentViewController:alertVC animated:YES completion:nil];
 }
+
+- (void)sendReportType:(FMReportType)reportType{
+    
+    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
+    
+    [[CDServerAPIs shareAPI] reportAndFeedbackWithReportType:reportType
+                                                    sourceId:_fishSiteModel.ID
+                                                  sourceType:FMSourceFishSiteType
+                                                      userId:[user.userId longLongValue]
+                                                     Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
+                                                         
+                                                         if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
+                                                             
+                                                             [CDTopAlertView showMsg:@"反馈成功" alertType:TopAlertViewSuccessType];
+                                                         }else if (![ZXHTool isEmptyString:responseObject[@"msg"]]){
+                                                             [CDTopAlertView showMsg:responseObject[@"msg"] alertType:TopAlertViewFailedType];
+                                                         }
+                                                         else{
+                                                             [CDTopAlertView showMsg:@"反馈失败，请稍后再试" alertType:TopAlertViewFailedType];
+                                                         }
+                                                     } Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
+                                                         [CDServerAPIs httpDataTask:dataTask error:error.error];
+                                                         [CDTopAlertView showMsg:@"反馈失败，请稍后再试" alertType:TopAlertViewFailedType];
+                                                     }];
+}
+
+#pragma mark ----------------推荐点赞
 
 - (IBAction)recommendAction:(id)sender {
     
@@ -192,7 +225,7 @@
     FMLoginUser * user = [FMLoginUser getCacheUserInfo];
     BOOL isLike = YES;
     [[CDServerAPIs shareAPI] articleLikeWithSourceId:_fishSiteModel.ID
-                                                type:2
+                                                type:FMSourceFishSiteType
                                                 like:isLike
                                               userId:[user.userId longLongValue]
                                               Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
