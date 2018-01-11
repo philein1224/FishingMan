@@ -345,6 +345,12 @@ static int count = 0;
     
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
     
+    //登录用户的userId
+    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
+    if (![ZXHTool isNilNullObject:user]) {
+        [requestDic setObject:user.userId forKey:@"userId"];
+    }
+    
     [requestDic setObject:self.siteNameTextField.text forKey:@"title"];
     
     [requestDic setObject:self.siteAddressLabel.text forKey:@"address"];

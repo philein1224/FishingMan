@@ -101,8 +101,6 @@
 - (IBAction)cancellButtonAction:(id)sender {
     
     [self closeKeyboard];
-    
-    [CDTopAlertView showMsg:@"网都没有，怎么能钓得到鱼。" alertType:TopAlertViewWarningType];
 }
 
 - (void)handleKeyBoardAction:(NSNotification *)notification {

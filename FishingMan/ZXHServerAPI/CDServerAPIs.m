@@ -147,7 +147,7 @@ static CDServerAPIs *shareServerAPIs;
         
         NSString *testDebugMessage = @"";
 #ifdef DEBUG
-        testDebugMessage = [NSString stringWithFormat:@" --- %ld: \n error code:%ld \n URL:%@", ((NSHTTPURLResponse *)(dataTask.response)).statusCode, error.code, dataTask.originalRequest.URL];
+        testDebugMessage = [NSString stringWithFormat:@" ---%@ %ld: \n error code:%ld \n URL:%@", error.localizedDescription, ((NSHTTPURLResponse *)(dataTask.response)).statusCode, error.code, dataTask.originalRequest.URL];
 #endif
         
         if ([error code] == NSURLErrorTimedOut) {
@@ -169,6 +169,9 @@ static CDServerAPIs *shareServerAPIs;
         }else if ([error code] == NSURLErrorCannotFindHost) {//未能找到使用指定主机名的服务器
             
             [CDTopAlertView showMsg:[NSString stringWithFormat:@"请切换网络后重试%@",testDebugMessage] isErrorState:YES];
+        }else if ([error code] == NSURLErrorNetworkConnectionLost) {//网络连接已中断
+            
+            [CDTopAlertView showMsg:[NSString stringWithFormat:@"网络连接已中断%@",testDebugMessage] isErrorState:YES];
         }
         else {
             
@@ -299,15 +302,14 @@ static CDServerAPIs *shareServerAPIs;
     return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
 }
 
-- (NSURLSessionDataTask *)modifyUserInfoWithAvatarImage:(void(^)(id <AFMultipartFormData> formData))block
-                                                 userId:(NSString *)userId
-                                               nikeName:(NSString *)nickname
-                                                    sex:(int)sex
-                                              avatarUrl:(NSString *)avatarUrl
-                                                address:(NSString *)address
-                                               birthday:(NSDate *)birthdayDate
-                                                success:(CDHttpSuccess)success
-                                                failure:(CDHttpFailure)failure{
+- (NSURLSessionDataTask *)modifyUserInfoWithUserId:(NSString *)userId
+                                          nikeName:(NSString *)nickname
+                                               sex:(int)sex
+                                         avatarUrl:(NSString *)avatarUrl
+                                           address:(NSString *)address
+                                          birthday:(NSDate *)birthdayDate
+                                           success:(CDHttpSuccess)success
+                                           failure:(CDHttpFailure)failure{
     
     NSString *APIName = @"/user/editUserInfo";
     
@@ -320,7 +322,7 @@ static CDServerAPIs *shareServerAPIs;
     [requestDic setObject:avatarUrl forKey:@"avatarUrl"];
     [requestDic setObject:address forKey:@"address"];
     
-    return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic constructingBodyWithBlock:block success:success failure:failure];
+    return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
 }
 
 #pragma mark 上传图片

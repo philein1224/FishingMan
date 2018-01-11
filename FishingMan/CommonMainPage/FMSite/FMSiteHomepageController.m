@@ -230,7 +230,7 @@
                                               userId:[user.userId longLongValue]
                                               Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
                                                   
-                                                  CLog(@"文章点赞成功 = %@", responseObject);
+                                                  CLog(@"钓点的推荐（点赞）成功 = %@", responseObject);
                                                   if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
                                                       
                                                   }else if (![ZXHTool isEmptyString:responseObject[@"msg"]]){
@@ -238,7 +238,7 @@
                                                   }
                                               } Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
                                                   [CDServerAPIs httpDataTask:dataTask error:error.error];
-                                                  CLog(@"文章点赞失败 = %@", error.error);
+                                                  CLog(@"钓点的推荐（点赞）失败 = %@", error.error);
                                               }];
 }
 

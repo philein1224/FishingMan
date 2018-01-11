@@ -97,15 +97,14 @@
 /**
  编辑用户信息接口【个人中心-头像-个人资料】
  */
-- (NSURLSessionDataTask *)modifyUserInfoWithAvatarImage:(void(^)(id <AFMultipartFormData> formData))block
-                                                 userId:(NSString *)userId
-                                               nikeName:(NSString *)nikeName
-                                                    sex:(int)sex
-                                              avatarUrl:(NSString *)avatarUrl
-                                                address:(NSString *)address
-                                               birthday:(NSDate *)birthday
-                                                success:(CDHttpSuccess)success
-                                                failure:(CDHttpFailure)failure;
+- (NSURLSessionDataTask *)modifyUserInfoWithUserId:(NSString *)userId
+                                          nikeName:(NSString *)nickname
+                                               sex:(int)sex
+                                         avatarUrl:(NSString *)avatarUrl
+                                           address:(NSString *)address
+                                          birthday:(NSDate *)birthdayDate
+                                           success:(CDHttpSuccess)success
+                                           failure:(CDHttpFailure)failure;
 
 #pragma mark 上传图片
 - (NSURLSessionDataTask *)uploadImageBlock:(void(^)(id <AFMultipartFormData> formData))block

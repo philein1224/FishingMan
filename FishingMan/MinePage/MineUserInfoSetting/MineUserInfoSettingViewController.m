@@ -270,17 +270,10 @@
     int sexFlag = [FMLoginUser sexTypeConvertFromName:self.sexButton.currentTitle];
     
     ZXH_WEAK_SELF
-    [[CDServerAPIs shareAPI] modifyUserInfoWithAvatarImage:^(id<AFMultipartFormData> formData) {
-     
-        //如果不传图片，服务器也不会返回图像的url地址，这是正确的，这个时候保存需要注意：是否收到tempUser.avatarUrl
-        if (uploadData) {
-           [formData appendPartWithFileData:uploadData name:@"imgFile" fileName:@"imgFile.png" mimeType:@"image/gif,image/jpeg,image/jpg,image/png"];
-        }
-    }
-                                                    userId:loginUser.userId
-                                                  nikeName:_nickNameTextField.text
+    [[CDServerAPIs shareAPI] modifyUserInfoWithUserId:loginUser.userId
+                                                  nikeName:[NSString stringWithFormat:@"%@", _nickNameTextField.text]
                                                        sex:sexFlag
-                                                 avatarUrl:@""
+                                                 avatarUrl:@"http://diaoyudaxian01.b0.upaiyun.com/fish/201801/045d7499-92c3-4791-b3e0-62c6422f7058"
                                                    address:@""
                                                   birthday:_birthDate
                                                    success:^(NSURLSessionDataTask *dataTask, id responseObject) {
@@ -340,6 +333,7 @@
                                                        }
                                                   } failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
                                                       
+                                                      [CDServerAPIs httpDataTask:dataTask error:error.error];
                                                       CLog(@"修改资料 error %@", error.error);
                                                   }];
 }
