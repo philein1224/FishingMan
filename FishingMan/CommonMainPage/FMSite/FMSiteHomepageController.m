@@ -23,6 +23,7 @@
 @property (strong, nonatomic) ZXHNaviBarView * naviBarView;
 @property (weak, nonatomic)   IBOutlet UITableView *tableView;
 @property (strong, nonatomic) FMSiteHomeHeaderView * siteHomeHeader;
+
 @property (weak, nonatomic) IBOutlet UIButton *feedbackButton;   //反馈
 @property (weak, nonatomic) IBOutlet UIButton *recommendButton;  //推荐
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;    //评论
@@ -30,7 +31,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *recommendIcon; //推荐图标
 @property (weak, nonatomic) IBOutlet UIImageView *favoriteIcon;  //收藏
-
 
 @end
 
@@ -223,10 +223,9 @@
     [PHProgressHUD showSingleCustonImageSetmsg:@"" view:nil imageName:@"Checkmark" setSquare:YES];
     
     FMLoginUser * user = [FMLoginUser getCacheUserInfo];
-    BOOL isLike = YES;
     [[CDServerAPIs shareAPI] articleLikeWithSourceId:_fishSiteModel.ID
                                                 type:FMSourceFishSiteType
-                                                like:isLike
+                                                like:YES //默认只能点赞
                                               userId:[user.userId longLongValue]
                                               Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
                                                   
@@ -305,7 +304,7 @@
     ZXH_WEAK_SELF
     [[CDServerAPIs shareAPI] articleFavorit:isCollected
                                    sourceId:_fishSiteModel.ID
-                                       type:1
+                                       type:FMSourceFishSiteType
                                      userId:[user.userId longLongValue]
                                     Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
                                         

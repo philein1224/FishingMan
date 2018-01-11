@@ -30,4 +30,8 @@
 @property (copy, nonatomic) NSString * orderFieldNextType;      //ASC排序方式
 @property (assign, nonatomic) long     yn;      //是否已经软删除
 
+#pragma mark 扩展数据
+@property (assign, nonatomic) int      score;      //推荐指数
+@property (assign, nonatomic) BOOL     liked;      //是否已经被点赞推荐
+@property (assign, nonatomic) BOOL     collected;  //是否已经被收藏
 @end

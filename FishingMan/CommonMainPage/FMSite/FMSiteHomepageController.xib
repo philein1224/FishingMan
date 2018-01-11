@@ -15,8 +15,10 @@
             <connections>
                 <outlet property="collectionButton" destination="48k-eu-9xM" id="ToM-XW-osw"/>
                 <outlet property="commentButton" destination="0sk-ZM-McE" id="6fi-N9-uiT"/>
+                <outlet property="favoriteIcon" destination="UoX-w9-b3p" id="vKd-EV-dHb"/>
                 <outlet property="feedbackButton" destination="gVv-jb-fPQ" id="8u3-kM-kuq"/>
                 <outlet property="recommendButton" destination="8hh-mN-cdr" id="jNW-Dh-6AB"/>
+                <outlet property="recommendIcon" destination="Yy4-iB-s9a" id="ISx-Ke-2AC"/>
                 <outlet property="tableView" destination="mUH-lD-10h" id="gpg-pb-h1R"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -78,13 +80,6 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xbG-nN-T0j" userLabel="View2">
                             <rect key="frame" x="94" y="0.0" width="93.5" height="50"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hh-mN-cdr">
-                                    <rect key="frame" x="0.0" y="0.0" width="93" height="50"/>
-                                    <inset key="imageEdgeInsets" minX="35" minY="6" maxX="35" maxY="14"/>
-                                    <connections>
-                                        <action selector="recommendAction:" destination="-1" eventType="touchUpInside" id="m9R-td-FB6"/>
-                                    </connections>
-                                </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="钓点_推荐icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Yy4-iB-s9a">
                                     <rect key="frame" x="36" y="7.5" width="20" height="20"/>
                                     <constraints>
@@ -98,6 +93,13 @@
                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hh-mN-cdr">
+                                    <rect key="frame" x="0.0" y="0.0" width="93" height="50"/>
+                                    <inset key="imageEdgeInsets" minX="35" minY="6" maxX="35" maxY="14"/>
+                                    <connections>
+                                        <action selector="recommendAction:" destination="-1" eventType="touchUpInside" id="m9R-td-FB6"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -116,13 +118,6 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPR-q5-ads" userLabel="View3">
                             <rect key="frame" x="188" y="0.0" width="93" height="50"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0sk-ZM-McE">
-                                    <rect key="frame" x="0.0" y="0.0" width="93" height="50"/>
-                                    <inset key="imageEdgeInsets" minX="35" minY="6" maxX="35" maxY="14"/>
-                                    <connections>
-                                        <action selector="commentAction:" destination="-1" eventType="touchUpInside" id="wo0-t1-TIM"/>
-                                    </connections>
-                                </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="钓点_评论icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="TJB-na-q5I">
                                     <rect key="frame" x="36" y="7.5" width="20" height="20"/>
                                     <constraints>
@@ -136,6 +131,13 @@
                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0sk-ZM-McE">
+                                    <rect key="frame" x="0.0" y="0.0" width="93" height="50"/>
+                                    <inset key="imageEdgeInsets" minX="35" minY="6" maxX="35" maxY="14"/>
+                                    <connections>
+                                        <action selector="commentAction:" destination="-1" eventType="touchUpInside" id="wo0-t1-TIM"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -154,13 +156,6 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oX2-0o-JhD" userLabel="View4">
                             <rect key="frame" x="281" y="0.0" width="94" height="50"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48k-eu-9xM">
-                                    <rect key="frame" x="0.0" y="0.0" width="94" height="50"/>
-                                    <inset key="imageEdgeInsets" minX="35" minY="6" maxX="35" maxY="14"/>
-                                    <connections>
-                                        <action selector="favoritesAction:" destination="-1" eventType="touchUpInside" id="gUg-a8-pXJ"/>
-                                    </connections>
-                                </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="钓点_收藏icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="UoX-w9-b3p">
                                     <rect key="frame" x="37" y="7.5" width="20" height="20"/>
                                     <constraints>
@@ -174,6 +169,13 @@
                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48k-eu-9xM">
+                                    <rect key="frame" x="0.0" y="0.0" width="94" height="50"/>
+                                    <inset key="imageEdgeInsets" minX="35" minY="6" maxX="35" maxY="14"/>
+                                    <connections>
+                                        <action selector="favoritesAction:" destination="-1" eventType="touchUpInside" id="gUg-a8-pXJ"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -250,7 +252,7 @@
                     <exclude reference="Vbe-XF-w90"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="79.5" y="153.5"/>
+            <point key="canvasLocation" x="-95" y="90"/>
         </view>
     </objects>
     <resources>

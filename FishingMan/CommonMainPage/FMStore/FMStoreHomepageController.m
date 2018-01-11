@@ -22,10 +22,16 @@
 @interface FMStoreHomepageController ()
 
 @property (strong, nonatomic) ZXHNaviBarView * naviBarView;
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 @property (strong, nonatomic) FMStoreHomeHeaderView * storeHomeHeader;
+
+@property (weak, nonatomic) IBOutlet UIButton *feedbackButton;   //反馈
+@property (weak, nonatomic) IBOutlet UIButton *recommendButton;  //推荐
+@property (weak, nonatomic) IBOutlet UIButton *commentButton;    //评论
+@property (weak, nonatomic) IBOutlet UIButton *collectionButton; //收藏
+
+@property (weak, nonatomic) IBOutlet UIImageView *recommendIcon; //推荐图标
+@property (weak, nonatomic) IBOutlet UIImageView *favoriteIcon;  //收藏
 
 @end
 
@@ -206,10 +212,29 @@
 #pragma mark ----------------推荐点赞
 
 - (IBAction)recommendAction:(id)sender {
+    
     if(!IS_LOGIN_WITHOUT_ALERT) return;
     
-    //钓点的推荐（点赞）
+    //渔具店的推荐（点赞）
     [PHProgressHUD showSingleCustonImageSetmsg:@"" view:nil imageName:@"Checkmark" setSquare:YES];
+    
+    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
+    [[CDServerAPIs shareAPI] articleLikeWithSourceId:_fishStoreModel.ID
+                                                type:FMSourceFishStoreType
+                                                like:YES //默认只能点赞
+                                              userId:[user.userId longLongValue]
+                                             Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
+                                                 
+                                                 CLog(@"渔具店的推荐（点赞）成功 = %@", responseObject);
+                                                 if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
+                                                     
+                                                 }else if (![ZXHTool isEmptyString:responseObject[@"msg"]]){
+                                                     [CDTopAlertView showMsg:responseObject[@"msg"] alertType:TopAlertViewFailedType];
+                                                 }
+                                             } Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
+                                                 [CDServerAPIs httpDataTask:dataTask error:error.error];
+                                                 CLog(@"渔具店的推荐（点赞）失败 = %@", error.error);
+                                             }];
 }
 
 #pragma mark ----------------评论
@@ -229,7 +254,7 @@
                                              }
                                          }];
 }
--(void)sendComment:(NSString *)content{
+- (void)sendComment:(NSString *)content{
     
     FMLoginUser * user = [FMLoginUser getCacheUserInfo];
     
@@ -259,16 +284,44 @@
      }];
 }
 
+#pragma mark ----------------收藏
 
-- (void)qqExpressionAction:(id)sender{
-}
-- (void)sendCommentAction:(id)sender{
-}
 - (IBAction)favoritesAction:(id)sender {
     if(!IS_LOGIN_WITHOUT_ALERT) return;
     
     //调用钓点的收藏接口
     [PHProgressHUD showSingleCustonImageSetmsg:@"" view:nil imageName:@"Checkmark" setSquare:YES];
+    if(!IS_LOGIN_WITHOUT_ALERT) return;
+    
+    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
+    
+    BOOL isCollected = _fishStoreModel.collected;
+    ZXH_WEAK_SELF
+    [[CDServerAPIs shareAPI] articleFavorit:isCollected
+                                   sourceId:_fishStoreModel.ID
+                                       type:FMSourceFishStoreType
+                                     userId:[user.userId longLongValue]
+                                    Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
+                                        
+                                        if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
+                                            
+                                            if(isCollected){
+                                                CLog(@"取消收藏 = %@", responseObject);
+                                                weakself.favoriteIcon.image = ZXHImageName(@"收藏_normal");
+                                                weakself.fishStoreModel.collected = NO;
+                                            }
+                                            else{
+                                                CLog(@"收藏 = %@", responseObject);
+                                                weakself.favoriteIcon.image = ZXHImageName(@"收藏_highlight");
+                                                weakself.fishStoreModel.collected = YES;
+                                            }
+                                        }else if (![ZXHTool isEmptyString:responseObject[@"msg"]]){
+                                            [CDTopAlertView showMsg:responseObject[@"msg"] alertType:TopAlertViewFailedType];
+                                        }
+                                    }
+                                    Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
+                                        [CDServerAPIs httpDataTask:dataTask error:error.error];
+                                    }];
 }
 
 #pragma mark ----------------数据请求处理
