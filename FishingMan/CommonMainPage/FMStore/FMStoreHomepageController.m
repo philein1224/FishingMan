@@ -16,6 +16,7 @@
 #import "FMFishStoreModel.h"
 
 #import "CDServerAPIs+MainPage.h"
+#import "CDServerAPIs+FishStore.h"
 
 #define kTableHeaderViewHeight      400  //tableHeaderView的高度
 
@@ -115,6 +116,8 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     
     [_naviBarView updateWithScrollViewContentOffsetY:10000];
+    
+    [self reloadFishStoreDetailWithID:[NSString stringWithFormat:@"%ld", _fishStoreModel.ID]];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -325,6 +328,38 @@
 }
 
 #pragma mark ----------------数据请求处理
+#pragma mark ----------------钓点详情请求处理
+
+- (void)reloadFishStoreDetailWithID:(NSString *) siteId{
+    
+    ZXH_WEAK_SELF
+    
+    //登录用户的userId
+    NSString * userId = @"";
+    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
+    if (![ZXHTool isNilNullObject:user]) {
+        userId = user.userId;
+    }
+    
+    [[CDServerAPIs shareAPI] fishStoreDetailWithUserId:userId
+                                                SiteId:siteId
+                                               Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
+        
+        if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
+            
+            weakself.fishStoreModel = [FMFishStoreModel mj_objectWithKeyValues:responseObject[@"data"]];
+            [weakself reloadData];
+        }
+        else{
+            [CDTopAlertView showMsg:@"加载失败，请稍后再试" alertType:TopAlertViewSuccessType];
+        }
+    } Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
+        
+        [CDServerAPIs httpDataTask:dataTask error:error.error];
+    }];
+}
+
+//页面刷新
 - (void)reloadData{
     
     if(![ZXHTool isNilNullObject:_fishStoreModel]){

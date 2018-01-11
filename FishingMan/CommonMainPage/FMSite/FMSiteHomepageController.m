@@ -335,7 +335,17 @@
 - (void)reloadFishSiteDetailWithID:(NSString *) siteId{
     
     ZXH_WEAK_SELF
-    [[CDServerAPIs shareAPI] fishSiteDetailWithSiteId:siteId Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
+    
+    //登录用户的userId
+    NSString * userId = @"";
+    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
+    if (![ZXHTool isNilNullObject:user]) {
+        userId = user.userId;
+    }
+    
+    [[CDServerAPIs shareAPI] fishSiteDetailWithUserId:userId
+                                               SiteId:siteId
+                                              Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
         
         if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
             

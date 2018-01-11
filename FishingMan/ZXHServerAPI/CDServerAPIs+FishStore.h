@@ -26,7 +26,7 @@
 /**
  渔具店详情
  */
-- (NSURLSessionDataTask *)fishStoreDetailWithUserId:(long)userId
+- (NSURLSessionDataTask *)fishStoreDetailWithUserId:(NSString *)userId
                                              SiteId:(NSString *)siteId     //渔具店id
                                             Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
 
