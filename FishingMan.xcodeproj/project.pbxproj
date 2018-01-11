@@ -2316,12 +2316,12 @@
 		2882C9D51EC9DEED00395815 /* FMUser */ = {
 			isa = PBXGroup;
 			children = (
-				2882C9D61EC9DEED00395815 /* FMUserHomeHeaderView.h */,
-				2882C9D71EC9DEED00395815 /* FMUserHomeHeaderView.m */,
-				2882C9D81EC9DEED00395815 /* FMUserHomeHeaderView.xib */,
 				2882C9D91EC9DEED00395815 /* FMUserHomepageController.h */,
 				2882C9DA1EC9DEED00395815 /* FMUserHomepageController.m */,
 				2882C9DB1EC9DEED00395815 /* FMUserHomepageController.xib */,
+				2882C9D61EC9DEED00395815 /* FMUserHomeHeaderView.h */,
+				2882C9D71EC9DEED00395815 /* FMUserHomeHeaderView.m */,
+				2882C9D81EC9DEED00395815 /* FMUserHomeHeaderView.xib */,
 			);
 			path = FMUser;
 			sourceTree = "<group>";

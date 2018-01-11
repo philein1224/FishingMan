@@ -25,4 +25,11 @@ MJExtensionCodingImplementation
     return self;
 }
 
+    //转换id的名称
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    
+    return @{@"userId":@"id"};
+}
+
+
 @end

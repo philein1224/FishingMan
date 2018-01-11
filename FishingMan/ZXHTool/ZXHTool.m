@@ -406,6 +406,11 @@
     }
 }
 
+//将NSMultiArray转成字符串
++ (NSString *)stringFromArray:(NSMutableArray *)array{
+    return [array componentsJoinedByString:@","];
+}
+
 //NSDictionary 转为json字符串
 + (NSString *)dataToJsonString:(id)object{
     

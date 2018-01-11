@@ -381,7 +381,6 @@ UINavigationControllerDelegate>
     
     [publishInfo setObject:[NSNumber numberWithInt:self.articleType] forKey:@"articleType"];//文章类型
     [publishInfo setObject:self.titleEditView.articleTitleTextField.text forKey:@"title"];//文章标题
-    [publishInfo setObject:[NSNumber numberWithBool:YES] forKey:@"isPublish"];
     
 #pragma mark 图片和文字的内容
     
@@ -419,7 +418,11 @@ UINavigationControllerDelegate>
         return;
     }
     
-    NSString * jsonContent = [ZXHTool dataToJsonString:plainContentArray];
+    NSString * jsonContent = [ZXHTool stringFromArray:plainContentArray];
+    
+//    NSData *data = [jsonContent dataUsingEncoding:NSUTF8StringEncoding];
+//    jsonContent =  [data base64EncodedStringWithOptions:0];
+    
     [publishInfo setObject:jsonContent forKey:@"content"];
     
 #pragma mark 推荐图片
@@ -436,8 +439,16 @@ UINavigationControllerDelegate>
     NSString * imageURLStr3 = @"http://diaoyudaxian01.b0.upaiyun.com/fish/201712/1ad6db12-5a57-4481-95f0-bab4619a4724";
     [recommendImgArray addObject:imageURLStr3];
     
-    NSString * recommendJsonContent = [ZXHTool dataToJsonString:plainContentArray];
+    NSString * recommendJsonContent = [ZXHTool stringFromArray:plainContentArray];
+    
+//    NSData *data1 = [recommendJsonContent dataUsingEncoding:NSUTF8StringEncoding];
+//    recommendJsonContent =  [data1 base64EncodedStringWithOptions:0];
+    
     [publishInfo setObject:recommendJsonContent forKey:@"recommends"];
+    
+        
+    
+    NSLog(@"ahsdhashdash ==== %@", [ZXHTool dataToJsonString:publishInfo]);
     
     //恢复回去
     NSArray * array = [ZXHTool dataConvertFromJsonString:jsonContent];

@@ -28,6 +28,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;    //评论
 @property (weak, nonatomic) IBOutlet UIButton *collectionButton; //收藏
 
+@property (weak, nonatomic) IBOutlet UIImageView *recommendIcon; //推荐图标
+@property (weak, nonatomic) IBOutlet UIImageView *favoriteIcon;  //收藏
+
+
 @end
 
 @implementation FMSiteHomepageController
@@ -252,12 +256,45 @@
      [CDTopAlertView showMsg:@"发送失败" alertType:TopAlertViewFailedType];
      }];
 }
-
+#pragma mark ----------------收藏
 - (IBAction)favoritesAction:(id)sender {
+    
+    /*
+     //调用钓点的收藏接口
+     [PHProgressHUD showSingleCustonImageSetmsg:@"" view:nil imageName:@"Checkmark" setSquare:YES];
+     */
+    
     if(!IS_LOGIN_WITHOUT_ALERT) return;
     
-    //调用钓点的收藏接口
-    [PHProgressHUD showSingleCustonImageSetmsg:@"" view:nil imageName:@"Checkmark" setSquare:YES];
+    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
+    
+    BOOL isCollected = self.fishSiteModel.collected;
+    ZXH_WEAK_SELF
+    [[CDServerAPIs shareAPI] articleFavorit:isCollected
+                                   sourceId:_fishSiteModel.ID
+                                       type:1
+                                     userId:[user.userId longLongValue]
+                                    Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
+                                        
+                                        if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
+                                            
+                                            if(isCollected){
+                                                CLog(@"取消收藏 = %@", responseObject);
+                                                weakself.favoriteIcon.image = ZXHImageName(@"收藏_normal");
+                                                weakself.fishSiteModel.collected = NO;
+                                            }
+                                            else{
+                                                CLog(@"收藏 = %@", responseObject);
+                                                weakself.favoriteIcon.image = ZXHImageName(@"收藏_highlight");
+                                                weakself.fishSiteModel.collected = YES;
+                                            }
+                                        }else if (![ZXHTool isEmptyString:responseObject[@"msg"]]){
+                                            [CDTopAlertView showMsg:responseObject[@"msg"] alertType:TopAlertViewFailedType];
+                                        }
+                                    }
+                                    Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
+                                        [CDServerAPIs httpDataTask:dataTask error:error.error];
+                                    }];
 }
 
 

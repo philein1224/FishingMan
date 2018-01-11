@@ -84,6 +84,9 @@
 + (double)distanceFromLat1:(double)lat1 Lng1:(double)lng1 ToLat2:(double)lat2 Lng2:(double)lng2;
 + (NSString *)distanceStringFromLat1:(double)lat1 Lng1:(double)lng1 ToLat2:(double)lat2 Lng2:(double)lng2;
 
+//将NSMultiArray转成字符串
++ (NSString *)stringFromArray:(NSMutableArray *)array;
+
 //NSDictionary 转为json字符串
 + (NSString*)dataToJsonString:(id)object;
 + (NSArray *)dataConvertFromJsonString:(NSString *)jsonString;

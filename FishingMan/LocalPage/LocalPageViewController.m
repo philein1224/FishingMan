@@ -753,7 +753,7 @@ typedef NS_ENUM(NSInteger, FishManLocalType) {
         case FishManLocalFishStoreType:
         {
             FMStoreHomepageController * storeHP = [[FMStoreHomepageController alloc] initWithNibName:@"FMStoreHomepageController" bundle:nil];
-            storeHP.model = [self.allStoreModelArray objectAtIndex:indexPath.row];
+            storeHP.fishStoreModel = [self.allStoreModelArray objectAtIndex:indexPath.row];
             [self.navigationController pushViewController:storeHP animated:YES];
         }
             break;

@@ -15,6 +15,8 @@
 #import "FMLoginUser.h"
 #import "FMFishStoreModel.h"
 
+#import "CDServerAPIs+MainPage.h"
+
 #define kTableHeaderViewHeight      400  //tableHeaderView的高度
 
 @interface FMStoreHomepageController ()
@@ -175,6 +177,9 @@
     //钓点的推荐（点赞）
     [PHProgressHUD showSingleCustonImageSetmsg:@"" view:nil imageName:@"Checkmark" setSquare:YES];
 }
+
+#pragma mark ----------------评论
+
 - (IBAction)commentAction:(id)sender {
     if(!IS_LOGIN_WITHOUT_ALERT) return;
     
@@ -185,9 +190,42 @@
                                              
                                          }
                                          callback:^(NSString *content) {
-                                             
+                                             if (![ZXHTool isEmptyString:content]) {
+                                                 [weakself sendComment: content];
+                                             }
                                          }];
 }
+-(void)sendComment:(NSString *)content{
+    
+    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
+    
+    [[CDServerAPIs shareAPI] commentPublishWithSourceId:_fishStoreModel.ID
+                                             sourceType:FMSourceFishStoreType
+                                                Content:content
+                                             FromUserId:[user.userId longLongValue]
+                                           FromUserName:user.nickName
+                                          FromUserAvtor:user.avatarUrl
+                                               ToUserId:18
+                                                Success:^(NSURLSessionDataTask *dataTask, id responseObject)
+     {
+         if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
+             
+             [CDTopAlertView showMsg:@"发送成功" alertType:TopAlertViewSuccessType];
+         }else if (![ZXHTool isEmptyString:responseObject[@"msg"]]){
+             [CDTopAlertView showMsg:responseObject[@"msg"] alertType:TopAlertViewFailedType];
+         }
+         else{
+             [CDTopAlertView showMsg:@"发送失败" alertType:TopAlertViewFailedType];
+         }
+     }
+                                                Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error)
+     {
+         [CDServerAPIs httpDataTask:dataTask error:error.error];
+         [CDTopAlertView showMsg:@"发送失败" alertType:TopAlertViewFailedType];
+     }];
+}
+
+
 - (void)qqExpressionAction:(id)sender{
 }
 - (void)sendCommentAction:(id)sender{
@@ -202,9 +240,9 @@
 #pragma mark ----------------数据请求处理
 - (void)reloadData{
     
-    if(![ZXHTool isNilNullObject:self.model]){
+    if(![ZXHTool isNilNullObject:_fishStoreModel]){
         //1、header的数据
-        self.storeHomeHeader.storeModel = self.model;
+        self.storeHomeHeader.storeModel = _fishStoreModel;
         [self.storeHomeHeader reloadData];
         
         //2、cell的数据
@@ -231,7 +269,7 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"FMStoreHomeInfoCell" owner:nil options:nil] firstObject];
     }
     
-    cell.storeModel = self.model;
+    cell.storeModel = _fishStoreModel;
     [cell reloadData];
     
     ZXH_WEAK_SELF
@@ -241,8 +279,8 @@
                 
             case FMTargetPageEventTypeCall:
             {
-                if(![ZXHTool isEmptyString:weakself.model.sitePhone]){
-                    NSString * telURL = [NSString stringWithFormat:@"tel:%@", weakself.model.sitePhone];
+                if(![ZXHTool isEmptyString:weakself.fishStoreModel.sitePhone]){
+                    NSString * telURL = [NSString stringWithFormat:@"tel:%@", weakself.fishStoreModel.sitePhone];
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telURL]];
                 }
             }
