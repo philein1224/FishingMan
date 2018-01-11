@@ -1332,7 +1332,6 @@
 		28EDDB031E9CD0240062DD7D /* FishVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FishVideoCell.m; sourceTree = "<group>"; };
 		28EDDB041E9CD0240062DD7D /* FishVideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FishVideoCell.xib; sourceTree = "<group>"; };
 		28EDDB0D1E9CE1D80062DD7D /* videoImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = videoImage.png; sourceTree = "<group>"; };
-		28F3FBC91FFD2EC3003F40FB /* CDHttpsRequestOld.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CDHttpsRequestOld.m; sourceTree = "<group>"; };
 		28F6AF531EE1B3FB00F9C2F3 /* 钓点_提供餐饮icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "钓点_提供餐饮icon@2x.png"; sourceTree = "<group>"; };
 		28F6AF541EE1B3FB00F9C2F3 /* 钓点_提供餐饮icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "钓点_提供餐饮icon@3x.png"; sourceTree = "<group>"; };
 		28F6AF551EE1B3FB00F9C2F3 /* 钓点_提供住宿icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "钓点_提供住宿icon@2x.png"; sourceTree = "<group>"; };
@@ -3317,7 +3316,6 @@
 				E714EADB1F1539C200E62382 /* CDServerAPIs.m */,
 				E714EAD81F1539C200E62382 /* CDHttpsRequest.h */,
 				E714EAD91F1539C200E62382 /* CDHttpsRequest.m */,
-				28F3FBC91FFD2EC3003F40FB /* CDHttpsRequestOld.m */,
 			);
 			path = ZXHServerAPI;
 			sourceTree = "<group>";

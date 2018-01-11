@@ -418,7 +418,9 @@ UINavigationControllerDelegate>
         return;
     }
     
-    NSString * jsonContent = [ZXHTool stringFromArray:plainContentArray];
+    NSString * jsonContent = [ZXHTool dataToJsonString: plainContentArray];
+    
+//    NSString * jsonContent = [ZXHTool stringFromArray:plainContentArray];
     
 //    NSData *data = [jsonContent dataUsingEncoding:NSUTF8StringEncoding];
 //    jsonContent =  [data base64EncodedStringWithOptions:0];
@@ -439,7 +441,9 @@ UINavigationControllerDelegate>
     NSString * imageURLStr3 = @"http://diaoyudaxian01.b0.upaiyun.com/fish/201712/1ad6db12-5a57-4481-95f0-bab4619a4724";
     [recommendImgArray addObject:imageURLStr3];
     
-    NSString * recommendJsonContent = [ZXHTool stringFromArray:plainContentArray];
+    NSString * recommendJsonContent = [ZXHTool dataToJsonString: recommendImgArray];
+    
+//    NSString * recommendJsonContent = [ZXHTool stringFromArray:recommendImgArray];
     
 //    NSData *data1 = [recommendJsonContent dataUsingEncoding:NSUTF8StringEncoding];
 //    recommendJsonContent =  [data1 base64EncodedStringWithOptions:0];

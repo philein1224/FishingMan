@@ -191,7 +191,7 @@
             
             NSString *jsonString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
             NSDictionary *jsonObject = [ZXHTool jsonObjectFromJsonString:jsonString];
-            CLog(@"接口名(%@): \n jsonString:%@",apiName,jsonObject);
+//            CLog(@"接口名(%@): \n jsonString:%@",apiName,jsonObject);
             success(dataTask, jsonObject);
         }
     }];
