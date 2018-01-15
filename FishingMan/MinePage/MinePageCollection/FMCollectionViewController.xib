@@ -17,11 +17,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JfH-2s-s7z">
-                    <rect key="frame" x="0.0" y="261" width="80" height="80"/>
+                    <rect key="frame" x="0.0" y="293.5" width="80" height="80"/>
                     <color key="backgroundColor" red="0.92549019610000005" green="0.28627450980000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="80" id="GKM-qR-tEy"/>
@@ -29,7 +29,7 @@
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="riQ-8Q-ZmU">
-                    <rect key="frame" x="295" y="261" width="80" height="80"/>
+                    <rect key="frame" x="295" y="293.5" width="80" height="80"/>
                     <color key="backgroundColor" red="0.92549019610000005" green="0.28627450980000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="80" id="YE6-ds-W7v"/>
@@ -37,7 +37,7 @@
                     </constraints>
                 </imageView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="smS-Ud-UYg">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="dwy-Ki-CRn"/>
                     </connections>
@@ -55,7 +55,6 @@
                 <constraint firstItem="JfH-2s-s7z" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dlM-4D-Mib"/>
                 <constraint firstAttribute="trailing" secondItem="smS-Ud-UYg" secondAttribute="trailing" id="hRr-Cr-8CT"/>
             </constraints>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO"/>
             <point key="canvasLocation" x="-147" y="-504"/>
         </view>
     </objects>

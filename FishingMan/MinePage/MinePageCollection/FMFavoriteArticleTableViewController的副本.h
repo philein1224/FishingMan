@@ -8,5 +8,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FMFavoriteArticleTableViewController : UIViewController
+@interface FMFavoriteArticleTableViewController : UITableViewController
 @end

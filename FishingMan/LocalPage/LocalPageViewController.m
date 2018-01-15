@@ -279,7 +279,6 @@ typedef NS_ENUM(NSInteger, FishManLocalType) {
     
     /*** 列表去掉多余cell ***/
     UIView *tempfooterview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ZXHScreenWidth, 0)];
-    tempfooterview.backgroundColor = ZXHColorRGB(248, 248, 248, 1);
     self.tableView.tableFooterView = tempfooterview;
     
     //加载列表数据
@@ -391,6 +390,8 @@ typedef NS_ENUM(NSInteger, FishManLocalType) {
                        //判断是否继续
                        NSDictionary * dataDic = responseObject[@"data"];
                        if([ZXHTool isNilNullObject:dataDic]){
+                           [weakself.tableView.mj_header endRefreshing];
+                           [weakself.tableView.mj_footer endRefreshing];
                            return;
                        }
                        weakself.pageOfFishSiteList = [dataDic[@"currentPage"] intValue];

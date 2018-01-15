@@ -42,7 +42,7 @@
 @property (assign, nonatomic) int      likeCount;   //点赞数量
 @property (assign, nonatomic) BOOL     liked;       //是否点赞
 @property (assign, nonatomic) int      commentCount;   //评论数量
-@property (assign, nonatomic) BOOL     collected;      //是否收藏
+@property (assign, nonatomic) BOOL     collected;      //是否已经被收藏：YES已经收藏／NO未收藏
 
 //内容转换后的生成的
 @property (assign, nonatomic) int      imageCount;  //文章包含的图片

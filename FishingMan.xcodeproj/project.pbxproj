@@ -179,6 +179,7 @@
 		289A6E141EAE4D2300B47D69 /* FMVersionUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 289A6E121EAE4D2300B47D69 /* FMVersionUpdate.m */; };
 		289A6E151EAE4D2300B47D69 /* FMVersionUpdate.xib in Resources */ = {isa = PBXBuildFile; fileRef = 289A6E131EAE4D2300B47D69 /* FMVersionUpdate.xib */; };
 		28A191C91EDEB03200C1A123 /* SGMain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28A191C81EDEB03200C1A123 /* SGMain.framework */; };
+		28A52864200D0052008BAE49 /* FMFavoriteArticleTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A52863200D0051008BAE49 /* FMFavoriteArticleTableViewController.xib */; };
 		28A81BA61E6EA2B300BA7ACD /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28A81BA51E6EA2B300BA7ACD /* CoreMotion.framework */; };
 		28A81BAA1E6EA3E800BA7ACD /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 28A81BA91E6EA3E800BA7ACD /* libz.tbd */; };
 		28A81BAC1E6EAC4500BA7ACD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28A81BAB1E6EAC4500BA7ACD /* CoreLocation.framework */; };
@@ -995,6 +996,7 @@
 		289A6E121EAE4D2300B47D69 /* FMVersionUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMVersionUpdate.m; sourceTree = "<group>"; };
 		289A6E131EAE4D2300B47D69 /* FMVersionUpdate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMVersionUpdate.xib; sourceTree = "<group>"; };
 		28A191C81EDEB03200C1A123 /* SGMain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SGMain.framework; sourceTree = "<group>"; };
+		28A52863200D0051008BAE49 /* FMFavoriteArticleTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMFavoriteArticleTableViewController.xib; sourceTree = "<group>"; };
 		28A81BA51E6EA2B300BA7ACD /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		28A81BA91E6EA3E800BA7ACD /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		28A81BAB1E6EAC4500BA7ACD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -3149,6 +3151,7 @@
 				28EBD5521E7C45FD0038513A /* FMCollectionViewController.xib */,
 				28309D712009DED200136A98 /* FMFavoriteArticleTableViewController.h */,
 				28309D702009DED100136A98 /* FMFavoriteArticleTableViewController.m */,
+				28A52863200D0051008BAE49 /* FMFavoriteArticleTableViewController.xib */,
 				284018F52008A4AB0056C913 /* FMFishSiteTableViewController.h */,
 				284018F62008A4AB0056C913 /* FMFishSiteTableViewController.m */,
 				284018F72008A4AB0056C913 /* FMFishSiteTableViewController.xib */,
@@ -3612,6 +3615,7 @@
 				28AA45F31F0235DA00E7192A /* UIBarButtonItemArrowLeft.png in Resources */,
 				28F882BA1EDDB53500227A59 /* 钓具DIY@2x.png in Resources */,
 				E7E20EC61F58771B004D369C /* 添加_dropMenu@2x.png in Resources */,
+				28A52864200D0052008BAE49 /* FMFavoriteArticleTableViewController.xib in Resources */,
 				28F883141EDDC37400227A59 /* commonPwdIcon@2x.png in Resources */,
 				E7E3F2961EE9AF1D007DDE11 /* 天气_海拔icon@2x.png in Resources */,
 				28F882F41EDDBA9D00227A59 /* 修改密码icon@2x.png in Resources */,

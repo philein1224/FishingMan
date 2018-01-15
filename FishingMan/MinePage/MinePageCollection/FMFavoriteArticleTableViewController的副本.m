@@ -20,7 +20,7 @@
 @interface FMFavoriteArticleTableViewController ()
 {
 }
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @property (assign, nonatomic) BOOL pullingDownward; //向下拉获取最新
 @property (assign, nonatomic) int currentPage; //当前加载到第几页
 @property (nonatomic, strong) NSMutableArray * articleModelArray; //已经加载的列表数据
@@ -95,9 +95,11 @@
             
                 //判断是否继续
             NSDictionary * dataDic = responseObject[@"data"];
-            if([ZXHTool isNilNullObject:dataDic] || [ZXHTool isNilNullObject:dataDic[@"result"]]){
-                [weakself.tableView.mj_header endRefreshing];
-                [weakself.tableView.mj_footer endRefreshing];
+            if([ZXHTool isNilNullObject:dataDic]){
+                return;
+            }
+            
+            if([ZXHTool isNilNullObject:dataDic[@"result"]]){
                 return;
             }
             

@@ -15,7 +15,7 @@
 #import "FishVideoCell.h"
 #import "FMArticleModel.h"
 #import "CDServerAPIs+MainPage.h"
-#import "FMSingleArticleTypeTableViewController.h"
+#import "FMFavoriteArticleTableViewController.h"
 #import "FMFishSiteTableViewController.h"
 #import "FMFishStoreTableViewController.h"
 
@@ -33,7 +33,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) NSMutableArray * viewControllersArray;
 
-@property (strong, nonatomic) FMSingleArticleTypeTableViewController * singleArticleTypeTableCtrl;
+@property (strong, nonatomic) FMFavoriteArticleTableViewController * favoriteArticleTableCtrl;
 @property (strong, nonatomic) FMFishSiteTableViewController * fishSiteTableViewController;
 @property (strong, nonatomic) FMFishStoreTableViewController * fishStoreTableViewController;
 
@@ -60,6 +60,13 @@
     [self setTheVC];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
 - (void)backButtonClicked:(UIButton *)sender{
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -73,27 +80,25 @@
     
     self.viewControllersArray = [NSMutableArray arrayWithCapacity:3];
     
-    CLog(@"view h = %f, screen h = %f", self.view.frame.size.height, ZXHScreenHeight);
-    
     //1、文章列表
-    _singleArticleTypeTableCtrl = [[FMSingleArticleTypeTableViewController alloc] init];
-    _singleArticleTypeTableCtrl.view.frame = CGRectMake(ZXHScreenWidth * 0, 0, ZXHScreenWidth, ZXHScreenHeight);
-    [self addChildViewController:_singleArticleTypeTableCtrl];
-    [self.scrollView addSubview:_singleArticleTypeTableCtrl.view];
-    [_singleArticleTypeTableCtrl didMoveToParentViewController:self];
-    [self.viewControllersArray addObject:_singleArticleTypeTableCtrl];
-    
-    //2、钓点列表
+    _favoriteArticleTableCtrl = [[FMFavoriteArticleTableViewController alloc] initWithNibName:@"FMFavoriteArticleTableViewController" bundle:nil];
+    _favoriteArticleTableCtrl.view.frame = CGRectMake(0, 64, ZXHScreenWidth, ZXHScreenHeight);
+    [self addChildViewController:_favoriteArticleTableCtrl];
+    [self.scrollView addSubview:_favoriteArticleTableCtrl.view];
+    [_favoriteArticleTableCtrl didMoveToParentViewController:self];
+    [self.viewControllersArray addObject:_favoriteArticleTableCtrl];
+
+        //2、钓点列表
     _fishSiteTableViewController = [[FMFishSiteTableViewController alloc] initWithNibName:@"FMFishSiteTableViewController" bundle:nil];
-    _fishSiteTableViewController.view.frame = CGRectMake(ZXHScreenWidth * 1, 0, ZXHScreenWidth, ZXHScreenHeight);
+    _fishSiteTableViewController.view.frame = CGRectMake(ZXHScreenWidth * 1, 64, ZXHScreenWidth, ZXHScreenHeight);
     [self addChildViewController:_fishSiteTableViewController];
     [self.scrollView addSubview:_fishSiteTableViewController.view];
     [_fishSiteTableViewController didMoveToParentViewController:self];
     [self.viewControllersArray addObject:_fishSiteTableViewController];
     
-    //3、渔具店列表
+        //3、渔具店列表
     _fishStoreTableViewController = [[FMFishStoreTableViewController alloc] initWithNibName:@"FMFishStoreTableViewController" bundle:nil];
-    _fishStoreTableViewController.view.frame = CGRectMake(ZXHScreenWidth * 2, 0, ZXHScreenWidth, ZXHScreenHeight);
+    _fishStoreTableViewController.view.frame = CGRectMake(ZXHScreenWidth * 2, 64, ZXHScreenWidth, ZXHScreenHeight);
     [self addChildViewController:_fishStoreTableViewController];
     [self.scrollView addSubview:_fishStoreTableViewController.view];
     [_fishStoreTableViewController didMoveToParentViewController:self];
@@ -101,6 +106,7 @@
     
     //4、contentSize
     self.scrollView.contentSize = CGSizeMake(ZXHScreenWidth * 3, ZXHScreenWidth);
+    self.scrollView.pagingEnabled = YES;
 }
 
 #pragma mark UIScrollView delegate

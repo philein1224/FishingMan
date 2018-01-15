@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FMFishSiteTableViewController : UITableViewController
+@interface FMFishSiteTableViewController : UIViewController
 
 @end
