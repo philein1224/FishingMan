@@ -8,7 +8,7 @@
 
 #import "DiscoveryPageTableViewController.h"
 #import "DiscoveryPageTableViewCell.h"
-#import "DiscoveryTypeTableViewController.h"
+#import "FMSingleArticleTypeTableViewController.h"
 
 #import <CoreMotion/CoreMotion.h>
 
@@ -166,7 +166,7 @@
     self.hidesBottomBarWhenPushed = YES;
     if (indexPath.section == 0) {
         
-        DiscoveryTypeTableViewController * oneKindArticleTypeVC = [[DiscoveryTypeTableViewController alloc] init];
+        FMSingleArticleTypeTableViewController * oneKindArticleTypeVC = [[FMSingleArticleTypeTableViewController alloc] init];
         oneKindArticleTypeVC.typeObjInfo = ArticleTypeInfoDataArray[indexPath.row];
         oneKindArticleTypeVC.navigationTitle = ArticleTypeTitleArray[indexPath.row];
         [self.navigationController pushViewController:oneKindArticleTypeVC animated:YES];

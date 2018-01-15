@@ -10,9 +10,9 @@
 #import "MinePageSectionHeaderCell.h"  //分区的header
 #import "MinePageTableViewCell.h"
 
-#import "DiscoveryTypeTableViewController.h"
+#import "FMSingleArticleTypeTableViewController.h"
 #import "FMShareView.h"
-#import "FMFeedbackViewController.h"
+#import "FMCollectionViewController.h"
 #import "FMThanksTableViewController.h"
 #import "FMSettingTableViewController.h"
 #import "FMAboutUsViewController.h"
@@ -385,10 +385,16 @@ static NSString * const kAppKey = @"23855996";
             NSMutableDictionary * tempDic = mine1stArray[indexPath.row-1];
             NSString * title = [tempDic objectForKey:@"keyName"];
             
-            DiscoveryTypeTableViewController * oneKindArticleVC = [[DiscoveryTypeTableViewController alloc] init];
-            oneKindArticleVC.navigationTitle = title;
-            oneKindArticleVC.hideNavigationWhenPopOut = YES;
-            [self.navigationController pushViewController:oneKindArticleVC animated:YES];
+            if ([title isEqualToString:@"收藏"]) {
+                FMCollectionViewController * feedbackVC = [[FMCollectionViewController alloc] initWithNibName:@"FMCollectionViewController" bundle:nil];
+                [self.navigationController pushViewController:feedbackVC animated:YES];
+            }
+            else{
+                FMSingleArticleTypeTableViewController * oneKindArticleVC = [[FMSingleArticleTypeTableViewController alloc] init];
+                oneKindArticleVC.navigationTitle = title;
+                oneKindArticleVC.hideNavigationWhenPopOut = YES;
+                [self.navigationController pushViewController:oneKindArticleVC animated:YES];
+            }
             
             self.hidesBottomBarWhenPushed = NO;
         }
@@ -401,14 +407,6 @@ static NSString * const kAppKey = @"23855996";
         if (indexPath.row == 1) {
             //意见反馈
             self.hidesBottomBarWhenPushed = YES;
-            
-//            NSMutableDictionary * tempDic = mine2ndArray[indexPath.row-1];
-//            NSString * title = [tempDic objectForKey:@"keyName"];
-            
-//            FMFeedbackViewController * feedbackVC = [[FMFeedbackViewController alloc] initWithNibName:@"FMFeedbackViewController" bundle:nil];
-            //            feedbackVC.navigationTitle = title;
-            //            [self.navigationController pushViewController:feedbackVC animated:YES];
-            
             
             /** 设置App自定义扩展反馈数据 */
             self.feedbackKit.extInfo = @{@"loginTime":[[NSDate date] description],

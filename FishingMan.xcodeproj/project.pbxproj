@@ -28,6 +28,7 @@
 		282789A01E79139B005CD021 /* userHead0.png in Resources */ = {isa = PBXBuildFile; fileRef = 2827899F1E79139B005CD021 /* userHead0.png */; };
 		282C21061F8E659E0092419A /* MJRefresh.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 282C21051F8E659E0092419A /* MJRefresh.xcassets */; };
 		282C21091F8E74C50092419A /* CDServerAPIs+MainPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 282C21081F8E74C50092419A /* CDServerAPIs+MainPage.m */; };
+		28309D722009DED200136A98 /* FMFavoriteArticleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28309D702009DED100136A98 /* FMFavoriteArticleTableViewController.m */; };
 		2831848A1F21787E004173BF /* diaoyuxiehui2.cer in Resources */ = {isa = PBXBuildFile; fileRef = 283184871F21787E004173BF /* diaoyuxiehui2.cer */; };
 		2831848B1F21787E004173BF /* diaoyuxiehui1.cer in Resources */ = {isa = PBXBuildFile; fileRef = 283184881F21787E004173BF /* diaoyuxiehui1.cer */; };
 		2831848C1F21787E004173BF /* diaoyuxiehui.cer in Resources */ = {isa = PBXBuildFile; fileRef = 283184891F21787E004173BF /* diaoyuxiehui.cer */; };
@@ -73,6 +74,10 @@
 		283DE8D61E8AAE6700B65903 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 283DE8D51E8AAE6700B65903 /* libicucore.tbd */; };
 		283DE8D81E8AAE8400B65903 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 283DE8D71E8AAE8400B65903 /* libstdc++.tbd */; };
 		283DE8DA1E8AAE9000B65903 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 283DE8D91E8AAE9000B65903 /* JavaScriptCore.framework */; };
+		284018F82008A4AB0056C913 /* FMFishSiteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 284018F62008A4AB0056C913 /* FMFishSiteTableViewController.m */; };
+		284018F92008A4AB0056C913 /* FMFishSiteTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 284018F72008A4AB0056C913 /* FMFishSiteTableViewController.xib */; };
+		284018FD2008A4CF0056C913 /* FMFishStoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 284018FB2008A4CF0056C913 /* FMFishStoreTableViewController.m */; };
+		284018FE2008A4CF0056C913 /* FMFishStoreTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 284018FC2008A4CF0056C913 /* FMFishStoreTableViewController.xib */; };
 		2840647B1ED1A319004F1836 /* FMLoginPWDModifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 284064791ED1A319004F1836 /* FMLoginPWDModifyViewController.m */; };
 		2840647C1ED1A319004F1836 /* FMLoginPWDModifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2840647A1ED1A319004F1836 /* FMLoginPWDModifyViewController.xib */; };
 		284964F31F1DB98100CBCB76 /* FMLoginUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 284964F21F1DB98100CBCB76 /* FMLoginUser.m */; };
@@ -322,7 +327,7 @@
 		28D652661EB97D1F00734E94 /* CDAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D652651EB97D1F00734E94 /* CDAnimations.m */; };
 		28D652691EBA0FE400734E94 /* ZXHWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28D652681EBA0FE400734E94 /* ZXHWebViewController.xib */; };
 		28D6526C1EBA100D00734E94 /* ZXHWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D6526B1EBA100D00734E94 /* ZXHWebViewController.m */; };
-		28D9FD4D1E796BA80035B7E0 /* DiscoveryTypeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D9FD4C1E796BA80035B7E0 /* DiscoveryTypeTableViewController.m */; };
+		28D9FD4D1E796BA80035B7E0 /* FMSingleArticleTypeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D9FD4C1E796BA80035B7E0 /* FMSingleArticleTypeTableViewController.m */; };
 		28D9FD521E7970DB0035B7E0 /* FMWeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D9FD501E7970DB0035B7E0 /* FMWeatherViewController.m */; };
 		28D9FD531E7970DB0035B7E0 /* FMWeatherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28D9FD511E7970DB0035B7E0 /* FMWeatherViewController.xib */; };
 		28DDE7441E82C97B00727CAD /* LocalFishSiteTBCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DDE7421E82C97B00727CAD /* LocalFishSiteTBCell.m */; };
@@ -395,8 +400,8 @@
 		28EBD5461E7ADCC60038513A /* MainPage_点赞@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28EBD5421E7ADCC60038513A /* MainPage_点赞@2x.png */; };
 		28EBD5471E7ADCC60038513A /* MainPage_点赞@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28EBD5431E7ADCC60038513A /* MainPage_点赞@3x.png */; };
 		28EBD54C1E7C36250038513A /* UIViewController+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EBD54B1E7C36250038513A /* UIViewController+Category.m */; };
-		28EBD5531E7C45FD0038513A /* FMFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EBD5511E7C45FD0038513A /* FMFeedbackViewController.m */; };
-		28EBD5541E7C45FD0038513A /* FMFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28EBD5521E7C45FD0038513A /* FMFeedbackViewController.xib */; };
+		28EBD5531E7C45FD0038513A /* FMCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EBD5511E7C45FD0038513A /* FMCollectionViewController.m */; };
+		28EBD5541E7C45FD0038513A /* FMCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28EBD5521E7C45FD0038513A /* FMCollectionViewController.xib */; };
 		28EBD55E1E7C4CAA0038513A /* FMThanksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EBD55C1E7C4CAA0038513A /* FMThanksTableViewController.m */; };
 		28EBD55F1E7C4CAA0038513A /* FMThanksTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28EBD55D1E7C4CAA0038513A /* FMThanksTableViewController.xib */; };
 		28EBD5631E7C4DEB0038513A /* FMAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EBD5611E7C4DEB0038513A /* FMAboutUsViewController.m */; };
@@ -773,6 +778,8 @@
 		282C21051F8E659E0092419A /* MJRefresh.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MJRefresh.xcassets; sourceTree = "<group>"; };
 		282C21071F8E74C50092419A /* CDServerAPIs+MainPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CDServerAPIs+MainPage.h"; sourceTree = "<group>"; };
 		282C21081F8E74C50092419A /* CDServerAPIs+MainPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CDServerAPIs+MainPage.m"; sourceTree = "<group>"; };
+		28309D702009DED100136A98 /* FMFavoriteArticleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMFavoriteArticleTableViewController.m; sourceTree = "<group>"; };
+		28309D712009DED200136A98 /* FMFavoriteArticleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMFavoriteArticleTableViewController.h; sourceTree = "<group>"; };
 		283184871F21787E004173BF /* diaoyuxiehui2.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = diaoyuxiehui2.cer; sourceTree = "<group>"; };
 		283184881F21787E004173BF /* diaoyuxiehui1.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = diaoyuxiehui1.cer; sourceTree = "<group>"; };
 		283184891F21787E004173BF /* diaoyuxiehui.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = diaoyuxiehui.cer; sourceTree = "<group>"; };
@@ -822,6 +829,12 @@
 		283DE8D51E8AAE6700B65903 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		283DE8D71E8AAE8400B65903 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		283DE8D91E8AAE9000B65903 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		284018F52008A4AB0056C913 /* FMFishSiteTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMFishSiteTableViewController.h; sourceTree = "<group>"; };
+		284018F62008A4AB0056C913 /* FMFishSiteTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMFishSiteTableViewController.m; sourceTree = "<group>"; };
+		284018F72008A4AB0056C913 /* FMFishSiteTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMFishSiteTableViewController.xib; sourceTree = "<group>"; };
+		284018FA2008A4CF0056C913 /* FMFishStoreTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMFishStoreTableViewController.h; sourceTree = "<group>"; };
+		284018FB2008A4CF0056C913 /* FMFishStoreTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMFishStoreTableViewController.m; sourceTree = "<group>"; };
+		284018FC2008A4CF0056C913 /* FMFishStoreTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMFishStoreTableViewController.xib; sourceTree = "<group>"; };
 		284064781ED1A319004F1836 /* FMLoginPWDModifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMLoginPWDModifyViewController.h; sourceTree = "<group>"; };
 		284064791ED1A319004F1836 /* FMLoginPWDModifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMLoginPWDModifyViewController.m; sourceTree = "<group>"; };
 		2840647A1ED1A319004F1836 /* FMLoginPWDModifyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMLoginPWDModifyViewController.xib; sourceTree = "<group>"; };
@@ -1200,8 +1213,8 @@
 		28D652681EBA0FE400734E94 /* ZXHWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXHWebViewController.xib; sourceTree = "<group>"; };
 		28D6526A1EBA100D00734E94 /* ZXHWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXHWebViewController.h; sourceTree = "<group>"; };
 		28D6526B1EBA100D00734E94 /* ZXHWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXHWebViewController.m; sourceTree = "<group>"; };
-		28D9FD4B1E796BA80035B7E0 /* DiscoveryTypeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveryTypeTableViewController.h; sourceTree = "<group>"; };
-		28D9FD4C1E796BA80035B7E0 /* DiscoveryTypeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoveryTypeTableViewController.m; sourceTree = "<group>"; };
+		28D9FD4B1E796BA80035B7E0 /* FMSingleArticleTypeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMSingleArticleTypeTableViewController.h; sourceTree = "<group>"; };
+		28D9FD4C1E796BA80035B7E0 /* FMSingleArticleTypeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMSingleArticleTypeTableViewController.m; sourceTree = "<group>"; };
 		28D9FD4F1E7970DB0035B7E0 /* FMWeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMWeatherViewController.h; sourceTree = "<group>"; };
 		28D9FD501E7970DB0035B7E0 /* FMWeatherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMWeatherViewController.m; sourceTree = "<group>"; };
 		28D9FD511E7970DB0035B7E0 /* FMWeatherViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMWeatherViewController.xib; sourceTree = "<group>"; };
@@ -1299,9 +1312,9 @@
 		28EBD5431E7ADCC60038513A /* MainPage_点赞@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MainPage_点赞@3x.png"; sourceTree = "<group>"; };
 		28EBD54A1E7C36250038513A /* UIViewController+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Category.h"; sourceTree = "<group>"; };
 		28EBD54B1E7C36250038513A /* UIViewController+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Category.m"; sourceTree = "<group>"; };
-		28EBD5501E7C45FD0038513A /* FMFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMFeedbackViewController.h; sourceTree = "<group>"; };
-		28EBD5511E7C45FD0038513A /* FMFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMFeedbackViewController.m; sourceTree = "<group>"; };
-		28EBD5521E7C45FD0038513A /* FMFeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMFeedbackViewController.xib; sourceTree = "<group>"; };
+		28EBD5501E7C45FD0038513A /* FMCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMCollectionViewController.h; sourceTree = "<group>"; };
+		28EBD5511E7C45FD0038513A /* FMCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMCollectionViewController.m; sourceTree = "<group>"; };
+		28EBD5521E7C45FD0038513A /* FMCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMCollectionViewController.xib; sourceTree = "<group>"; };
 		28EBD55B1E7C4CAA0038513A /* FMThanksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMThanksTableViewController.h; sourceTree = "<group>"; };
 		28EBD55C1E7C4CAA0038513A /* FMThanksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMThanksTableViewController.m; sourceTree = "<group>"; };
 		28EBD55D1E7C4CAA0038513A /* FMThanksTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMThanksTableViewController.xib; sourceTree = "<group>"; };
@@ -2377,8 +2390,8 @@
 				282789821E78CE24005CD021 /* DiscoveryPageTableViewCell.h */,
 				282789831E78CE24005CD021 /* DiscoveryPageTableViewCell.m */,
 				282789841E78CE24005CD021 /* DiscoveryPageTableViewCell.xib */,
-				28D9FD4B1E796BA80035B7E0 /* DiscoveryTypeTableViewController.h */,
-				28D9FD4C1E796BA80035B7E0 /* DiscoveryTypeTableViewController.m */,
+				28D9FD4B1E796BA80035B7E0 /* FMSingleArticleTypeTableViewController.h */,
+				28D9FD4C1E796BA80035B7E0 /* FMSingleArticleTypeTableViewController.m */,
 			);
 			path = DiscoveryPage;
 			sourceTree = "<group>";
@@ -2447,9 +2460,9 @@
 		2884995D1E77D2720026D20A /* MinePage */ = {
 			isa = PBXGroup;
 			children = (
+				28EBD54E1E7C44B20038513A /* MinePageCollection */,
 				E7E3F2791EE84BCD007DDE11 /* MineUserInfoSetting */,
 				28FAB93C1E794668000132A3 /* MinePageSetting */,
-				28EBD54E1E7C44B20038513A /* MinePageFeedback */,
 				28EBD55A1E7C4CAA0038513A /* MinePageThanks */,
 				28EBD54D1E7C44B20038513A /* MinePageAboutUs */,
 				28EBD5651E7C50C30038513A /* MineCooperation */,
@@ -3128,14 +3141,22 @@
 			path = MinePageAboutUs;
 			sourceTree = "<group>";
 		};
-		28EBD54E1E7C44B20038513A /* MinePageFeedback */ = {
+		28EBD54E1E7C44B20038513A /* MinePageCollection */ = {
 			isa = PBXGroup;
 			children = (
-				28EBD5501E7C45FD0038513A /* FMFeedbackViewController.h */,
-				28EBD5511E7C45FD0038513A /* FMFeedbackViewController.m */,
-				28EBD5521E7C45FD0038513A /* FMFeedbackViewController.xib */,
+				28EBD5501E7C45FD0038513A /* FMCollectionViewController.h */,
+				28EBD5511E7C45FD0038513A /* FMCollectionViewController.m */,
+				28EBD5521E7C45FD0038513A /* FMCollectionViewController.xib */,
+				28309D712009DED200136A98 /* FMFavoriteArticleTableViewController.h */,
+				28309D702009DED100136A98 /* FMFavoriteArticleTableViewController.m */,
+				284018F52008A4AB0056C913 /* FMFishSiteTableViewController.h */,
+				284018F62008A4AB0056C913 /* FMFishSiteTableViewController.m */,
+				284018F72008A4AB0056C913 /* FMFishSiteTableViewController.xib */,
+				284018FA2008A4CF0056C913 /* FMFishStoreTableViewController.h */,
+				284018FB2008A4CF0056C913 /* FMFishStoreTableViewController.m */,
+				284018FC2008A4CF0056C913 /* FMFishStoreTableViewController.xib */,
 			);
-			path = MinePageFeedback;
+			path = MinePageCollection;
 			sourceTree = "<group>";
 		};
 		28EBD55A1E7C4CAA0038513A /* MinePageThanks */ = {
@@ -3778,6 +3799,7 @@
 				28DF27B81F75147A0044B53A /* Mine_unknown@2x.png in Resources */,
 				E758F1D21F01610B003198D3 /* 5天气_夜晚_少云@3x.png in Resources */,
 				E7E3F2941EE9AF1D007DDE11 /* 天气_气压icon@2x.png in Resources */,
+				284018FE2008A4CF0056C913 /* FMFishStoreTableViewController.xib in Resources */,
 				28AA45F11F0235DA00E7192A /* PlayButtonOverlayLargeTap@2x.png in Resources */,
 				E758F1DC1F01610B003198D3 /* 5天气_夜晚_雨.png in Resources */,
 				28F882F21EDDBA9D00227A59 /* 当前版本icon@2x.png in Resources */,
@@ -3974,6 +3996,7 @@
 				28D610951FB30D7D00D3FDF4 /* wudingdan@3x.png in Resources */,
 				28F882B91EDDB53500227A59 /* 技巧问答@3x.png in Resources */,
 				E7E3F2461EE702AF007DDE11 /* 文章详情_鱼饵icon@3x.png in Resources */,
+				284018F92008A4AB0056C913 /* FMFishSiteTableViewController.xib in Resources */,
 				E758F1AF1F01610B003198D3 /* 5天气_白天_阴.png in Resources */,
 				2895B7CD1E840C550089402A /* LocalFishUserTBCell.xib in Resources */,
 				E758F1D51F01610B003198D3 /* 5天气_夜晚_小雪@3x.png in Resources */,
@@ -3989,7 +4012,7 @@
 				28DFB1DC1F174A1C00BC6FE4 /* 钓点_可停车_灰色@2x.png in Resources */,
 				28AA45EF1F0235DA00E7192A /* PlayButtonOverlayLarge@3x.png in Resources */,
 				28EDDB081E9CD0240062DD7D /* FishSingleImageCell.xib in Resources */,
-				28EBD5541E7C45FD0038513A /* FMFeedbackViewController.xib in Resources */,
+				28EBD5541E7C45FD0038513A /* FMCollectionViewController.xib in Resources */,
 				28F882DC1EDDB71F00227A59 /* 设置icon@2x.png in Resources */,
 				E7198DC01F17C411000A26C0 /* 5天气_白天_大雨@2x.png in Resources */,
 				E7E3F2451EE702AF007DDE11 /* 文章详情_鱼饵icon@2x.png in Resources */,
@@ -4149,6 +4172,7 @@
 				28AA46521F023F7D00E7192A /* EditFooterMenuView.m in Sources */,
 				28AA46501F023F7D00E7192A /* EditContentTableViewCell.m in Sources */,
 				28EBD5691E7C512D0038513A /* FMCooperationViewController.m in Sources */,
+				284018FD2008A4CF0056C913 /* FMFishStoreTableViewController.m in Sources */,
 				E7E20ECF1F58780E004D369C /* ZXHTypeSelectCell.m in Sources */,
 				2882C9E41EC9DEED00395815 /* FMUserHomeHeaderView.m in Sources */,
 				28BB6AB81E7991EE00E9B9F0 /* FMShareView.m in Sources */,
@@ -4208,7 +4232,7 @@
 				28FAB9341E79235A000132A3 /* UIImageView+WebCache.m in Sources */,
 				28B4771D1FBB3AA900F0B586 /* FMArticleCommentModel.m in Sources */,
 				28E9D3521FFE995C00864D5F /* CDHttpsRequest.m in Sources */,
-				28D9FD4D1E796BA80035B7E0 /* DiscoveryTypeTableViewController.m in Sources */,
+				28D9FD4D1E796BA80035B7E0 /* FMSingleArticleTypeTableViewController.m in Sources */,
 				28DFC04B1F8E5A0D00165C54 /* MJRefreshFooter.m in Sources */,
 				285CA3931EB2518500837682 /* LocIsBaidu.m in Sources */,
 				28FAB9261E79235A000132A3 /* NSImage+WebCache.m in Sources */,
@@ -4231,13 +4255,14 @@
 				28D295F21E8A479800AEDF10 /* XHRealTimeBlur.m in Sources */,
 				2890A62F1E8C0C05008C0E10 /* MJPropertyKey.m in Sources */,
 				28D6526C1EBA100D00734E94 /* ZXHWebViewController.m in Sources */,
-				28EBD5531E7C45FD0038513A /* FMFeedbackViewController.m in Sources */,
+				28EBD5531E7C45FD0038513A /* FMCollectionViewController.m in Sources */,
 				28FAB9251E79235A000132A3 /* NSData+ImageContentType.m in Sources */,
 				28AA459D1F02336E00E7192A /* UIImageView+LLMediaExt.m in Sources */,
 				28AA46261F02360800E7192A /* TZAssetModel.m in Sources */,
 				28FAB9331E79235A000132A3 /* UIImageView+HighlightedWebCache.m in Sources */,
 				28FAB92B1E79235A000132A3 /* SDWebImageDownloader.m in Sources */,
 				28FAB92E1E79235A000132A3 /* SDWebImagePrefetcher.m in Sources */,
+				28309D722009DED200136A98 /* FMFavoriteArticleTableViewController.m in Sources */,
 				28D610861FB30BBE00D3FDF4 /* README.md in Sources */,
 				28DFC0491F8E5A0D00165C54 /* MJRefreshBackFooter.m in Sources */,
 				28AA46301F02360800E7192A /* TZVideoPlayerController.m in Sources */,
@@ -4255,6 +4280,7 @@
 				288419171EA8BBFF0034004F /* FMCommentListCell.m in Sources */,
 				282C21091F8E74C50092419A /* CDServerAPIs+MainPage.m in Sources */,
 				28C61E2E1F9F110100EE5777 /* FMFishSiteModel.m in Sources */,
+				284018F82008A4AB0056C913 /* FMFishSiteTableViewController.m in Sources */,
 				288419121EA8B1DC0034004F /* FMCommentListViewController.m in Sources */,
 				28AA46041F0235DA00E7192A /* MWTapDetectingImageView.m in Sources */,
 				28FAB8F61E791D21000132A3 /* MinePageTableViewController.m in Sources */,

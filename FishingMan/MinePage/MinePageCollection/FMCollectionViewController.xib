@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FMCollectionViewController">
+            <connections>
+                <outlet property="scrollView" destination="smS-Ud-UYg" id="UJU-i5-r2b"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JfH-2s-s7z">
+                    <rect key="frame" x="0.0" y="261" width="80" height="80"/>
+                    <color key="backgroundColor" red="0.92549019610000005" green="0.28627450980000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="GKM-qR-tEy"/>
+                        <constraint firstAttribute="width" constant="80" id="IrW-qQ-E9s"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="riQ-8Q-ZmU">
+                    <rect key="frame" x="295" y="261" width="80" height="80"/>
+                    <color key="backgroundColor" red="0.92549019610000005" green="0.28627450980000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="YE6-ds-W7v"/>
+                        <constraint firstAttribute="height" constant="80" id="f6U-ss-GwO"/>
+                    </constraints>
+                </imageView>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="smS-Ud-UYg">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="dwy-Ki-CRn"/>
+                    </connections>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="0.86666666670000003" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="riQ-8Q-ZmU" secondAttribute="trailing" id="7ho-hk-ViT"/>
+                <constraint firstAttribute="bottom" secondItem="smS-Ud-UYg" secondAttribute="bottom" id="9g6-ir-LmW"/>
+                <constraint firstItem="smS-Ud-UYg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="BCi-W9-xg2"/>
+                <constraint firstItem="JfH-2s-s7z" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="LP4-D2-DfD"/>
+                <constraint firstItem="smS-Ud-UYg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Qpt-zH-fga"/>
+                <constraint firstItem="riQ-8Q-ZmU" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Zo1-4P-8VN"/>
+                <constraint firstItem="JfH-2s-s7z" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dlM-4D-Mib"/>
+                <constraint firstAttribute="trailing" secondItem="smS-Ud-UYg" secondAttribute="trailing" id="hRr-Cr-8CT"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO"/>
+            <point key="canvasLocation" x="-147" y="-504"/>
+        </view>
+    </objects>
+</document>

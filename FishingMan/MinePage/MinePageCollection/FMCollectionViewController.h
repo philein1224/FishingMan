@@ -1,5 +1,5 @@
 //
-//  FMFeedbackViewController.h
+//  FMCollectionViewController.h
 //  FishingMan
 //
 //  Created by zhangxh on 2017/3/18.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FMFeedbackViewController : UIViewController
+@interface FMCollectionViewController : UIViewController
 
 @end

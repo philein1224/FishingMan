@@ -1,12 +1,12 @@
 //
-//  DiscoveryTypeTableViewController.m
+//  FMSingleArticleTypeTableViewController.m
 //  ZXHTools
 //
 //  Created by zhangxh on 2016/10/21.
 //  Copyright © 2016年 HongFan. All rights reserved.
 //
 
-#import "DiscoveryTypeTableViewController.h"
+#import "FMSingleArticleTypeTableViewController.h"
 #import "FishMultiImageCell.h"
 #import "FishTwoImageCell.h"
 #import "FishSingleImageCell.h"
@@ -17,7 +17,7 @@
 #import "CDServerAPIs+MainPage.h"
 #import "FMArticleModel.h"
 
-@interface DiscoveryTypeTableViewController ()
+@interface FMSingleArticleTypeTableViewController ()
 {
 }
 
@@ -29,7 +29,7 @@
 
 @end
 
-@implementation DiscoveryTypeTableViewController
+@implementation FMSingleArticleTypeTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
