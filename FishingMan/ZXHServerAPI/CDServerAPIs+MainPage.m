@@ -100,7 +100,7 @@
     
     NSString *APIName = @"/collection/collection";
     if (colected) {
-        APIName = @"/collection/cancelArticalCollection";
+        APIName = @"/collection/cancelCollection";
     }
     
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];

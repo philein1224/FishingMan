@@ -19,10 +19,12 @@
 #pragma mark 文章
 /**
  文章发布
+ FMArticleType articleType
  */
 - (NSURLSessionDataTask *)articlePublishWithType:(int)articleType ArticleContent:(NSMutableDictionary *)articleDic Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
 /**
  文章列表
+ FMArticleType articleType（⚠️-1表示首页主列表）
  */
 - (NSURLSessionDataTask *)articleListWithType:(int)articleType currentPage:(int)currentPage Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
 /**
