@@ -87,11 +87,9 @@
             
             //判断是否继续
             NSDictionary * dataDic = responseObject[@"data"];
-            if([ZXHTool isNilNullObject:dataDic]){
-                return;
-            }
-            
-            if([ZXHTool isNilNullObject:dataDic[@"result"]]){
+            if([ZXHTool isNilNullObject:dataDic] || [ZXHTool isNilNullObject:dataDic[@"result"]]){
+                [weakself.tableView.mj_header endRefreshing];
+                [weakself.tableView.mj_footer endRefreshing];
                 return;
             }
             
