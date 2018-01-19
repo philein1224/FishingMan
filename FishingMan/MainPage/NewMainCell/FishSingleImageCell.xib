@@ -124,7 +124,7 @@
                 <outlet property="titleLabel" destination="rIu-pb-79d" id="7c8-vw-Did"/>
                 <outlet property="userCityLabel" destination="T1X-a1-qWL" id="uW4-lB-lEE"/>
             </connections>
-            <point key="canvasLocation" x="-135" y="126"/>
+            <point key="canvasLocation" x="34" y="84"/>
         </tableViewCell>
     </objects>
     <resources>
