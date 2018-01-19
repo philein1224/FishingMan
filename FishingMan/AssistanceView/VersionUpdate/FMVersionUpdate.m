@@ -59,6 +59,9 @@
 //立即更新
 - (IBAction)appUpdateAction:(id)sender {
     
+    NSString *str = [NSString stringWithFormat:@"https://itunes.apple.com/cn/app/partynow/id%@?mt=8", APP_BUNDLE_IDENTITY];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    
     [self closeView];
 }
 

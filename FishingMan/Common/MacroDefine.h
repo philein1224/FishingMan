@@ -47,6 +47,10 @@
 
 #define   ZXH_WEAK_SELF           __weak __typeof(self) weakself = self;
 
+
+#define APP_BUNDLE_IDENTITY        @"1171339177"
+
+
 //文章类型的名称
 #define   ALL_ARTICLE_TYPE_NAME_ARRAY     [[NSMutableArray alloc] initWithObjects:@"钓获展示",@"技巧问答",@"钓具DIY",@"钓具测评",@"饵料配方",@"路亚",@"钓友美食",@"随便侃侃",nil];
 

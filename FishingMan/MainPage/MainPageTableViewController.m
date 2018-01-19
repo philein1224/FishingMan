@@ -122,6 +122,9 @@
     [ZXHViewTool addMJRefreshGifHeader:self.tableView selector:@selector(topDownloadListData) target:self];
     [ZXHViewTool addMJRefreshGifFooter:self.tableView selector:@selector(bottomUploadListData) target:self];
     
+    //获取主页文章的列表
+    [self topDownloadListData];
+    
     //版本更新说明
 //    [self performSelector:@selector(showUpdateNote) withObject:nil afterDelay:1.5];
 }
@@ -141,9 +144,6 @@
     } completion:^(BOOL finished) {
         
     }];
-    
-    //获取列表
-    [self topDownloadListData];
 }
 
 - (void)viewDidAppear:(BOOL)animated{

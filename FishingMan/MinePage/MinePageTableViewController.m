@@ -436,7 +436,7 @@ static NSString * const kAppKey = @"23855996";
         }
         else if (indexPath.row == 2){
            //支持钓鱼大仙
-            NSString *str = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1171339177"];
+            NSString *str = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@", APP_BUNDLE_IDENTITY];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
             
 //            @"https://itunes.apple.com/us/app/%E9%B1%BC%E4%B9%90%E5%9C%88-%E9%92%93%E9%B1%BC%E4%BA%BA%E7%9A%84%E5%9C%88/id1171339177?l=zh&ls=1&mt=8"
