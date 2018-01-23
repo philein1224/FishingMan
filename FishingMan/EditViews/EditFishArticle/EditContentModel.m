@@ -20,6 +20,7 @@
         _imageName = @"";
         _imageUrl = @"";
         _text = @"";
+        _placeholderText = @"";
     }
     return self;
 }

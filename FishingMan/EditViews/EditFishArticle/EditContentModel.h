@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSString * imageUrl; //图片地址
 
 @property (strong, nonatomic) NSString * text;     //文本
+@property (strong, nonatomic) NSString * placeholderText;     //文本
 @property (assign, nonatomic) float height;
 @property (assign, nonatomic) float width;
 @property (assign, nonatomic) NSInteger editContentType;

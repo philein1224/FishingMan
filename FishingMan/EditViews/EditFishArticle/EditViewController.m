@@ -45,7 +45,7 @@ UINavigationControllerDelegate>
 /** 总的媒体数组 */
 @property (nonatomic, strong) NSMutableArray *mediaArray;
 /** 单次选择的媒体数组 */
-@property (nonatomic, strong) NSMutableArray *singleMediaArray;
+@property (nonatomic, strong) NSMutableArray *singleGroupMediaArray;
 /** 记录从相册中已选的Image Asset */
 @property (nonatomic, strong) NSMutableArray *selectedImageAssets;
 /** 记录从相册中已选的Image model */
@@ -156,8 +156,8 @@ UINavigationControllerDelegate>
     self.uploadingFinished = ^(BOOL finished) {
         
         weakself.indexOfCurrentUpload = weakself.indexOfCurrentUpload + 1;
-        if(weakself.indexOfCurrentUpload < weakself.singleMediaArray.count){
-            LLImagePickerModel *model = weakself.singleMediaArray[weakself.indexOfCurrentUpload];
+        if(weakself.indexOfCurrentUpload < weakself.singleGroupMediaArray.count){
+            LLImagePickerModel *model = weakself.singleGroupMediaArray[weakself.indexOfCurrentUpload];
             [weakself uploadImage:model.image name:model.name];
         }
     };
@@ -577,7 +577,7 @@ UINavigationControllerDelegate>
     _isAddPresentVC = NO;
     _allowPickingVideo = NO;      //是否允许选择视频
     _mediaArray = [NSMutableArray array];
-    _singleMediaArray = [NSMutableArray array];
+    _singleGroupMediaArray = [NSMutableArray array];
     _selectedImageAssets = [NSMutableArray array];
     _selectedVideoModels = [NSMutableArray array];
     _selectedImageModels = [NSMutableArray array];
@@ -698,17 +698,17 @@ UINavigationControllerDelegate>
         }
         
         _alreadyImageSelected = _alreadyImageSelected + _mediaArray.count;
-        _singleMediaArray = [NSMutableArray arrayWithArray:_mediaArray];
+        _singleGroupMediaArray = [NSMutableArray arrayWithArray:_mediaArray];
         [_mediaArray removeAllObjects];
         
         //开始处理上传图片
-        [self uploadImageWithImageObjArray:_singleMediaArray];
+        [self uploadImageWithImageObjArray:_singleGroupMediaArray];
     }
     else{
         //增加文字
         EditContentModel *editModel = [[EditContentModel alloc] init];
         editModel.index = _allTextOrImageContentArray.count;
-        editModel.text = @"增加文字增加文字增加文字增加文字";
+        editModel.text = @"增加文字介绍";
         editModel.width = ZXHScreenWidth - 8 * 2;
         editModel.height = 80;   //文字的默认高度
         editModel.editContentType = EditContentTypeText;
@@ -791,7 +791,7 @@ static int count = 0;
     count = count + 1;
     
     //图片对象数组和图片地址数组一致时，表示图片已经全部上传完毕。
-    if(self.imageUrlStringArray.count == _singleMediaArray.count){
+    if(self.imageUrlStringArray.count == _singleGroupMediaArray.count){
         
         self.imageAllUploaded = YES;
         
@@ -801,7 +801,7 @@ static int count = 0;
         return;
     }
     //后台返回次数和图片对象数组一致时，表示图片上传有失败的情况。
-    if(count == _singleMediaArray.count){
+    if(count == _singleGroupMediaArray.count){
         
         self.imageAllUploaded = NO;
         
