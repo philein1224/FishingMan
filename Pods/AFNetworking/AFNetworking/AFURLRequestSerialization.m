@@ -1257,6 +1257,20 @@ typedef enum {
             [mutableRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         }
         
+        
+        NSString *jsonString = nil;
+        NSError *error1 = nil;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:parameters
+                                                           options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                             error:&error1];
+        if (! jsonData) {
+            NSLog(@"Got an error: %@", error1);
+        } else {
+            jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        }
+        NSLog(@"ahsdhashdash ==== %@", jsonString);
+        
+        
         [mutableRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:parameters options:self.writingOptions error:error]];
     }
 

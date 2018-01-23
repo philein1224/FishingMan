@@ -81,6 +81,16 @@
     
     shareTypeArray = [[NSMutableArray alloc] init];
     
+//        //微信
+//    if([ShareSDK isClientInstalled:SSDKPlatformTypeWechat]){
+//        
+//    }
+//    
+//        //QQ
+//    if ([ShareSDK isClientInstalled:SSDKPlatformTypeQQ]){
+//        
+//    }
+        
     for(int i = 0; i<=8; i++){
         
         NSMutableDictionary *tempDic = [[NSMutableDictionary alloc]init];

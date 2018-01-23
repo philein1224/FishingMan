@@ -72,62 +72,23 @@ UINavigationControllerDelegate>
 
 @implementation EditViewController
 
-//重新获取上次没有编辑完毕的文章数据
-- (void)reloadLastSaveData{
-    
-    //构造假数据
-    _allContentArray = [[NSMutableArray alloc]init];
-    for (int i = 0; i < 1; i++) {
-        
-        EditContentModel *editModel = [[EditContentModel alloc] init];
-        editModel.index = i;
-        
-        if (i % 2 == 1) {
-            UIImage *image = [UIImage imageNamed:@"mainSliderPlaceholder"];
-            float realHeight = image.size.height * (ZXHScreenWidth - 8 * 2) / image.size.width;
-            editModel.image = image;
-            editModel.width = ZXHScreenWidth - 8 * 2;
-            editModel.height = realHeight;
-            editModel.editContentType = EditContentTypeImage;
-        }
-        else{
-            
-            editModel.text = @"";
-            editModel.width = ZXHScreenWidth - 8 * 2;
-            editModel.height = 80;   //文字的默认高度
-            editModel.editContentType = EditContentTypeText;
-        }
-        
-        [_allContentArray addObject:editModel];
-    }
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     //重新加载之前未完成的数据
     _allContentArray = [[NSMutableArray alloc]init];
     self.imageUrlStringArray = [NSMutableArray array];
-//    [self reloadLastSaveData];
     
     //1、标题&顶部的导航栏
     NSMutableArray * allTypeNameArray = ALL_ARTICLE_TYPE_NAME_ARRAY;
     [self.selectTypeButton setTitle:allTypeNameArray[self.articleType] forState:UIControlStateNormal];
     [self refreshSelectTypeButton];
     
-    //2、返回按钮
-//    self.navigationItem.leftBarButtonItem = [ZXHTool barBackButtonItemWithTitle:nil
-//                                                                          color:[UIColor grayColor]
-//                                                                          image:ZXHImageName(@"navBackGray")
-//                                                                      addTarget:self
-//                                                                         action:@selector(backButtonAction:)];
-    
-    //3、文章列表Cell
+    //2、注册文章列表Cell
     [self.tableView registerNib:[UINib nibWithNibName:@"EditContentTableViewCell" bundle:nil] forCellReuseIdentifier:@"EditContentTableViewCell"];
-    
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    //4、钓获文章特有数据设置视图，放在tableView的headerView
+    //3、钓获文章特有数据设置视图，放在tableView的headerView
     CGRect titleframe = CGRectZero;
     if (self.articleType == FMArticleTypeHarvest) {
         titleframe = CGRectMake(0, 0, ZXHScreenWidth, 50 + 392 -176);
@@ -169,7 +130,7 @@ UINavigationControllerDelegate>
     self.tableView.tableHeaderView = tempHeaderView;
     [self.tableView endUpdates];
     
-    //5、钓获文章的底部功能设置视图，放在tableView的footerView
+    //4、钓获文章的底部功能设置视图，放在tableView的footerView
     CGRect menuframe = CGRectMake(0, 0, ZXHScreenWidth, 80);
     UIView *tempFooterView = [[UIView alloc]init];
     tempFooterView.frame = menuframe;
@@ -188,10 +149,10 @@ UINavigationControllerDelegate>
     self.tableView.tableFooterView = tempFooterView;
     [self.tableView endUpdates];
     
-    //6、图片选择视图
+    //5、图片选择视图
     [self initMultiMediaPickerView];
     
-    //7、图片上传回调循环
+    //6、图片上传回调循环
     self.uploadingFinished = ^(BOOL finished) {
         
         weakself.indexOfCurrentUpload = weakself.indexOfCurrentUpload + 1;
@@ -200,9 +161,6 @@ UINavigationControllerDelegate>
             [weakself uploadImage:model.image name:model.name];
         }
     };
-    
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(closeKeyboard)];
-//    [self.view addGestureRecognizer:tap];
 }
 
 - (void)didReceiveMemoryWarning {
