@@ -59,7 +59,7 @@ UINavigationControllerDelegate>
 @property (nonatomic, strong) UIViewController *rootVC;
 
 
-@property (nonatomic, strong) NSMutableArray * allContentArray; //所有项目的元素【图片+文字】
+@property (nonatomic, strong) NSMutableArray * allTextOrImageContentArray; //所有项目的元素【图片+文字】
 @property (nonatomic, assign) NSInteger alreadyImageSelected;//已经选择了的图片数量
 
 @property (nonatomic, assign) NSInteger indexOfCurrentUpload;//当前正在上传的静态资源
@@ -76,7 +76,7 @@ UINavigationControllerDelegate>
     [super viewDidLoad];
     
     //重新加载之前未完成的数据
-    _allContentArray = [[NSMutableArray alloc]init];
+    _allTextOrImageContentArray = [[NSMutableArray alloc]init];
     self.imageUrlStringArray = [NSMutableArray array];
     
     //1、标题&顶部的导航栏
@@ -183,7 +183,7 @@ UINavigationControllerDelegate>
     
     for (NSInteger i = 0; i < rowNumber; i++) {
         
-        EditContentModel * model = [_allContentArray objectAtIndex:i];
+        EditContentModel * model = [_allTextOrImageContentArray objectAtIndex:i];
         if (model.editContentType == EditContentTypeText) {
             
             EditContentTableViewCell * cell = (EditContentTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
@@ -288,7 +288,7 @@ UINavigationControllerDelegate>
     }
     
     //无文字／图片内容
-    if(_allContentArray.count == 0){
+    if(_allTextOrImageContentArray.count == 0){
         [CDTopAlertView showMsg:@"请编辑文章内容" alertType:TopAlertViewWarningType];
         return NO;
     }
@@ -344,11 +344,11 @@ UINavigationControllerDelegate>
     
     //图文资料json
     NSMutableArray * plainContentArray;
-    if(_allContentArray.count >= 1){
+    if(_allTextOrImageContentArray.count >= 1){
         
         plainContentArray = [NSMutableArray array];
         
-        for (EditContentModel *editModel in _allContentArray) {
+        for (EditContentModel *editModel in _allTextOrImageContentArray) {
             
             if(editModel.editContentType == EditContentTypeImage){
                 [plainContentArray addObject:editModel.imageUrl];
@@ -678,7 +678,7 @@ UINavigationControllerDelegate>
     
     if(isImage){
         
-        NSInteger alreadyCount = _allContentArray.count;
+        NSInteger alreadyCount = _allTextOrImageContentArray.count;
         
         for (int i = 0; i < _mediaArray.count; i++) {
             
@@ -694,7 +694,7 @@ UINavigationControllerDelegate>
             editModel.width = ZXHScreenWidth - 8 * 2;
             editModel.height = image.size.height * (ZXHScreenWidth - 8 * 2) / image.size.width;
             editModel.editContentType = EditContentTypeImage;
-            [_allContentArray insertObject:editModel atIndex:_allContentArray.count];
+            [_allTextOrImageContentArray insertObject:editModel atIndex:_allTextOrImageContentArray.count];
         }
         
         _alreadyImageSelected = _alreadyImageSelected + _mediaArray.count;
@@ -707,16 +707,16 @@ UINavigationControllerDelegate>
     else{
         //增加文字
         EditContentModel *editModel = [[EditContentModel alloc] init];
-        editModel.index = _allContentArray.count;
+        editModel.index = _allTextOrImageContentArray.count;
         editModel.text = @"增加文字增加文字增加文字增加文字";
         editModel.width = ZXHScreenWidth - 8 * 2;
         editModel.height = 80;   //文字的默认高度
         editModel.editContentType = EditContentTypeText;
         
-        [_allContentArray insertObject:editModel atIndex:_allContentArray.count];
+        [_allTextOrImageContentArray insertObject:editModel atIndex:_allTextOrImageContentArray.count];
     }
     
-    [self.editFooterMenuView updateStatus:_allContentArray.count editing:self.tableView.editing];
+    [self.editFooterMenuView updateStatus:_allTextOrImageContentArray.count editing:self.tableView.editing];
     
     [self.tableView reloadData];
 }
@@ -756,9 +756,10 @@ UINavigationControllerDelegate>
         
         //2、将图片地址放入专门的数组
         NSString * imageURLStr = [NSString stringWithFormat:@"%@", responseObject[@"data"]];
-        
         [weakself.imageUrlStringArray addObject:imageURLStr];
-        [weakself updateAllContentArrayWithImageUrl:imageURLStr imageName:imageName];
+        
+        //上传成功后，同步地址到标准数据数组
+        [weakself updateAllTextOrImageContentArrayWithImageUrl:imageURLStr imageName:imageName];
         
         [weakself checkIfUploadedSuccess:YES];
         
@@ -769,9 +770,9 @@ UINavigationControllerDelegate>
     }];
 }
 
--(void)updateAllContentArrayWithImageUrl:(NSString *)imageURLStr imageName:(NSString *)imageName{
+-(void)updateAllTextOrImageContentArrayWithImageUrl:(NSString *)imageURLStr imageName:(NSString *)imageName{
     
-    for (EditContentModel *editModel in _allContentArray) {
+    for (EditContentModel *editModel in _allTextOrImageContentArray) {
         
         if (editModel.editContentType == EditContentTypeImage && [editModel.imageName isEqualToString:imageName]) {
             editModel.imageUrl = imageURLStr;
@@ -959,7 +960,7 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    EditContentModel *editModel = [_allContentArray objectAtIndex:indexPath.row];
+    EditContentModel *editModel = [_allTextOrImageContentArray objectAtIndex:indexPath.row];
     
     return editModel.height;
 }
@@ -970,14 +971,14 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    if (_allContentArray.count == 0) {
+    if (_allTextOrImageContentArray.count == 0) {
         
         [self.tableView setEditing:NO animated:YES];
     }
     
-    [self.editFooterMenuView updateStatus:_allContentArray.count editing:self.tableView.editing];
+    [self.editFooterMenuView updateStatus:_allTextOrImageContentArray.count editing:self.tableView.editing];
     
-    return _allContentArray.count;
+    return _allTextOrImageContentArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -989,7 +990,7 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     }
     cell.showsReorderControl = YES;
     
-    EditContentModel *tempEditModel = [_allContentArray objectAtIndex:indexPath.row];
+    EditContentModel *tempEditModel = [_allTextOrImageContentArray objectAtIndex:indexPath.row];
     cell.editModel = tempEditModel;
     [cell reloadData];
     
@@ -1005,7 +1006,7 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     if (editingStyle ==UITableViewCellEditingStyleDelete){
         
-      [_allContentArray removeObjectAtIndex:indexPath.row];         //删除数组里的数据
+      [_allTextOrImageContentArray removeObjectAtIndex:indexPath.row];         //删除数组里的数据
         
         [self.tableView beginUpdates];
         [tableView deleteRowsAtIndexPaths:[NSMutableArray arrayWithObject:indexPath]withRowAnimation:UITableViewRowAnimationAutomatic];    //删除对应数据的cell
@@ -1032,9 +1033,9 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     NSUInteger toRow = [toIndexPath row];      //要移动位置的那个clell integer
     
     //调整添加数据的那个可变数组
-    id object = [_allContentArray objectAtIndex:fromRow];   // 获取数据
-    [_allContentArray removeObjectAtIndex:fromRow];         //在当前位置删除
-    [_allContentArray insertObject:object atIndex:toRow];   //插入的位置
+    id object = [_allTextOrImageContentArray objectAtIndex:fromRow];   // 获取数据
+    [_allTextOrImageContentArray removeObjectAtIndex:fromRow];         //在当前位置删除
+    [_allTextOrImageContentArray insertObject:object atIndex:toRow];   //插入的位置
 }
 
 @end
