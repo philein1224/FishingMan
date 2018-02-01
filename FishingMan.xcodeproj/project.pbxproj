@@ -67,6 +67,7 @@
 		2834577F1EE6FB940025FB01 /* 3icon_D@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2834576F1EE6FB940025FB01 /* 3icon_D@3x.png */; };
 		283457801EE6FB940025FB01 /* 3icon_N@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 283457701EE6FB940025FB01 /* 3icon_N@2x.png */; };
 		283457811EE6FB940025FB01 /* 3icon_N@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 283457711EE6FB940025FB01 /* 3icon_N@3x.png */; };
+		283592872023500E004EDBE8 /* ShareTypeInServer.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 283592862023500E004EDBE8 /* ShareTypeInServer.jpeg */; };
 		283C2BC91ED27A380080CFFE /* UIButtonForMapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 283C2BC81ED27A380080CFFE /* UIButtonForMapPin.m */; };
 		283DE8D21E8AAC9700B65903 /* MobAPI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 283DE8CF1E8AAC9700B65903 /* MobAPI.bundle */; };
 		283DE8D31E8AAC9700B65903 /* MobAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 283DE8D01E8AAC9700B65903 /* MobAPI.framework */; };
@@ -826,6 +827,7 @@
 		2834576F1EE6FB940025FB01 /* 3icon_D@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3icon_D@3x.png"; sourceTree = "<group>"; };
 		283457701EE6FB940025FB01 /* 3icon_N@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3icon_N@2x.png"; sourceTree = "<group>"; };
 		283457711EE6FB940025FB01 /* 3icon_N@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3icon_N@3x.png"; sourceTree = "<group>"; };
+		283592862023500E004EDBE8 /* ShareTypeInServer.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ShareTypeInServer.jpeg; sourceTree = "<group>"; };
 		283C2BC71ED27A380080CFFE /* UIButtonForMapPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIButtonForMapPin.h; sourceTree = "<group>"; };
 		283C2BC81ED27A380080CFFE /* UIButtonForMapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIButtonForMapPin.m; sourceTree = "<group>"; };
 		283DE8CF1E8AAC9700B65903 /* MobAPI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MobAPI.bundle; sourceTree = "<group>"; };
@@ -2864,6 +2866,7 @@
 		28BB6AB51E79916F00E9B9F0 /* ShareView */ = {
 			isa = PBXGroup;
 			children = (
+				283592862023500E004EDBE8 /* ShareTypeInServer.jpeg */,
 				28BB6AB61E7991EE00E9B9F0 /* FMShareView.h */,
 				28BB6AB71E7991EE00E9B9F0 /* FMShareView.m */,
 				280F2C221E799BEF00D24DB8 /* FMShareView.xib */,
@@ -3648,6 +3651,7 @@
 				E7198DCA1F17C411000A26C0 /* 5天气_夜晚_大雪@3x.png in Resources */,
 				28AA45F01F0235DA00E7192A /* PlayButtonOverlayLargeTap.png in Resources */,
 				2827898F1E78D278005CD021 /* Discovery_Arrow1@2x.png in Resources */,
+				283592872023500E004EDBE8 /* ShareTypeInServer.jpeg in Resources */,
 				2834577E1EE6FB940025FB01 /* 3icon_D@2x.png in Resources */,
 				E758F1E21F01610B003198D3 /* 5天气_夜晚_阵雪.png in Resources */,
 				28EDDB0A1E9CD0240062DD7D /* FishTwoImageCell.xib in Resources */,

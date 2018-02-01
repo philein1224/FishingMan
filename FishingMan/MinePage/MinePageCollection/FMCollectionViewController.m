@@ -55,9 +55,6 @@
     [_segmentedControl setSelectedSegmentIndex:0];
     [_segmentedControl addTarget:self action:@selector(topSegmentdControlChanged:) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = _segmentedControl;
-    
-    //加在三个主要的视图控制器
-    [self setTheVC];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -65,6 +62,13 @@
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    //加在三个主要的视图控制器
+    [self setTheVC];
 }
 
 - (void)backButtonClicked:(UIButton *)sender{

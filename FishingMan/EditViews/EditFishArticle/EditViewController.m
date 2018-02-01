@@ -301,7 +301,7 @@ UINavigationControllerDelegate>
     [self closeKeyboard];
     
     if(![self checkInputItemsWithArticleType:self.articleType]){
-        //文章发表的判断
+        //文章发表内容&字段的判断
         return;
     }
     
@@ -312,7 +312,10 @@ UINavigationControllerDelegate>
     if (![ZXHTool isNilNullObject:user]) {
         [publishInfo setObject:user.userId forKey:@"userId"];
     }
-    
+    //文章类型
+    [publishInfo setObject:[NSNumber numberWithInt:self.articleType] forKey:@"articleType"];
+    //文章标题
+    [publishInfo setObject:self.titleEditView.articleTitleTextField.text forKey:@"title"];
     //钓鱼收获发表
     if (self.articleType == FMArticleTypeHarvest){
         
@@ -331,16 +334,14 @@ UINavigationControllerDelegate>
             [publishInfo setObject:[self buttonTitle:self.titleEditView.fishPoleLengthBtn] forKey:@"fishPoleLength"];
             [publishInfo setObject:[self buttonTitle:self.titleEditView.fishPoleBrandBtn] forKey:@"fishPoleBrand"];
         }
-        
+#warning 测试数据 钓获的地点
+        //钓获的地点
         [publishInfo setObject:@"104.063377" forKey:@"lng"];//经度longitude
         [publishInfo setObject:@"30.487958" forKey:@"lat"];//纬度latitude
         [publishInfo setObject:@"华阳街道麓山大道一段洛森堡映山张小辉" forKey:@"locationAddress"];
     }
     
-    [publishInfo setObject:[NSNumber numberWithInt:self.articleType] forKey:@"articleType"];//文章类型
-    [publishInfo setObject:self.titleEditView.articleTitleTextField.text forKey:@"title"];//文章标题
-    
-#pragma mark 图片和文字的内容
+#pragma mark 图片和文字的内容处理
     
     //图文资料json
     NSMutableArray * plainContentArray;
@@ -358,7 +359,7 @@ UINavigationControllerDelegate>
             }
         }
 
-#warning 测试数据 start
+#warning 测试数据 图片 start
         NSString * imageURLStr = @"http://diaoyudaxian01.b0.upaiyun.com/fish/201712/8aed8074-b081-4615-834a-b9e22e22e725";
         [plainContentArray addObject:imageURLStr];
         
@@ -370,22 +371,14 @@ UINavigationControllerDelegate>
         
         NSString * imageURLStr3 = @"http://diaoyudaxian01.b0.upaiyun.com/fish/201712/1ad6db12-5a57-4481-95f0-bab4619a4724";
         [plainContentArray addObject:imageURLStr3];
-#warning 测试数据 end
+#warning 测试数据 图片 end
         
-    }else{
-        return;
     }
     
     NSString * jsonContent = [ZXHTool dataToJsonString: plainContentArray];
-    
-//    NSString * jsonContent = [ZXHTool stringFromArray:plainContentArray];
-    
-//    NSData *data = [jsonContent dataUsingEncoding:NSUTF8StringEncoding];
-//    jsonContent =  [data base64EncodedStringWithOptions:0];
-    
     [publishInfo setObject:jsonContent forKey:@"content"];
     
-#pragma mark 推荐图片
+#pragma mark 推荐图片【放在列表显示的<=3张图片】
     
     //推荐图片
     NSMutableArray * recommendImgArray;
@@ -400,21 +393,14 @@ UINavigationControllerDelegate>
     [recommendImgArray addObject:imageURLStr3];
     
     NSString * recommendJsonContent = [ZXHTool dataToJsonString: recommendImgArray];
-    
-//    NSString * recommendJsonContent = [ZXHTool stringFromArray:recommendImgArray];
-    
-//    NSData *data1 = [recommendJsonContent dataUsingEncoding:NSUTF8StringEncoding];
-//    recommendJsonContent =  [data1 base64EncodedStringWithOptions:0];
-    
     [publishInfo setObject:recommendJsonContent forKey:@"recommends"];
     
-        
-    
+    /*
     NSLog(@"ahsdhashdash ==== %@", [ZXHTool dataToJsonString:publishInfo]);
-    
     //恢复回去
     NSArray * array = [ZXHTool dataConvertFromJsonString:jsonContent];
     CLog(@"恢复jsonContent 为数组 = %@", array);
+    */
     
     ZXH_WEAK_SELF
     [[CDServerAPIs shareAPI] articlePublishWithType:self.articleType ArticleContent:publishInfo Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
@@ -437,97 +423,6 @@ UINavigationControllerDelegate>
         CLog(@"钓鱼文章上传 失败：%@", error.error);
         [CDServerAPIs httpDataTask:dataTask error:error.error];
     }];
-    
-    
- /*
-    return;
-    
-    UIImage * image = [UIImage imageNamed:@"0icon_D@2x.png"];
-    NSData * uploadData = UIImagePNGRepresentation(image);
-    NSString * uploadName = @"0icon_D@2x.png";
-    
-    
-    //https相关的证书
-    NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"diaoyuxiehui" ofType:@"cer"];
-    NSData *certData = [NSData dataWithContentsOfFile:cerPath];
-    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
-    //AFSSLPinningModeNone AFSSLPinningModeCertificate
-    if (certData) {
-        NSSet *set = [NSSet setWithObjects:certData, nil];
-        securityPolicy.pinnedCertificates = set;
-    }
-    securityPolicy.allowInvalidCertificates = YES;
-    securityPolicy.validatesDomainName = NO; //YES
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.securityPolicy = securityPolicy;
-    
-    //声明返回的结果是JSON格式
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    //声明请求的数据是JSON类型
-    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    // 设置超时时间
-    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 15.0f;
-    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data", @"boundary=AaB03x", nil];
-    
-//    NSString * url = @"https://diaoyuxiehui.cn/articalFish/uploadImgFile";
-    NSString * url = @"https://diaoyuxiehui.cn/user/editUserInfo";
-    
-    url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    [manager.requestSerializer setValue:@"multipart/form-data" forHTTPHeaderField:@"Content-Type"];
-    NSLog(@"==== %@", manager.requestSerializer.HTTPRequestHeaders);
-    
-    NSMutableDictionary * requestDic = [[NSMutableDictionary alloc] init];
-    
-    [requestDic setObject:@"18" forKey:@"id"];
-//    [requestDic setObject:@"xiaohui" forKey:@"nikeName"];
-//    [requestDic setObject:@"男" forKey:@"sex"];
-//    [requestDic setObject:@"2017/08/18" forKey:@"birthday"];
-//    
-//    [requestDic setObject:@"2" forKey:@"avatarUrl"]; //待定
-//    [requestDic setObject:@"2" forKey:@"address"];
-    
-    
-    
-    [manager POST:url parameters:requestDic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        
-        [formData appendPartWithFileData:uploadData
-                                    name:@"imgFile"
-                                fileName:@"imgFile.png"
-                                mimeType:@"image/png"];
-        
-    } progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        CLog(@"\n 1打印数据:%@", responseObject);
-        NSData *doubi = responseObject;
-        NSString *shabi =  [[NSString alloc]initWithData:doubi encoding:NSUTF8StringEncoding];
-        CLog(@"\n 2打印数据:%@", shabi);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-        CLog(@"3打印数据:%@",error);
-    }];
-    
-    
-    
-    
-    return;
-    
-    [[CDServerAPIs shareAPI] uploadImageBlock:^(id<AFMultipartFormData> formData) {
-        
-        [formData appendPartWithFileData:uploadData name:uploadName fileName:uploadName mimeType:@"image/png"];
-        
-    } Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
-        CLog(@"上传图片： %@",responseObject);
-    } Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
-        CLog(@"上传图片： %@",error.error);
-    }];
-  */
 }
 
 
