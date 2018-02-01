@@ -284,8 +284,8 @@
         [cell reloadData];
         
         return cell;
-        
     }
+    
     return nil;
 }
 
