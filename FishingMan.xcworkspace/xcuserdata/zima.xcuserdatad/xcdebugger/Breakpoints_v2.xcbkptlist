@@ -42,12 +42,12 @@
                   moduleName = "AFNetworking"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zima/FishingMan/Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "538320124.278035"
+                  timestampString = "539183023.531297"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "470"
                   endingLineNumber = "470"
-                  offsetFromSymbolStart = "94">
+                  offsetFromSymbolStart = "92">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -57,12 +57,12 @@
                   moduleName = "AFNetworking"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zima/FishingMan/Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "538320124.281471"
+                  timestampString = "539183023.532665"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "470"
                   endingLineNumber = "470"
-                  offsetFromSymbolStart = "129">
+                  offsetFromSymbolStart = "148">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -79,54 +79,6 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1244"
             endingLineNumber = "1244"
-            landmarkName = "-requestBySerializingRequest:withParameters:error:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FishingMan/Weather/FMWeatherFutureCollectionCell.m"
-            timestampString = "537728113.724357"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "-reloadData"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FishingMan/Weather/FMWeatherFutureCollectionCell.m"
-            timestampString = "537728116.709036"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "-reloadData"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-            timestampString = "538320116.77747"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1271"
-            endingLineNumber = "1271"
             landmarkName = "-requestBySerializingRequest:withParameters:error:"
             landmarkType = "7">
          </BreakpointContent>

@@ -22,6 +22,12 @@
 #define   ZXHScreenWidth           [[UIScreen mainScreen] bounds].size.width
 #define   ZXHScreenHeight          [[UIScreen mainScreen] bounds].size.height
 
+#pragma mark --- iPhoneX ---
+#define   CDIsIphoneX                       ([[UIScreen mainScreen] bounds].size.height == 812.0 ? YES : NO)
+#define   CDSafeAreaNavBarHeight            ([[UIScreen mainScreen] bounds].size.height == 812.0 ? 88 : 64)
+#define   CDSafeAreaToTopHeight             ([[UIScreen mainScreen] bounds].size.height == 812.0 ? 24 : 0)
+#define   CDSafeAreaToBottomHeight          ([[UIScreen mainScreen] bounds].size.height == 812.0 ? 34 : 0)
+
 //根据375计算比例
 #define   ZXHRatioWithReal375      (ZXHScreenWidth/375.0)
 //宽度增长系数(==1.0, 1.0><1.2, >1.2)

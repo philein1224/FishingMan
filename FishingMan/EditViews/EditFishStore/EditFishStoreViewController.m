@@ -10,6 +10,7 @@
 #import "EditRuleInfoViewController.h"
 #import "LLImagePicker.h"
 #import "CDServerAPIs+FishStore.h"
+#import "FMMapLocationViewController.h"
 
 @interface EditFishStoreViewController ()<UIScrollViewDelegate, UITextViewDelegate>
 
@@ -210,7 +211,9 @@ static int count = 0;
     [self closeKeyboard];
     
     //判断定位功能是否开通，没有开通给予提示开通步骤
-    CLog(@"通过地图转化位置");
+    FMMapLocationViewController * mapLocationVC = [[FMMapLocationViewController alloc] initWithNibName:@"FMMapLocationViewController" bundle:nil];
+    mapLocationVC.navigationTitle = @"钓点定位";
+    [self.navigationController pushViewController:mapLocationVC animated:YES];
 }
 
 //是否是钓鱼人活着渔具店主

@@ -109,6 +109,10 @@
 		285CA39B1EB2D7BE00837682 /* ZXHNaviBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 285CA39A1EB2D7BE00837682 /* ZXHNaviBarView.xib */; };
 		28627AA52000BE9800A478E1 /* FMFishUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28627AA32000BE9800A478E1 /* FMFishUserModel.m */; };
 		286408EB1FB0A54C008A3AF0 /* background_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 286408EA1FB0A54C008A3AF0 /* background_image.jpg */; };
+		2868F9A12017895D00D0F91B /* FMMapLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2868F99F2017895D00D0F91B /* FMMapLocationViewController.m */; };
+		2868F9A22017895D00D0F91B /* FMMapLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2868F9A02017895D00D0F91B /* FMMapLocationViewController.xib */; };
+		2868F9A62017965900D0F91B /* UIMapPOIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2868F9A42017965900D0F91B /* UIMapPOIViewController.m */; };
+		2868F9A72017965900D0F91B /* UIMapPOIViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2868F9A52017965900D0F91B /* UIMapPOIViewController.xib */; };
 		28719FD61E1E9C6F00FE49E0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28719FD51E1E9C6F00FE49E0 /* main.m */; };
 		28719FD91E1E9C6F00FE49E0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28719FD81E1E9C6F00FE49E0 /* AppDelegate.m */; };
 		28719FDF1E1E9C6F00FE49E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28719FDD1E1E9C6F00FE49E0 /* Main.storyboard */; };
@@ -887,6 +891,12 @@
 		28627AA32000BE9800A478E1 /* FMFishUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMFishUserModel.m; sourceTree = "<group>"; };
 		28627AA42000BE9800A478E1 /* FMFishUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMFishUserModel.h; sourceTree = "<group>"; };
 		286408EA1FB0A54C008A3AF0 /* background_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background_image.jpg; sourceTree = "<group>"; };
+		2868F99E2017895D00D0F91B /* FMMapLocationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMMapLocationViewController.h; sourceTree = "<group>"; };
+		2868F99F2017895D00D0F91B /* FMMapLocationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMMapLocationViewController.m; sourceTree = "<group>"; };
+		2868F9A02017895D00D0F91B /* FMMapLocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMMapLocationViewController.xib; sourceTree = "<group>"; };
+		2868F9A32017965900D0F91B /* UIMapPOIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIMapPOIViewController.h; sourceTree = "<group>"; };
+		2868F9A42017965900D0F91B /* UIMapPOIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIMapPOIViewController.m; sourceTree = "<group>"; };
+		2868F9A52017965900D0F91B /* UIMapPOIViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIMapPOIViewController.xib; sourceTree = "<group>"; };
 		28719FD11E1E9C6F00FE49E0 /* FishingMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FishingMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28719FD51E1E9C6F00FE49E0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		28719FD71E1E9C6F00FE49E0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -2199,6 +2209,19 @@
 			path = Required;
 			sourceTree = "<group>";
 		};
+		2868F99D2017890700D0F91B /* FMMap&Location */ = {
+			isa = PBXGroup;
+			children = (
+				2868F99E2017895D00D0F91B /* FMMapLocationViewController.h */,
+				2868F99F2017895D00D0F91B /* FMMapLocationViewController.m */,
+				2868F9A02017895D00D0F91B /* FMMapLocationViewController.xib */,
+				2868F9A32017965900D0F91B /* UIMapPOIViewController.h */,
+				2868F9A42017965900D0F91B /* UIMapPOIViewController.m */,
+				2868F9A52017965900D0F91B /* UIMapPOIViewController.xib */,
+			);
+			path = "FMMap&Location";
+			sourceTree = "<group>";
+		};
 		28719FC81E1E9C6F00FE49E0 = {
 			isa = PBXGroup;
 			children = (
@@ -2236,6 +2259,7 @@
 				2884995D1E77D2720026D20A /* MinePage */,
 				2832A1321EBB2A1C00193657 /* Login&Register */,
 				28D9FD4E1E7970930035B7E0 /* Weather */,
+				2868F99D2017890700D0F91B /* FMMap&Location */,
 				28BB6AB41E79916F00E9B9F0 /* AssistanceView */,
 				281125141E9DB77900A70353 /* EditViews */,
 				2882C9C61EC9DEED00395815 /* CommonMainPage */,
@@ -3552,6 +3576,7 @@
 					28719FD01E1E9C6F00FE49E0 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = C5U99626JT;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -3778,6 +3803,7 @@
 				2874021D1EA0817700B4BE0C /* EditFishStoreViewController.xib in Resources */,
 				E758F1A01F01610B003198D3 /* 5天气_白天_零散阵雨.png in Resources */,
 				28F882E21EDDB71F00227A59 /* 推荐给好友icon@2x.png in Resources */,
+				2868F9A22017895D00D0F91B /* FMMapLocationViewController.xib in Resources */,
 				E758F1CD1F01610B003198D3 /* 5天气_夜晚_晴.png in Resources */,
 				E7E3F23B1EE702AF007DDE11 /* 文章详情_线组icon@2x.png in Resources */,
 				E7E3F23C1EE702AF007DDE11 /* 文章详情_线组icon@3x.png in Resources */,
@@ -4015,6 +4041,7 @@
 				E758F1DD1F01610B003198D3 /* 5天气_夜晚_雨@2x.png in Resources */,
 				28DFB1DC1F174A1C00BC6FE4 /* 钓点_可停车_灰色@2x.png in Resources */,
 				28AA45EF1F0235DA00E7192A /* PlayButtonOverlayLarge@3x.png in Resources */,
+				2868F9A72017965900D0F91B /* UIMapPOIViewController.xib in Resources */,
 				28EDDB081E9CD0240062DD7D /* FishSingleImageCell.xib in Resources */,
 				28EBD5541E7C45FD0038513A /* FMCollectionViewController.xib in Resources */,
 				28F882DC1EDDB71F00227A59 /* 设置icon@2x.png in Resources */,
@@ -4171,6 +4198,7 @@
 				E7E20ED11F58780E004D369C /* ZXHTypeSelectView.m in Sources */,
 				283C2BC91ED27A380080CFFE /* UIButtonForMapPin.m in Sources */,
 				E7136AEF1EFE569D0081D1A0 /* MineAccountUpdateViewController.m in Sources */,
+				2868F9A12017895D00D0F91B /* FMMapLocationViewController.m in Sources */,
 				2882C9E61EC9DEED00395815 /* FMUserHomepageController.m in Sources */,
 				2895B7CC1E840C550089402A /* LocalFishUserTBCell.m in Sources */,
 				28AA46521F023F7D00E7192A /* EditFooterMenuView.m in Sources */,
@@ -4324,6 +4352,7 @@
 				2874021C1EA0817700B4BE0C /* EditFishStoreViewController.m in Sources */,
 				28AA46541F023F7D00E7192A /* EditMaterialTableViewCell1.m in Sources */,
 				28DFC0481F8E5A0D00165C54 /* MJRefreshAutoFooter.m in Sources */,
+				2868F9A62017965900D0F91B /* UIMapPOIViewController.m in Sources */,
 				28D296151E8A4B3500AEDF10 /* MenuView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4443,7 +4472,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xiaohui Zhang (883B4JY7MA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiaohui Zhang (883B4JY7MA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C5U99626JT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4470,8 +4500,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.newreading.FishingCircle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ec347ba0-e91b-4f20-a122-c02531b9e50b";
-				PROVISIONING_PROFILE_SPECIFIER = FishingManDev;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -4483,7 +4513,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xiaohui Zhang (883B4JY7MA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiaohui Zhang (883B4JY7MA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C5U99626JT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4510,8 +4541,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.newreading.FishingCircle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ec347ba0-e91b-4f20-a122-c02531b9e50b";
-				PROVISIONING_PROFILE_SPECIFIER = FishingManDev;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -14,6 +14,8 @@
 #import "LLImagePicker.h"
 #import "CDServerAPIs+FishSite.h"
 
+#import "FMMapLocationViewController.h"
+
 @interface EditFishSiteViewController ()<UIScrollViewDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -233,6 +235,9 @@ static int count = 0;
 - (IBAction)siteAddressButtonAction:(id)sender {
     [self closeKeyboard];
     
+    FMMapLocationViewController * mapLocationVC = [[FMMapLocationViewController alloc] initWithNibName:@"FMMapLocationViewController" bundle:nil];
+    mapLocationVC.navigationTitle = @"钓点定位";
+    [self.navigationController pushViewController:mapLocationVC animated:YES];
 }
 //钓场的类型
 - (IBAction)siteTypeButtonAction:(id)sender {
