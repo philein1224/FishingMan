@@ -125,6 +125,7 @@
 		287402181EA0815B00B4BE0C /* EditFishSiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 287402161EA0815B00B4BE0C /* EditFishSiteViewController.xib */; };
 		2874021C1EA0817700B4BE0C /* EditFishStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2874021A1EA0817700B4BE0C /* EditFishStoreViewController.m */; };
 		2874021D1EA0817700B4BE0C /* EditFishStoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2874021B1EA0817700B4BE0C /* EditFishStoreViewController.xib */; };
+		2876DDBC202C520E00960660 /* CDServerAPIs+Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2876DDBA202C520D00960660 /* CDServerAPIs+Friend.m */; };
 		287912861EA75F8200846239 /* FMCommentEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 287912851EA75F8200846239 /* FMCommentEditView.m */; };
 		287912881EA75FA200846239 /* FMCommentEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 287912871EA75FA200846239 /* FMCommentEditView.xib */; };
 		2882C9DC1EC9DEED00395815 /* FMSiteHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2882C9C91EC9DEED00395815 /* FMSiteHomeHeaderView.m */; };
@@ -916,6 +917,8 @@
 		287402191EA0817700B4BE0C /* EditFishStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditFishStoreViewController.h; sourceTree = "<group>"; };
 		2874021A1EA0817700B4BE0C /* EditFishStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditFishStoreViewController.m; sourceTree = "<group>"; };
 		2874021B1EA0817700B4BE0C /* EditFishStoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditFishStoreViewController.xib; sourceTree = "<group>"; };
+		2876DDBA202C520D00960660 /* CDServerAPIs+Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CDServerAPIs+Friend.m"; sourceTree = "<group>"; };
+		2876DDBB202C520E00960660 /* CDServerAPIs+Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CDServerAPIs+Friend.h"; sourceTree = "<group>"; };
 		287912841EA75F8200846239 /* FMCommentEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMCommentEditView.h; sourceTree = "<group>"; };
 		287912851EA75F8200846239 /* FMCommentEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMCommentEditView.m; sourceTree = "<group>"; };
 		287912871EA75FA200846239 /* FMCommentEditView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMCommentEditView.xib; sourceTree = "<group>"; };
@@ -3363,6 +3366,8 @@
 				28B4A2F41F8F38CD00E132ED /* CDServerAPIs+FishSite.m */,
 				28B4A2F01F8F38B500E132ED /* CDServerAPIs+FishStore.h */,
 				28B4A2F11F8F38B500E132ED /* CDServerAPIs+FishStore.m */,
+				2876DDBB202C520E00960660 /* CDServerAPIs+Friend.h */,
+				2876DDBA202C520D00960660 /* CDServerAPIs+Friend.m */,
 				E714EADA1F1539C200E62382 /* CDServerAPIs.h */,
 				E714EADB1F1539C200E62382 /* CDServerAPIs.m */,
 				E714EAD81F1539C200E62382 /* CDHttpsRequest.h */,
@@ -4289,6 +4294,7 @@
 				28D9FD521E7970DB0035B7E0 /* FMWeatherViewController.m in Sources */,
 				28EDDB051E9CD0240062DD7D /* FishMultiImageCell.m in Sources */,
 				28D295F21E8A479800AEDF10 /* XHRealTimeBlur.m in Sources */,
+				2876DDBC202C520E00960660 /* CDServerAPIs+Friend.m in Sources */,
 				2890A62F1E8C0C05008C0E10 /* MJPropertyKey.m in Sources */,
 				28D6526C1EBA100D00734E94 /* ZXHWebViewController.m in Sources */,
 				28EBD5531E7C45FD0038513A /* FMCollectionViewController.m in Sources */,

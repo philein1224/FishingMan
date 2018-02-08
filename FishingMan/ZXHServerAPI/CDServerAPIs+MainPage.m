@@ -81,7 +81,6 @@
     }
     
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
-    [requestDic setObject:[NSNumber numberWithLong:userId] forKey:@"userId"];
     [requestDic setObject:[NSNumber numberWithInteger:sourceId] forKey:@"sourceId"];
     [requestDic setObject:[NSNumber numberWithInteger:type] forKey:@"sourceType"];
     
@@ -106,7 +105,6 @@
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
     [requestDic setObject:[NSNumber numberWithInteger:sourceId] forKey:@"sourceId"];
     [requestDic setObject:[NSNumber numberWithInteger:type] forKey:@"sourceType"];
-    [requestDic setObject:[NSNumber numberWithLong:userId] forKey:@"userId"];
     
     return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
 }
@@ -118,7 +116,6 @@
     NSString *APIName = @"/collection/list";
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
     [requestDic setObject:[NSNumber numberWithInteger:type] forKey:@"sourceType"];
-    [requestDic setObject:[NSNumber numberWithLong:userId] forKey:@"userId"];
     [requestDic setObject:[NSNumber numberWithInteger:page] forKey:@"currentPage"];
     
     return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
@@ -197,7 +194,6 @@
     [requestDic setObject:[NSNumber numberWithLong:reportType] forKey:@"reportType"];
     [requestDic setObject:[NSNumber numberWithLong:sourceId] forKey:@"sourceId"];
     [requestDic setObject:[NSNumber numberWithLong:sourceType] forKey:@"sourceType"];
-    [requestDic setObject:[NSNumber numberWithLong:userId] forKey:@"userId"];
     
     return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
 }

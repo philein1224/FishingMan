@@ -447,8 +447,6 @@
             //下拉获取最新
             if(weakself.pullingDownward){
                 
-                [weakself.tableView.mj_header endRefreshing];
-                
                 if(weakself.articleModelArray.count > 0){
                     [weakself.articleModelArray removeAllObjects];
                 }
@@ -462,8 +460,6 @@
             }
             //上拉加载更多
             else{
-                
-                [weakself.tableView.mj_footer endRefreshing];
                 
                 if(tempArray.count > 0){
                     NSArray * array = [weakself dealingWithArticleArray: tempArray];

@@ -125,12 +125,27 @@
                          
                      }
                     rightActionHandler:^(UIAlertAction *action) {
+                        
+                        [weakself logOutFromServer];
                         //清除缓存
                         [FMLoginUser removeCacheUserInfo];
                         [weakself reloadLoginOutButton];
                         [weakself.navigationController popViewControllerAnimated:YES];
                     }];
     }
+}
+
+- (void)logOutFromServer{
+    
+    [[CDServerAPIs shareAPI] requestLoginOutSuccess:^(NSURLSessionDataTask *dataTask, id responseObject) {
+        CLog(@"登出成功 成功 = %@", responseObject);
+        if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
+            NSLog(@"登出成功");
+        }
+    } Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
+        CLog(@"登出成功 失败 = %@", error.error);
+    }];
+    
 }
 
 #pragma mark - 数据生成

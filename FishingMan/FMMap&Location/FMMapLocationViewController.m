@@ -217,7 +217,7 @@
 
 #pragma mark 非地图的操作
 - (IBAction)closeButtonAction:(id)sender {
-    //退出时导航栏显示不要动画
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -90,14 +90,14 @@
     [[CDServerAPIs shareAPI] articleFavoritListWithSourceType:FMSourceArticleType userId:[user.userId longLongValue] page:currentPage Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
         
         CLog(@"收藏的文章列表 =>>article List = %@", responseObject);
+        [weakself.tableView.mj_header endRefreshing];
+        [weakself.tableView.mj_footer endRefreshing];
         
         if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
             
                 //判断是否继续
             NSDictionary * dataDic = responseObject[@"data"];
             if([ZXHTool isNilNullObject:dataDic] || [ZXHTool isNilNullObject:dataDic[@"result"]]){
-                [weakself.tableView.mj_header endRefreshing];
-                [weakself.tableView.mj_footer endRefreshing];
                 return;
             }
             
@@ -110,8 +110,6 @@
             
                 //下拉获取最新
             if(weakself.pullingDownward){
-                
-                [weakself.tableView.mj_header endRefreshing];
                 
                 if(weakself.articleModelArray.count > 0){
                     [weakself.articleModelArray removeAllObjects];
@@ -127,8 +125,6 @@
                 //上拉加载更多
             else{
                 
-                [weakself.tableView.mj_footer endRefreshing];
-                
                 if(tempArray.count > 0){
                     NSArray * array = [weakself dealingWithArticleArray: tempArray];
                     [weakself.articleModelArray addObjectsFromArray:array];
@@ -138,6 +134,8 @@
             }
         }
     } Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
+        [weakself.tableView.mj_header endRefreshing];
+        [weakself.tableView.mj_footer endRefreshing];
         [CDServerAPIs httpDataTask:dataTask error:error.error];
     }];
 }

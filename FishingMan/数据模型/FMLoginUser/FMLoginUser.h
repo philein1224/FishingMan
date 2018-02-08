@@ -29,6 +29,19 @@
 @property (assign, nonatomic) int        sex;         //用户性别
 @property (strong, nonatomic) NSString * orderFieldNextType;   //用户头像地址
 
+/*
+ address = string;
+ avatarUrl = "http://diaoyudaxian01.b0.upaiyun.com/asd";
+ created = 1509375597000;
+ id = 1;
+ level = 0;
+ modified = 1515681916000;
+ nickName = haha;
+ orderFieldNextType = ASC;
+ point = 0;
+ tel = 18782420424;
+ yn = 1;
+ */
 
 //缓存用户基本信息
 + (void)setCacheUserInfo:(FMLoginUser *)user;

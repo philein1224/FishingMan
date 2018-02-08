@@ -46,9 +46,14 @@
 - (NSURLSessionDataTask *)requestWhetherRegisteredPhone:(NSString *)phoneNumber Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
 
 /**
- 登录
+ 登录/user/login4Tel
  */
 - (NSURLSessionDataTask *)requestLoginWithPhone:(NSString *)phoneNumber Password:(NSString *)password Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
+
+/**
+ 登出/user/logout
+ */
+- (NSURLSessionDataTask *)requestLoginOutSuccess:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
 
 /**
  根据操作类型获取短信验证码
@@ -105,6 +110,12 @@
                                           birthday:(NSDate *)birthdayDate
                                            success:(CDHttpSuccess)success
                                            failure:(CDHttpFailure)failure;
+
+/**
+ 获取用户基本信息 user/getUserInfo
+ */
+- (NSURLSessionDataTask *)requestLoginedUserInfoSuccess:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
+
 
 #pragma mark 上传图片
 - (NSURLSessionDataTask *)uploadImageBlock:(void(^)(id <AFMultipartFormData> formData))block

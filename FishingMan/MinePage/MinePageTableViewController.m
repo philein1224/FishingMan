@@ -120,6 +120,39 @@ static NSString * const kAppKey = @"23855996";
     
     //加载头像数据
     [_userHomeHeader reloadData:nil userType:FMUserTypeAdmin];
+    
+    //加载用户基本信息
+    [[CDServerAPIs shareAPI] requestLoginedUserInfoSuccess:^(NSURLSessionDataTask *dataTask, id responseObject) {
+        
+        CLog(@"加载用户基本信息 成功 = %@", responseObject);
+        /*
+         data =     {
+         address = string;
+         avatarUrl = "http://diaoyudaxian01.b0.upaiyun.com/asd";
+         created = 1509375597000;
+         id = 1;
+         level = 0;
+         modified = 1515681916000;
+         nickName = haha;
+         orderFieldNextType = ASC;
+         point = 0;
+         tel = 18782420424;
+         yn = 1;
+         };
+         */
+        if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
+            
+            NSDictionary *dic = responseObject[@"data"];
+            if(![ZXHTool isNilNullObject:dic]){
+                
+                FMLoginUser * user = [FMLoginUser mj_objectWithKeyValues:dic];
+                [FMLoginUser setCacheUserInfo:user];
+            }
+        }
+    } Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
+        
+        CLog(@"加载用户基本信息 失败 = %@", error.error);
+    }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

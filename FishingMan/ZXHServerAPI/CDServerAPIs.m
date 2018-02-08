@@ -205,6 +205,16 @@ static CDServerAPIs *shareServerAPIs;
     return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
 }
 
+/**
+ 登出/user/logout
+ */
+- (NSURLSessionDataTask *)requestLoginOutSuccess:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
+    NSString *APIName = @"/user/logout";
+    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
+    
+    return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
+}
+
 - (NSURLSessionDataTask *)requestSMSCodeForPhone:(NSString *)phoneNumber withType:(NSString *)smsCodeType Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
     
     //register【注册】
@@ -321,6 +331,16 @@ static CDServerAPIs *shareServerAPIs;
     [requestDic setObject:dateString forKey:@"birthday"];
     [requestDic setObject:avatarUrl forKey:@"avatarUrl"];
     [requestDic setObject:address forKey:@"address"];
+    
+    return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
+}
+
+/**
+ 获取用户基本信息 user/getUserInfo
+ */
+- (NSURLSessionDataTask *)requestLoginedUserInfoSuccess:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
+    NSString *APIName = @"/user/getUserInfo";
+    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
     
     return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
 }

@@ -307,11 +307,6 @@ UINavigationControllerDelegate>
     
     NSMutableDictionary * publishInfo = [[NSMutableDictionary alloc] init];
     
-    //登录用户的userId
-    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
-    if (![ZXHTool isNilNullObject:user]) {
-        [publishInfo setObject:user.userId forKey:@"userId"];
-    }
     //文章类型
     [publishInfo setObject:[NSNumber numberWithInt:self.articleType] forKey:@"articleType"];
     //文章标题
