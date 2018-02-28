@@ -46,7 +46,7 @@
     {
       "orientation" : "portrait",
       "idiom" : "iphone",
-      "filename" : "Launch5@2x.png",
+      "filename" : "Launch4@2x.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
       "scale" : "2x"
@@ -55,7 +55,7 @@
       "extent" : "full-screen",
       "idiom" : "iphone",
       "subtype" : "retina4",
-      "filename" : "Launch4@2x.png",
+      "filename" : "Launch5@2x.png",
       "minimum-system-version" : "7.0",
       "orientation" : "portrait",
       "scale" : "2x"

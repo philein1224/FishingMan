@@ -25,6 +25,7 @@
 /**
  文章列表
  FMArticleType articleType（⚠️-1表示首页主列表）
+ int currentPage 当前第几页
  */
 - (NSURLSessionDataTask *)articleListWithType:(int)articleType currentPage:(int)currentPage Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
 /**
