@@ -23,7 +23,7 @@
 @interface CDServerAPIs (Friend)
 
 /**
- 添加、删除、同意、拒绝
+ 添加关注、取消关注
  addFollow:YES 添加对用户的关注，NO 取消对用户的关注
  */
 - (NSURLSessionDataTask *)friendAddFollow:(BOOL)addFollow
@@ -33,15 +33,12 @@
 
 /**
  朋友列表
+ currentPage : 分页
+ isMyFans : YES粉丝列表／NO我关注的人
  */
-- (NSURLSessionDataTask *)fishStoreListWithPage:(int)currentPage         //分页
-                                             Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
-
-/**
- 朋友详情数据
- */
-- (NSURLSessionDataTask *)fishStoreDetailWithUserId:(NSString *)userId
-                                             SiteId:(NSString *)siteId     //渔具店id
-                                            Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
+- (NSURLSessionDataTask *)friendListWithPage:(int)currentPage
+                                    isMyFans:(BOOL)isMyFans
+                                     Success:(CDHttpSuccess)success
+                                     Failure:(CDHttpFailure)failure;
 
 @end

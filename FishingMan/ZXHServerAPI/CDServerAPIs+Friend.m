@@ -9,66 +9,45 @@
 #import "CDServerAPIs+Friend.h"
 
 @implementation CDServerAPIs (Friend)
-/**
- 发布鱼具店
- */
-//- (NSURLSessionDataTask *)fishStorePublishWithUserId:(long)userId              //用户的id
-/*
- Title:(NSString *)title         //钓点标题
- Introduce:(NSString *)introduce     //文字介绍
- Content:(NSString *)content       //文字介绍（待保留一个）
- Pic0:(NSString *)pic0
- Pic1:(NSString *)pic1
- Pic2:(NSString *)pic2
- Pic3:(NSString *)pic3
- longitude:(NSString *)lng           //经度
- Latitude:(NSString *)lat           //纬度
- LocationAddress:(NSString *)address       //详细地址
- PublisherType:(int)publisherType        //发布者类型（0官方、1钓友、2店主）
- */
-
-- (NSURLSessionDataTask *)fishStorePublishWithContent:(NSMutableDictionary *)requestDic
-                                              Success:(CDHttpSuccess)success
-                                              Failure:(CDHttpFailure)failure{
-    
-    NSString *APIName = @"/fishShop/publish";
-    return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
-}
 
 /**
- 渔具店列表
+ 添加关注、取消关注
+ addFollow:YES 添加对用户的关注，NO 取消对用户的关注
  */
-- (NSURLSessionDataTask *)fishStoreListWithPage:(int)currentPage         //分页
-                                             Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
-    
-    NSString *APIName = @"/fishShop/fishShopList";
-    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
-    
-    if(currentPage == 0){
-        currentPage = 1;
-    }
-    [requestDic setObject:[NSNumber numberWithInt:currentPage] forKey:@"currentPage"];
-    
-    return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
-}
-
-/**
- 渔具店详情
- */
-- (NSURLSessionDataTask *)fishStoreDetailWithUserId:(NSString *)userId
-                                             SiteId:(NSString *)siteId     //渔具店id
-                                            Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
-    
-    NSString *APIName = @"/fishShop/fishShopDetail";
-    
-    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
-    if (![ZXHTool isEmptyString:userId]) {
-        [requestDic setObject:userId forKey:@"userId"];
+- (NSURLSessionDataTask *)friendAddFollow:(BOOL)addFollow
+                                 friendId:(long)friendId
+                                  Success:(CDHttpSuccess)success
+                                  Failure:(CDHttpFailure)failure{
+    NSString *APIName = @"/user/cancelfollow";
+    if(addFollow){
+        APIName = @"/user/follow";
     }
     
-    [requestDic setObject:siteId forKey:@"siteId"];
+    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
+    [requestDic setObject:[NSNumber numberWithInteger:friendId] forKey:@"toUserId"];
     
     return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
 }
+
+/**
+ 朋友列表
+ currentPage : 分页
+ isMyFans : YES粉丝列表／NO我关注的人
+ */
+- (NSURLSessionDataTask *)friendListWithPage:(int)currentPage
+                                    isMyFans:(BOOL)isMyFans
+                                     Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
+    
+    NSString *APIName = @"/user/getFollowList";
+    if(isMyFans){
+        APIName = @"/user/getFansList";
+    }
+    
+    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
+    [requestDic setObject:[NSNumber numberWithInteger:currentPage] forKey:@"currentPage"];
+    
+    return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
+}
+
 
 @end

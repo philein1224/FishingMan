@@ -8,6 +8,7 @@
 
 #import "FMThanksTableViewController.h"
 #import "FMThanksTableViewCell.h"
+#import "CDServerAPIs+Friend.h"
 
 @interface FMThanksTableViewController ()
 
@@ -31,8 +32,37 @@
                                                                          action:@selector(backButtonClicked:)];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"FMThanksTableViewCell" bundle:nil] forCellReuseIdentifier:@"FMThanksTableViewCell"];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     
+    /*
+     FMFriendTypeNormal = 0,       //还未做任何行为
+     FMFriendTypeFollows = 1,      //关注
+     FMFriendTypeFans = 2          //粉丝
+     */
+    BOOL isMyFans = NO;
+    switch (_friendType) {
+        case FMFriendTypeFollows:
+        {
+        isMyFans = NO;
+        }
+            break;
+        case FMFriendTypeFans:
+        {
+        isMyFans = YES;
+        }
+            break;
+        default:
+            break;
+    }
     
+    [[CDServerAPIs shareAPI] friendListWithPage:1 isMyFans:isMyFans Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
+        
+    } Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
