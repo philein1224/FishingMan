@@ -1,5 +1,5 @@
 //
-//  FMFishSiteTableViewController.h
+//  FMFavoriteFishSiteTableViewController.h
 //  FishingMan
 //
 //  Created by zhangxh on 2018/1/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FMFishSiteTableViewController : UIViewController
+@interface FMFavoriteFishSiteTableViewController : UIViewController
 
 @end

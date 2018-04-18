@@ -100,16 +100,23 @@
                                            Failure:(CDHttpFailure)failure;
 
 /**
+ 第三方登录后，绑定手机号 /user/bindTel
+ telephone: NSString
+ */
+- (NSURLSessionDataTask *)bindThirdPartyWithTelephoneNum:(NSString *)telephone
+                                                 Success:(CDHttpSuccess)success
+                                                 Failure:(CDHttpFailure)failure;
+
+/**
  编辑用户信息接口【个人中心-头像-个人资料】
  */
-- (NSURLSessionDataTask *)modifyUserInfoWithUserId:(NSString *)userId
-                                          nikeName:(NSString *)nickname
-                                               sex:(int)sex
-                                         avatarUrl:(NSString *)avatarUrl
-                                           address:(NSString *)address
-                                          birthday:(NSDate *)birthdayDate
-                                           success:(CDHttpSuccess)success
-                                           failure:(CDHttpFailure)failure;
+- (NSURLSessionDataTask *)modifyUserInfoWithNikeName:(NSString *)nickname
+                                                 sex:(int)sex
+                                           avatarUrl:(NSString *)avatarUrl
+                                             address:(NSString *)address
+                                            birthday:(NSDate *)birthdayDate
+                                             success:(CDHttpSuccess)success
+                                             failure:(CDHttpFailure)failure;
 
 /**
  获取用户基本信息 user/getUserInfo

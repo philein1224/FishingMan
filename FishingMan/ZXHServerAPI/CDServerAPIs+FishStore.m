@@ -55,16 +55,12 @@
 /**
  渔具店详情
  */
-- (NSURLSessionDataTask *)fishStoreDetailWithUserId:(NSString *)userId
-                                             SiteId:(NSString *)siteId     //渔具店id
+- (NSURLSessionDataTask *)fishStoreDetailWithSiteId:(NSString *)siteId     //渔具店id
                                             Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
     
     NSString *APIName = @"/fishShop/fishShopDetail";
     
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
-    if (![ZXHTool isEmptyString:userId]) {
-        [requestDic setObject:userId forKey:@"userId"];
-    }
     
     [requestDic setObject:siteId forKey:@"siteId"];
     

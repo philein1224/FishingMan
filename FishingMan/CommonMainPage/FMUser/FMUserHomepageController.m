@@ -219,7 +219,6 @@
         
         return cell;
     }
-    
     return nil;
 }
 

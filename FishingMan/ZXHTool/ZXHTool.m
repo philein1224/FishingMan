@@ -465,4 +465,13 @@
     
     return height;
 }
+
+#pragma mark 文章类型转换为类型名
+
++ (NSString *)articleTypeNameFromArticleType:(FMArticleType)articleType{
+    
+    NSMutableArray * allTypeNameArray = ALL_ARTICLE_TYPE_NAME_ARRAY;
+    return allTypeNameArray[articleType];
+}
+
 @end

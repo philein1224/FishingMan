@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FMFishStoreTableViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FMFavoriteFishStoreTableViewController">
             <connections>
                 <outlet property="tableView" destination="i5M-Pr-FkT" id="ZYB-LG-Vgz"/>
                 <outlet property="view" destination="jUK-cW-WLe" id="Ywf-kq-rNb"/>

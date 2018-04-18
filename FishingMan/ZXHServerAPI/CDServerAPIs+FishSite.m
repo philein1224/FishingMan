@@ -43,17 +43,11 @@
 /**
  钓点详情
  */
-- (NSURLSessionDataTask *)fishSiteDetailWithUserId:(NSString *)userId
-                                            SiteId:(NSString *)siteId     //钓点id
+- (NSURLSessionDataTask *)fishSiteDetailWithSiteId:(NSString *)siteId     //钓点id
                                            Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
 
     NSString *APIName = @"/fishSite/fishSiteDetail";
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
-    
-    if (![ZXHTool isEmptyString:userId]) {
-        [requestDic setObject:userId forKey:@"userId"];
-    }
-    
     [requestDic setObject:siteId forKey:@"siteId"];
     
     return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];

@@ -336,15 +336,7 @@
     
     ZXH_WEAK_SELF
     
-    //登录用户的userId
-    NSString * userId = @"";
-    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
-    if (![ZXHTool isNilNullObject:user]) {
-        userId = user.userId;
-    }
-    
-    [[CDServerAPIs shareAPI] fishSiteDetailWithUserId:userId
-                                               SiteId:siteId
+    [[CDServerAPIs shareAPI] fishSiteDetailWithSiteId:siteId
                                               Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
         
         if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
@@ -353,7 +345,7 @@
             [weakself reloadData];
         }
         else{
-            [CDTopAlertView showMsg:@"加载失败，请稍后再试" alertType:TopAlertViewSuccessType];
+            [CDTopAlertView showMsg:@"加载失败，请稍后再试" alertType:TopAlertViewFailedType];
         }
     } Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
         

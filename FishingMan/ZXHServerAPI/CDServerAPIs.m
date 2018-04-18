@@ -312,19 +312,33 @@ static CDServerAPIs *shareServerAPIs;
     return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
 }
 
-- (NSURLSessionDataTask *)modifyUserInfoWithUserId:(NSString *)userId
-                                          nikeName:(NSString *)nickname
-                                               sex:(int)sex
-                                         avatarUrl:(NSString *)avatarUrl
-                                           address:(NSString *)address
-                                          birthday:(NSDate *)birthdayDate
-                                           success:(CDHttpSuccess)success
-                                           failure:(CDHttpFailure)failure{
+/**
+ 第三方登录后，绑定手机号 /user/bindTel
+ telephone: NSString
+ */
+- (NSURLSessionDataTask *)bindThirdPartyWithTelephoneNum:(NSString *)telephone
+                                                 Success:(CDHttpSuccess)success
+                                                 Failure:(CDHttpFailure)failure{
+    NSString *APIName = @"/user/bindTel";
+    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
+    
+    [requestDic setObject:telephone forKey:@"tel"];
+    [requestDic setObject:telephone forKey:@""];
+    
+    return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
+}
+
+- (NSURLSessionDataTask *)modifyUserInfoWithNikeName:(NSString *)nickname
+                                                 sex:(int)sex
+                                           avatarUrl:(NSString *)avatarUrl
+                                             address:(NSString *)address
+                                            birthday:(NSDate *)birthdayDate
+                                             success:(CDHttpSuccess)success
+                                             failure:(CDHttpFailure)failure{
     
     NSString *APIName = @"/user/editUserInfo";
     
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
-    [requestDic setObject:userId forKey:@"id"];
     [requestDic setObject:nickname forKey:@"nikeName"];
     [requestDic setObject:[NSNumber numberWithInt:sex] forKey:@"sex"];
     NSString * dateString = [ZXHTool millisecondStringFromDate:birthdayDate];

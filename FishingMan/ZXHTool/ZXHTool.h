@@ -93,4 +93,8 @@
 
 #pragma mark 文本段落计算高度
 + (CGFloat)heightWithText:(NSString *)text labelFont:(UIFont *)font labelWidth:(CGFloat)width;
+
+#pragma mark 文章类型转换为类型名
++ (NSString *)articleTypeNameFromArticleType:(FMArticleType)articleType;
+
 @end

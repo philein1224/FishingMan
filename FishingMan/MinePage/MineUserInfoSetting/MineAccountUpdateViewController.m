@@ -60,6 +60,18 @@
         [CDTopAlertView showMsg:@"请输入6～16位密码" alertType:TopAlertViewWarningType];
     }
     
+    [[CDServerAPIs shareAPI] bindThirdPartyWithTelephoneNum:phone
+                                                    Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
+                                                        
+                                                        CLog(@"绑定手机号码 responseObject = %@", responseObject);
+                                                        if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
+                                                            
+                                                        }
+                                                    } Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
+                                                        
+                                                    }];
+    
+    
 #warning 完了之后，就回调回去
     
     

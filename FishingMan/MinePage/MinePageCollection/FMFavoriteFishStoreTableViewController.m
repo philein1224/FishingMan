@@ -1,49 +1,52 @@
 //
-//  FMFishSiteTableViewController.m
+//  FMFavoriteFishStoreTableViewController.m
 //  FishingMan
 //
 //  Created by zhangxh on 2018/1/12.
 //  Copyright © 2018年 HongFan. All rights reserved.
 //
 
-#import "FMFishSiteTableViewController.h"
+#import "FMFavoriteFishStoreTableViewController.h"
 
-//钓点相关
-#import "LocalFishSiteTBCell.h"
-#import "FMSiteHomepageController.h"
-#import "FMFishSiteModel.h"
-#import "CDServerAPIs+FishSite.h"
+    //渔具店相关
+#import "LocalFishStoreTBCell.h"
+#import "FMStoreHomepageController.h"
+#import "FMFishStoreModel.h"
+#import "CDServerAPIs+FishStore.h"
 #import "CDServerAPIs+MainPage.h"
 
 #import "MJRefresh.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "FMEmptyNotiView.h"
 
-@interface FMFishSiteTableViewController ()
+@interface FMFavoriteFishStoreTableViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (assign, nonatomic) BOOL pullingDownward;   //向下拉获取最新
 
 @property (assign, nonatomic) int currentPage; //当前加载到第几页
-@property (nonatomic, strong) NSMutableArray * allSiteModelArray; //已经加载的列表数据
+@property (nonatomic, strong) NSMutableArray * allStoreModelArray; //已经加载的列表数据
 @property (assign, nonatomic) int totalCount;  //总共有多少条
 @property (assign, nonatomic) int pageSize;    //每一页有多少条数据
 
 @end
 
-@implementation FMFishSiteTableViewController
+@implementation FMFavoriteFishStoreTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    CLog(@"渔具店 view w = %f, screen w = %f", self.view.frame.size.width, [[UIScreen mainScreen] bounds].size.width);
+    CLog(@"渔具店 view w = %f, screen w = %f", self.tableView.frame.size.width, [[UIScreen mainScreen] bounds].size.width);
     
         //tableView顶部位置多出64像素的处理
     self.automaticallyAdjustsScrollViewInsets = NO;
     
         //初始化数组
-    self.allSiteModelArray = [NSMutableArray array];
-        //钓点
-    [self.tableView registerNib:[UINib nibWithNibName:@"LocalFishSiteTBCell" bundle:nil] forCellReuseIdentifier:@"LocalFishSiteTBCell"];
+    self.allStoreModelArray = [NSMutableArray array];
+        //渔具店
+    [self.tableView registerNib:[UINib nibWithNibName:@"LocalFishStoreTBCell" bundle:nil] forCellReuseIdentifier:@"LocalFishStoreTBCell"];
     
     /*** 列表去掉多余cell ***/
     UIView *tempfooterview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ZXHScreenWidth, 0)];
@@ -59,6 +62,7 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
     //获取评论列表
@@ -92,7 +96,7 @@
     ZXH_WEAK_SELF
     [[CDServerAPIs shareAPI] articleFavoritListWithSourceType:FMSourceFishSiteType userId:[user.userId longLongValue] page:currentPage Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
         
-        CLog(@"收藏的钓点列表 =>>article List = %@", responseObject);
+        CLog(@"收藏的渔具店列表 =>>article List = %@", responseObject);
         
         if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
             
@@ -109,24 +113,24 @@
             weakself.pageSize = [dataDic[@"pageSize"] intValue];
             
                 //取出获取到的新数据
-            NSMutableArray *tempArray = [FMFishSiteModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"result"]];
+            NSMutableArray *tempArray = [FMFishStoreModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"result"]];
             
                 //下拉获取最新
             if(weakself.pullingDownward){
                 
                 [weakself.tableView.mj_header endRefreshing];
                 
-                if(weakself.allSiteModelArray.count > 0){
-                    [weakself.allSiteModelArray removeAllObjects];
+                if(weakself.allStoreModelArray.count > 0){
+                    [weakself.allStoreModelArray removeAllObjects];
                 }
                 
                 if(tempArray.count > 0){
                     
-                    if(weakself.allSiteModelArray.count > 0){
-                        [weakself.allSiteModelArray removeAllObjects];
+                    if(weakself.allStoreModelArray.count > 0){
+                        [weakself.allStoreModelArray removeAllObjects];
                     }
                     
-                    weakself.allSiteModelArray = [NSMutableArray arrayWithArray:tempArray];
+                    weakself.allStoreModelArray = [NSMutableArray arrayWithArray:tempArray];
                     
                     [weakself.tableView reloadData];
                 }
@@ -138,7 +142,7 @@
                 
                 if(tempArray.count > 0){
                     
-                    [weakself.allSiteModelArray addObjectsFromArray:tempArray];
+                    [weakself.allStoreModelArray addObjectsFromArray:tempArray];
                     
                     [weakself.tableView reloadData];
                 }
@@ -156,7 +160,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.allSiteModelArray.count;
+    return self.allStoreModelArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -166,8 +170,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    LocalFishSiteTBCell * cell = [tableView dequeueReusableCellWithIdentifier:@"LocalFishSiteTBCell" forIndexPath:indexPath];
-    cell.model = [self.allSiteModelArray objectAtIndex:indexPath.row];
+    LocalFishStoreTBCell * cell = [tableView dequeueReusableCellWithIdentifier:@"LocalFishStoreTBCell" forIndexPath:indexPath];
+    cell.model = [self.allStoreModelArray objectAtIndex:indexPath.row];
     [cell reloadData];
     return cell;
 }
@@ -176,9 +180,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    FMSiteHomepageController * siteHP = [[FMSiteHomepageController alloc] initWithNibName:@"FMSiteHomepageController" bundle:nil];
-    siteHP.fishSiteModel = [self.allSiteModelArray objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:siteHP animated:YES];
+    FMStoreHomepageController * storeHP = [[FMStoreHomepageController alloc] initWithNibName:@"FMStoreHomepageController" bundle:nil];
+    storeHP.fishStoreModel = [self.allStoreModelArray objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:storeHP animated:YES];
 }
-
 @end

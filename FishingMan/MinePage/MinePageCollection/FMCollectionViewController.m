@@ -16,8 +16,8 @@
 #import "FMArticleModel.h"
 #import "CDServerAPIs+MainPage.h"
 #import "FMFavoriteArticleTableViewController.h"
-#import "FMFishSiteTableViewController.h"
-#import "FMFishStoreTableViewController.h"
+#import "FMFavoriteFishSiteTableViewController.h"
+#import "FMFavoriteFishStoreTableViewController.h"
 
 //其他的
 #import "FMLoginUser.h"
@@ -34,8 +34,8 @@
 @property (strong, nonatomic) NSMutableArray * viewControllersArray;
 
 @property (strong, nonatomic) FMFavoriteArticleTableViewController * favoriteArticleTableCtrl;
-@property (strong, nonatomic) FMFishSiteTableViewController * fishSiteTableViewController;
-@property (strong, nonatomic) FMFishStoreTableViewController * fishStoreTableViewController;
+@property (strong, nonatomic) FMFavoriteFishSiteTableViewController * fishSiteTableViewController;
+@property (strong, nonatomic) FMFavoriteFishStoreTableViewController * fishStoreTableViewController;
 
 @end
 
@@ -93,7 +93,7 @@
     [self.viewControllersArray addObject:_favoriteArticleTableCtrl];
 
         //2、钓点列表
-    _fishSiteTableViewController = [[FMFishSiteTableViewController alloc] initWithNibName:@"FMFishSiteTableViewController" bundle:nil];
+    _fishSiteTableViewController = [[FMFavoriteFishSiteTableViewController alloc] initWithNibName:@"FMFavoriteFishSiteTableViewController" bundle:nil];
     _fishSiteTableViewController.view.frame = CGRectMake(ZXHScreenWidth * 1, 64, ZXHScreenWidth, ZXHScreenHeight);
     [self addChildViewController:_fishSiteTableViewController];
     [self.scrollView addSubview:_fishSiteTableViewController.view];
@@ -101,7 +101,7 @@
     [self.viewControllersArray addObject:_fishSiteTableViewController];
     
         //3、渔具店列表
-    _fishStoreTableViewController = [[FMFishStoreTableViewController alloc] initWithNibName:@"FMFishStoreTableViewController" bundle:nil];
+    _fishStoreTableViewController = [[FMFavoriteFishStoreTableViewController alloc] initWithNibName:@"FMFavoriteFishStoreTableViewController" bundle:nil];
     _fishStoreTableViewController.view.frame = CGRectMake(ZXHScreenWidth * 2, 64, ZXHScreenWidth, ZXHScreenHeight);
     [self addChildViewController:_fishStoreTableViewController];
     [self.scrollView addSubview:_fishStoreTableViewController.view];

@@ -26,8 +26,7 @@
 /**
  钓点详情
  */
-- (NSURLSessionDataTask *)fishSiteDetailWithUserId:(NSString *)userId
-                                            SiteId:(NSString *)siteId     //钓点id
+- (NSURLSessionDataTask *)fishSiteDetailWithSiteId:(NSString *)siteId     //钓点id
                                            Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
 
 

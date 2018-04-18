@@ -333,16 +333,7 @@
 - (void)reloadFishStoreDetailWithID:(NSString *) siteId{
     
     ZXH_WEAK_SELF
-    
-    //登录用户的userId
-    NSString * userId = @"";
-    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
-    if (![ZXHTool isNilNullObject:user]) {
-        userId = user.userId;
-    }
-    
-    [[CDServerAPIs shareAPI] fishStoreDetailWithUserId:userId
-                                                SiteId:siteId
+    [[CDServerAPIs shareAPI] fishStoreDetailWithSiteId:siteId
                                                Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
         
         if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){

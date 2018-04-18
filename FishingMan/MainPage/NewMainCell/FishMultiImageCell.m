@@ -68,7 +68,9 @@
         break;
     }
     //2、文章标题
-    self.titleLabel.text = self.articleModel.title;
+    NSString * typeName = [ZXHTool articleTypeNameFromArticleType:self.articleModel.articleType];
+    self.titleLabel.text = [NSString stringWithFormat:@"%@ + %@",typeName,self.articleModel.title];
+//    self.titleLabel.text = self.articleModel.title;
     
     //3、创建时间 1509502676000
     NSDate * dateTime = [ZXHTool dateFromTimeInterval:self.articleModel.created / 1000];
