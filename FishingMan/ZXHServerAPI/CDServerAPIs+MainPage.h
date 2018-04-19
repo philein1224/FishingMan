@@ -41,11 +41,11 @@
  //type:文章1\钓点2\渔具店3
  //userId:用户的suerId
  */
-- (NSURLSessionDataTask *)articleFavorit:(BOOL)colected sourceId:(long)sourceId type:(FMSourceType)type userId:(long)userId Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
+- (NSURLSessionDataTask *)contentFavorite:(BOOL)colected sourceId:(long)sourceId type:(FMSourceType)type Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
 /**
  收藏列表
  */
-- (NSURLSessionDataTask *)articleFavoritListWithSourceType:(FMSourceType)type userId:(long)userId page:(NSInteger)page Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
+- (NSURLSessionDataTask *)contentFavoriteListWithSourceType:(FMSourceType)type page:(NSInteger)page Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
 
 #pragma mark 公共 - 点赞相关接口（文章、钓点、渔具店）
 

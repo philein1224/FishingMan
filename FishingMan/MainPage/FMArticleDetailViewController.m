@@ -423,14 +423,11 @@
     
     if(!IS_LOGIN_WITHOUT_ALERT) return;
     
-    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
-    
     BOOL isCollected = self.articleModel.collected;
     ZXH_WEAK_SELF
-    [[CDServerAPIs shareAPI] articleFavorit:isCollected
+    [[CDServerAPIs shareAPI] contentFavorite:isCollected
                                    sourceId:_articleModel.ID
-                                       type:1
-                                     userId:[user.userId longLongValue]
+                                       type:FMSourceArticleType
                                     Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
                                         
                                         if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){

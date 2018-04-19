@@ -227,9 +227,11 @@
                                                   
                                                   CLog(@"钓点的推荐（点赞）成功 = %@", responseObject);
                                                   if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
-                                                      
+                                                      [CDTopAlertView showMsg:@"点赞成功" alertType:TopAlertViewFailedType];
                                                   }else if (![ZXHTool isEmptyString:responseObject[@"msg"]]){
                                                       [CDTopAlertView showMsg:responseObject[@"msg"] alertType:TopAlertViewFailedType];
+                                                  }else{
+                                                      [CDTopAlertView showMsg:@"点赞失败，请稍后再试" alertType:TopAlertViewFailedType];
                                                   }
                                               } Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
                                                   [CDServerAPIs httpDataTask:dataTask error:error.error];
@@ -294,14 +296,11 @@
     
     if(!IS_LOGIN_WITHOUT_ALERT) return;
     
-    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
-    
     BOOL isCollected = self.fishSiteModel.collected;
     ZXH_WEAK_SELF
-    [[CDServerAPIs shareAPI] articleFavorit:isCollected
+    [[CDServerAPIs shareAPI] contentFavorite:isCollected
                                    sourceId:_fishSiteModel.ID
                                        type:FMSourceFishSiteType
-                                     userId:[user.userId longLongValue]
                                     Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
                                         
                                         if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){

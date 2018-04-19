@@ -1268,7 +1268,7 @@ typedef enum {
         } else {
             jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
         }
-        NSLog(@"ahsdhashdash ==== %@", jsonString);
+        NSLog(@"上传参数列表 ==== %@", jsonString);
         
         
         [mutableRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:parameters options:self.writingOptions error:error]];

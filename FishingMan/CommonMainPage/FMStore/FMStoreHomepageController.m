@@ -292,14 +292,11 @@
     [PHProgressHUD showSingleCustonImageSetmsg:@"" view:nil imageName:@"Checkmark" setSquare:YES];
     if(!IS_LOGIN_WITHOUT_ALERT) return;
     
-    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
-    
     BOOL isCollected = _fishStoreModel.collected;
     ZXH_WEAK_SELF
-    [[CDServerAPIs shareAPI] articleFavorit:isCollected
+    [[CDServerAPIs shareAPI] contentFavorite:isCollected
                                    sourceId:_fishStoreModel.ID
                                        type:FMSourceFishStoreType
-                                     userId:[user.userId longLongValue]
                                     Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
                                         
                                         if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){

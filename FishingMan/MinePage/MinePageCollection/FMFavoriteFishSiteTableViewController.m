@@ -87,10 +87,8 @@
 }
 - (void)reloadDataWithPosition:(BOOL)downward Page:(int)currentPage{
     
-    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
-    
     ZXH_WEAK_SELF
-    [[CDServerAPIs shareAPI] articleFavoritListWithSourceType:FMSourceFishSiteType userId:[user.userId longLongValue] page:currentPage Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
+    [[CDServerAPIs shareAPI] contentFavoriteListWithSourceType:FMSourceFishSiteType page:currentPage Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
         
         CLog(@"收藏的钓点列表 =>>article List = %@", responseObject);
         

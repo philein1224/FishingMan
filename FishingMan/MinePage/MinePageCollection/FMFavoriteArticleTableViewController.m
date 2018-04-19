@@ -84,10 +84,8 @@
 
 - (void)reloadDataWithPosition:(BOOL)downward Page:(int)currentPage{
     
-    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
-    
     ZXH_WEAK_SELF
-    [[CDServerAPIs shareAPI] articleFavoritListWithSourceType:FMSourceArticleType userId:[user.userId longLongValue] page:currentPage Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
+    [[CDServerAPIs shareAPI] contentFavoriteListWithSourceType:FMSourceArticleType page:currentPage Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
         
         CLog(@"收藏的文章列表 =>>article List = %@", responseObject);
         [weakself.tableView.mj_header endRefreshing];

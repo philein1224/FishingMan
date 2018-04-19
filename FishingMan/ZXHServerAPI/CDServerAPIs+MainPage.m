@@ -76,7 +76,7 @@
  //type:类型1\钓点2\渔具店3
  //userId:用户的suerId
  */
-- (NSURLSessionDataTask *)articleFavorit:(BOOL)colected sourceId:(long)sourceId type:(FMSourceType)type userId:(long)userId Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
+- (NSURLSessionDataTask *)contentFavorite:(BOOL)colected sourceId:(long)sourceId type:(FMSourceType)type Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
     
     NSString *APIName = @"/collection/collection";
     if (colected) {
@@ -92,7 +92,7 @@
 /**
  文章收藏列表
  */
-- (NSURLSessionDataTask *)articleFavoritListWithSourceType:(FMSourceType)type userId:(long)userId page:(NSInteger)page Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
+- (NSURLSessionDataTask *)contentFavoriteListWithSourceType:(FMSourceType)type page:(NSInteger)page Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
     
     NSString *APIName = @"/collection/list";
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
