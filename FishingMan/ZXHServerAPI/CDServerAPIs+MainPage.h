@@ -54,9 +54,9 @@
  //type:类型1\钓点2\渔具店3
  //like YES=喜欢， NO=不喜欢
  */
-- (NSURLSessionDataTask *)articleLikeWithSourceId:(long)sourceId
-                                             type:(int)type
-                                             like:(BOOL)like
+- (NSURLSessionDataTask *)contentLikeWithSourceId:(long)sourceId
+                                       SourceType:(int)type
+                                             Like:(BOOL)like
                                           Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
 
 
@@ -82,9 +82,13 @@
 
 #pragma mark 公共 - 文章举报／钓点渔具店反馈 相关接口（文章、钓点、渔具店）
 /**
- 文章举报／钓点渔具店反馈
+ 文章／钓点／渔具店的举报
  */
-- (NSURLSessionDataTask *)reportAndFeedbackWithReportType:(FMReportType)reportType sourceId:(long)sourceId sourceType:(FMSourceType)sourceType userId:(long)userId Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
+- (NSURLSessionDataTask *)reportAndFeedbackWithReportType:(FMReportType)reportType   //举报的类型
+                                                 sourceId:(long)sourceId             //举报实体的id
+                                               sourceType:(FMSourceType)sourceType   //举报的实体类型【文章／钓点／渔具店】
+                                                  Success:(CDHttpSuccess)success
+                                                  Failure:(CDHttpFailure)failure;
 
 
 

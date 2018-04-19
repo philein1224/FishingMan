@@ -68,29 +68,6 @@
     return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
 }
 
-#pragma mark 文章点赞
-/**
- 点赞
- //type:类型1\钓点2\渔具店3
- //like YES=喜欢， NO=不喜欢
- */
-- (NSURLSessionDataTask *)articleLikeWithSourceId:(long)sourceId
-                                             type:(int)type
-                                             like:(BOOL)isLiked
-                                          Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
-    
-    NSString *APIName = @"/like/like";
-    if (isLiked) {
-        APIName = @"/like/del";
-    }
-    
-    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
-    [requestDic setObject:[NSNumber numberWithInteger:sourceId] forKey:@"sourceId"];
-    [requestDic setObject:[NSNumber numberWithInteger:type] forKey:@"sourceType"];
-    
-    return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
-}
-
 #pragma mark 文章/钓点/渔具店收藏相关接口
 
 /**
@@ -121,6 +98,29 @@
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
     [requestDic setObject:[NSNumber numberWithInteger:type] forKey:@"sourceType"];
     [requestDic setObject:[NSNumber numberWithInteger:page] forKey:@"currentPage"];
+    
+    return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
+}
+
+#pragma mark 文章、钓点、渔具店的点赞
+/**
+ 点赞
+ //type:文章1\钓点2\渔具店3
+ //like YES=喜欢， NO=不喜欢
+ */
+- (NSURLSessionDataTask *)contentLikeWithSourceId:(long)sourceId
+                                       SourceType:(int)sourceType
+                                             Like:(BOOL)isLiked
+                                          Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
+    
+    NSString *APIName = @"/like/like";
+    if (isLiked) {
+        APIName = @"/like/del";
+    }
+    
+    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
+    [requestDic setObject:[NSNumber numberWithInteger:sourceId] forKey:@"sourceId"];
+    [requestDic setObject:[NSNumber numberWithInteger:sourceType] forKey:@"sourceType"];
     
     return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
 }
@@ -191,7 +191,11 @@
 /**
  文章举报／钓点渔具店反馈
  */
-- (NSURLSessionDataTask *)reportAndFeedbackWithReportType:(FMReportType)reportType sourceId:(long)sourceId sourceType:(FMSourceType)sourceType userId:(long)userId Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
+- (NSURLSessionDataTask *)reportAndFeedbackWithReportType:(FMReportType)reportType
+                                                 sourceId:(long)sourceId
+                                               sourceType:(FMSourceType)sourceType
+                                                  Success:(CDHttpSuccess)success
+                                                  Failure:(CDHttpFailure)failure{
     
     NSString *APIName = @"/report/report";
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];

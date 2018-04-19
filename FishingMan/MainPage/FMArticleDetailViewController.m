@@ -280,12 +280,9 @@
 
 - (void)sendReportType:(FMReportType)reportType{
     
-    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
-    
     [[CDServerAPIs shareAPI] reportAndFeedbackWithReportType:reportType
                                                     sourceId:_articleModel.ID
                                                   sourceType:FMSourceArticleType
-                                                      userId:[user.userId longLongValue]
                                                      Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
                                                          
                                                          if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
@@ -395,9 +392,9 @@
     BOOL isLiked = self.articleModel.liked;
     
     ZXH_WEAK_SELF
-    [[CDServerAPIs shareAPI] articleLikeWithSourceId:_articleModel.ID
-                                                type:1
-                                                like:isLiked
+    [[CDServerAPIs shareAPI] contentLikeWithSourceId:_articleModel.ID
+                                          SourceType:1
+                                                Like:isLiked
       Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
         
           if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){

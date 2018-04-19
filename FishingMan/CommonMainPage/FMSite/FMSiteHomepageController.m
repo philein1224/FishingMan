@@ -189,12 +189,9 @@
 
 - (void)sendReportType:(FMReportType)reportType{
     
-    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
-    
     [[CDServerAPIs shareAPI] reportAndFeedbackWithReportType:reportType
                                                     sourceId:_fishSiteModel.ID
                                                   sourceType:FMSourceFishSiteType
-                                                      userId:[user.userId longLongValue]
                                                      Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
                                                          
                                                          if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
@@ -223,9 +220,9 @@
     [PHProgressHUD showSingleCustonImageSetmsg:@"" view:nil imageName:@"Checkmark" setSquare:YES];
     
     FMLoginUser * user = [FMLoginUser getCacheUserInfo];
-    [[CDServerAPIs shareAPI] articleLikeWithSourceId:_fishSiteModel.ID
-                                                type:FMSourceFishSiteType
-                                                like:YES //默认只能点赞
+    [[CDServerAPIs shareAPI] contentLikeWithSourceId:_fishSiteModel.ID
+                                          SourceType:FMSourceFishSiteType
+                                                Like:YES //默认只能点赞
                                               Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
                                                   
                                                   CLog(@"钓点的推荐（点赞）成功 = %@", responseObject);

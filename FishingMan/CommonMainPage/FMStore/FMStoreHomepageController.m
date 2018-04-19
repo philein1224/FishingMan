@@ -189,12 +189,9 @@
 
 - (void)sendReportType:(FMReportType)reportType{
     
-    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
-    
     [[CDServerAPIs shareAPI] reportAndFeedbackWithReportType:reportType
                                                     sourceId:_fishStoreModel.ID
                                                   sourceType:FMSourceFishStoreType
-                                                      userId:[user.userId longLongValue]
                                                      Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
                                                          
                                                          if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
@@ -222,9 +219,9 @@
     [PHProgressHUD showSingleCustonImageSetmsg:@"" view:nil imageName:@"Checkmark" setSquare:YES];
     
     FMLoginUser * user = [FMLoginUser getCacheUserInfo];
-    [[CDServerAPIs shareAPI] articleLikeWithSourceId:_fishStoreModel.ID
-                                                type:FMSourceFishStoreType
-                                                like:YES //默认只能点赞
+    [[CDServerAPIs shareAPI] contentLikeWithSourceId:_fishStoreModel.ID
+                                          SourceType:FMSourceFishStoreType
+                                                Like:YES //默认只能点赞
                                              Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
                                                  
                                                  CLog(@"渔具店的推荐（点赞）成功 = %@", responseObject);
