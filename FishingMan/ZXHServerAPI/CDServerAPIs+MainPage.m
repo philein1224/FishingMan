@@ -72,10 +72,12 @@
 /**
  点赞
  //type:类型1\钓点2\渔具店3
- //userId:用户的suerId
  //like YES=喜欢， NO=不喜欢
  */
-- (NSURLSessionDataTask *)articleLikeWithSourceId:(long)sourceId type:(int)type like:(BOOL)isLiked userId:(long)userId Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
+- (NSURLSessionDataTask *)articleLikeWithSourceId:(long)sourceId
+                                             type:(int)type
+                                             like:(BOOL)isLiked
+                                          Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
     
     NSString *APIName = @"/like/like";
     if (isLiked) {

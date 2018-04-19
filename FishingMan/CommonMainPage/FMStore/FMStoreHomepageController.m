@@ -225,7 +225,6 @@
     [[CDServerAPIs shareAPI] articleLikeWithSourceId:_fishStoreModel.ID
                                                 type:FMSourceFishStoreType
                                                 like:YES //默认只能点赞
-                                              userId:[user.userId longLongValue]
                                              Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
                                                  
                                                  CLog(@"渔具店的推荐（点赞）成功 = %@", responseObject);

@@ -394,13 +394,10 @@
     
     BOOL isLiked = self.articleModel.liked;
     
-    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
-    
     ZXH_WEAK_SELF
     [[CDServerAPIs shareAPI] articleLikeWithSourceId:_articleModel.ID
                                                 type:1
                                                 like:isLiked
-                                              userId:[user.userId longLongValue]
       Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
         
           if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
