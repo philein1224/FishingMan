@@ -32,8 +32,8 @@ MJExtensionCodingImplementation
         _content = @"";
         _recommends = @"";
         
-        _userId = 0;
-        _orderFieldNextType = @"";
+//        _userId = 0;
+//        _orderFieldNextType = @"";
     }
     return self;
 }

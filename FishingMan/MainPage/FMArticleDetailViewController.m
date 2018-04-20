@@ -301,7 +301,7 @@
 }
 
 
-#pragma mark ----------------评论
+#pragma mark ----------------发送评论
 
 - (void)sendComment:(NSString *)content{
     

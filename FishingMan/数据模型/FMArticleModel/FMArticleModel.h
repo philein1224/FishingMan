@@ -15,6 +15,7 @@
 @property (assign, nonatomic) int      articleType;  //文章类型
 @property (copy, nonatomic) NSString * title;        //文章title
 
+//渔获文章的内容
 @property (assign, nonatomic) long     fishTime;       //出钓时间
 @property (copy, nonatomic) NSString * bait;           //饵料
 @property (copy, nonatomic) NSString * waterType;      //钓点类型
@@ -24,19 +25,21 @@
 @property (copy, nonatomic) NSString * fishPoleBrand;  //鱼竿品牌
 @property (copy, nonatomic) NSString * fishLines;      //线组
 
+//渔获文章
 @property (copy, nonatomic) NSString * lng;      //经度
 @property (copy, nonatomic) NSString * lat;      //纬度
 @property (copy, nonatomic) NSString * locationAddress;//地址
 
+//文章内容
 @property (copy, nonatomic) NSString * content;        //详细介绍
+//推荐在列表显示的3张可能小于3张图片
 @property (copy, nonatomic) NSString * recommends;     //推荐的三张图片
 
 @property (assign, nonatomic) long        created;   //创建时间
 @property (assign, nonatomic) long        modified;  //修改时间
-@property (assign, nonatomic) long        userId;    //用户id
 
-@property (copy, nonatomic) NSString * orderFieldNextType;      //ASC排序方式
-@property (assign, nonatomic) long        yn;       //是否已经软删除
+//@property (copy, nonatomic) NSString * orderFieldNextType;      //ASC排序方式
+//@property (assign, nonatomic) long        yn;       //是否已经软删除
 
 @property (strong, nonatomic) FMFishUserModel * user; //发布者简单信息
 @property (assign, nonatomic) int      likeCount;   //点赞数量
