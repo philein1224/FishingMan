@@ -311,6 +311,9 @@ UINavigationControllerDelegate>
     [publishInfo setObject:[NSNumber numberWithInt:self.articleType] forKey:@"articleType"];
     //文章标题
     [publishInfo setObject:self.titleEditView.articleTitleTextField.text forKey:@"title"];
+    //城市名称
+    [publishInfo setObject:@"华阳" forKey:@"city"];
+    
     //钓鱼收获发表
     if (self.articleType == FMArticleTypeHarvest){
         

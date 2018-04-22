@@ -117,7 +117,7 @@
     }
     
     //是否收藏
-    if (_articleModel.collected) {
+    if (_articleModel.collectioned) {
         _favoriteIcon.image = ZXHImageName(@"收藏_highlight");
     }
     else{
@@ -423,7 +423,7 @@
     
     if(!IS_LOGIN_WITHOUT_ALERT) return;
     
-    BOOL isCollected = self.articleModel.collected;
+    BOOL isCollected = self.articleModel.collectioned;
     ZXH_WEAK_SELF
     [[CDServerAPIs shareAPI] contentFavorite:isCollected
                                    sourceId:_articleModel.ID
@@ -435,12 +435,12 @@
                                             if(isCollected){
                                                 CLog(@"取消收藏 = %@", responseObject);
                                                 weakself.favoriteIcon.image = ZXHImageName(@"收藏_normal");
-                                                weakself.articleModel.collected = NO;
+                                                weakself.articleModel.collectioned = NO;
                                             }
                                             else{
                                                 CLog(@"收藏 = %@", responseObject);
                                                 weakself.favoriteIcon.image = ZXHImageName(@"收藏_highlight");
-                                                weakself.articleModel.collected = YES;
+                                                weakself.articleModel.collectioned = YES;
                                             }
                                         }else if (![ZXHTool isEmptyString:responseObject[@"msg"]]){
                                             [CDTopAlertView showMsg:responseObject[@"msg"] alertType:TopAlertViewFailedType];

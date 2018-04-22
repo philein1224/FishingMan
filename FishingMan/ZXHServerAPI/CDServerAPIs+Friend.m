@@ -18,6 +18,7 @@
                                  friendId:(long)friendId
                                   Success:(CDHttpSuccess)success
                                   Failure:(CDHttpFailure)failure{
+    
     NSString *APIName = @"/user/cancelfollow";
     if(addFollow){
         APIName = @"/user/follow";

@@ -113,9 +113,9 @@
                                              Like:(BOOL)isLiked
                                           Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
     
-    NSString *APIName = @"/like/like";
+    NSString *APIName = @"/like/del";
     if (isLiked) {
-        APIName = @"/like/del";
+        APIName = @"/like/like";
     }
     
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];

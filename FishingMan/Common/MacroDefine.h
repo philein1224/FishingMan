@@ -66,7 +66,7 @@
  **/
 typedef NS_OPTIONS(NSInteger, FMArticleType) {
     
-        //基本文章类型
+    //基本文章类型
     FMArticleTypeHarvest          = 0,    //钓获展示
     FMArticleTypeQA               = 1,    //技巧问答
     FMArticleTypeDIY              = 2,    //钓具DIY

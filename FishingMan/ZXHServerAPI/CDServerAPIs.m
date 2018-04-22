@@ -220,15 +220,21 @@ static CDServerAPIs *shareServerAPIs;
     //register【注册】
     //forgetPwd【忘记密码】
     
-    NSString *APIName;
+    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
+    
+    NSString *APIName = @"/user/getValidCode";
+    
     if([smsCodeType isEqualToString:@"register"]){
-        APIName = @"/user/getValidCode";
+        
+        [requestDic setObject:[NSNumber numberWithInteger:1] forKey:@"type"];
     }
     else if ([smsCodeType isEqualToString:@"forgetPwd"]){
-        APIName = @"/user/getValidCodeforget";
+        [requestDic setObject:[NSNumber numberWithInteger:2] forKey:@"type"];
+    }
+    else if ([smsCodeType isEqualToString:@"bindTelephone"]){
+        [requestDic setObject:[NSNumber numberWithInteger:3] forKey:@"type"];
     }
     
-    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
     [requestDic setObject:phoneNumber forKey:@"tel"];
     
     return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
@@ -317,13 +323,16 @@ static CDServerAPIs *shareServerAPIs;
  telephone: NSString
  */
 - (NSURLSessionDataTask *)bindThirdPartyWithTelephoneNum:(NSString *)telephone
+                                               ValidCode:(NSString *)validCode
+                                                Password:(NSString *)password
                                                  Success:(CDHttpSuccess)success
                                                  Failure:(CDHttpFailure)failure{
     NSString *APIName = @"/user/bindTel";
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
     
     [requestDic setObject:telephone forKey:@"tel"];
-    [requestDic setObject:telephone forKey:@""];
+    [requestDic setObject:validCode forKey:@"validCode"];
+    [requestDic setObject:password forKey:@"password"];
     
     return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
 }

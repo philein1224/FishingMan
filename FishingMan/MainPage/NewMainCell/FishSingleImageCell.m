@@ -72,7 +72,7 @@
     self.commentCountLabel.text = [NSString stringWithFormat:@"%d",self.articleModel.commentCount];
     
         //7、用户的地址
-    self.userCityLabel.text = [NSString stringWithFormat:@"成都"];
+    self.userCityLabel.text = [NSString stringWithFormat:@" • %@", self.articleModel.city];
 }
 
 - (void)updateUserInfo{

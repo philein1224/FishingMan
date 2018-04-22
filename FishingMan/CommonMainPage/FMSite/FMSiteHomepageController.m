@@ -227,7 +227,7 @@
                                                   
                                                   CLog(@"钓点的推荐（点赞）成功 = %@", responseObject);
                                                   if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
-                                                      [CDTopAlertView showMsg:@"点赞成功" alertType:TopAlertViewFailedType];
+                                                      [CDTopAlertView showMsg:@"点赞成功" alertType:TopAlertViewSuccessType];
                                                   }else if (![ZXHTool isEmptyString:responseObject[@"msg"]]){
                                                       [CDTopAlertView showMsg:responseObject[@"msg"] alertType:TopAlertViewFailedType];
                                                   }else{

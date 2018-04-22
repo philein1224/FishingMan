@@ -16,7 +16,7 @@ MJExtensionCodingImplementation
     if (self) {
         
         _title = @"";
-        
+        _city = @"";
         _bait = @"";
         _waterType = @"";
         _fishingFunc = @"";

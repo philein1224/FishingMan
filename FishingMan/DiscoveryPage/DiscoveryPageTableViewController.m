@@ -65,7 +65,7 @@
     
     [super viewWillAppear:animated];
     
-    [self loadArticleTypeListData];
+//    [self loadArticleTypeListData];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     
