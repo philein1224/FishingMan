@@ -78,11 +78,23 @@
         [ZXHViewTool setImageView:_avatarImageView WithImageURL:[NSURL URLWithString:user.avatarUrl] AndPlaceHolderName:@"Mine_avatar" CompletedBlock:nil];
         
         _nickNameTextField.text = user.nickName;
+        
+        //性别 default男
         [_sexButton setTitle:[FMLoginUser sexConverter:user.sex] forState:UIControlStateNormal];
-        [_birthdayButton setTitle:[FMLoginUser birthdayConverter:user.birthday] forState:UIControlStateNormal];
+        [_sexButton setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+        
+        //生日 请选择生日
+        [_birthdayButton setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+        if (user.birthday == 0) {
+            [_birthdayButton setTitle:[ZXHTool dateStringFromDate:[NSDate date]] forState:UIControlStateNormal];
+        }
+        else{
+            [_birthdayButton setTitle:[FMLoginUser birthdayConverter:user.birthday] forState:UIControlStateNormal];
+        }
         
         //提升账号是否隐藏,取决于是否已经有了手机号
         if([ZXHTool isEmptyString:user.tel]){
+            [_accountUpdateButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             _accountUpdateGroupView.hidden = NO;
             _accountUpdateGroupViewHeight.constant = 45;
         }else{
@@ -90,6 +102,7 @@
             _accountUpdateGroupViewHeight.constant = 0;
         }
     }
+    
 //    [_saveButton setBackgroundColor:[UIColor lightGrayColor]];
 //    _saveButton.enabled = NO;
 }
@@ -222,7 +235,7 @@
     [datePicker show];
 }
 
-#pragma mark 提升账号
+#pragma mark 提升账号级别（第三方转成手机注册）
 //提升账号级别（第三方转成手机注册）
 - (IBAction)accountUpdateButtonAction:(id)sender {
     

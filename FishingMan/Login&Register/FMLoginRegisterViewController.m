@@ -215,7 +215,14 @@
 
 #pragma mark  1、手机号码校验页面
 - (IBAction)phoneNumberCheckAction:(id)sender {
+    
     [_check_phoneTextField resignFirstResponder];
+    
+    //手机号码格式校验
+    if(![ZXHTool isPhoneNumber:_check_phoneTextField.text]){
+        [CDTopAlertView showMsg:@"手机号码有误哦～" alertType:TopAlertViewWarningType];
+        return;
+    }
     
     //记录手机号码
     currentPhoneNumber = _check_phoneTextField.text;

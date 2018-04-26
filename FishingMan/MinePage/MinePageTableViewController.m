@@ -123,12 +123,11 @@ static NSString * const kAppKey = @"23855996";
     
     //加载用户基本信息
     [[CDServerAPIs shareAPI] requestLoginedUserInfoSuccess:^(NSURLSessionDataTask *dataTask, id responseObject) {
-        
         CLog(@"加载用户基本信息 成功 = %@", responseObject);
         /*
-         data =     {
          address = string;
          avatarUrl = "http://diaoyudaxian01.b0.upaiyun.com/asd";
+         birthday = 1500480000000;    #########
          created = 1509375597000;
          id = 1;
          level = 0;
@@ -137,8 +136,24 @@ static NSString * const kAppKey = @"23855996";
          orderFieldNextType = ASC;
          point = 0;
          tel = 18782420424;
+         sex = 0;  ########
          yn = 1;
-         };
+         */
+        
+        /*
+         address = string; ########
+         avatarUrl = "http://wx.qlogo.cn/mmopen";
+         birthday = 1500480000000;
+         created = 1524662063000;
+         id = 22;
+         level = 0;######
+         modified = 1524662063000;
+         nickName = feigege;
+         orderFieldNextType = ASC;
+         point = 0;######
+         tel = 18782420424;  ######
+         sex = 0;
+         yn = 1;
          */
         if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
             

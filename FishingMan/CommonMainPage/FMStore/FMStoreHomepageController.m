@@ -216,19 +216,34 @@
     if(!IS_LOGIN_WITHOUT_ALERT) return;
     
     //渔具店的推荐（点赞）
-    [PHProgressHUD showSingleCustonImageSetmsg:@"" view:nil imageName:@"Checkmark" setSquare:YES];
+    //[PHProgressHUD showSingleCustonImageSetmsg:@"" view:nil imageName:@"Checkmark" setSquare:YES];
     
-    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
+    BOOL liked = !_fishStoreModel.liked;
+    
+    ZXH_WEAK_SELF
     [[CDServerAPIs shareAPI] contentLikeWithSourceId:_fishStoreModel.ID
                                           SourceType:FMSourceFishStoreType
-                                                Like:YES //默认只能点赞
+                                                Like:liked
                                              Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
                                                  
                                                  CLog(@"渔具店的推荐（点赞）成功 = %@", responseObject);
                                                  if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
                                                      
+                                                     if(liked){
+                                                         self.recommendIcon.image = ZXHImageName(@"点赞_highlight");
+                                                         weakself.fishStoreModel.liked = YES;
+                                                         [CDTopAlertView showMsg:@"点赞成功" alertType:TopAlertViewSuccessType];
+                                                     }
+                                                     else{
+                                                         self.recommendIcon.image = ZXHImageName(@"点赞_normal");
+                                                         weakself.fishStoreModel.liked = NO;
+                                                         [CDTopAlertView showMsg:@"点赞取消成功" alertType:TopAlertViewSuccessType];
+                                                     }
+                                                     
                                                  }else if (![ZXHTool isEmptyString:responseObject[@"msg"]]){
                                                      [CDTopAlertView showMsg:responseObject[@"msg"] alertType:TopAlertViewFailedType];
+                                                 }else{
+                                                     [CDTopAlertView showMsg:@"点赞失败，请稍后再试" alertType:TopAlertViewFailedType];
                                                  }
                                              } Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
                                                  [CDServerAPIs httpDataTask:dataTask error:error.error];
@@ -292,7 +307,7 @@
     [PHProgressHUD showSingleCustonImageSetmsg:@"" view:nil imageName:@"Checkmark" setSquare:YES];
     if(!IS_LOGIN_WITHOUT_ALERT) return;
     
-    BOOL isCollected = _fishStoreModel.collected;
+    BOOL isCollected = _fishStoreModel.collectioned;
     ZXH_WEAK_SELF
     [[CDServerAPIs shareAPI] contentFavorite:isCollected
                                    sourceId:_fishStoreModel.ID
@@ -304,12 +319,12 @@
                                             if(isCollected){
                                                 CLog(@"取消收藏 = %@", responseObject);
                                                 weakself.favoriteIcon.image = ZXHImageName(@"收藏_normal");
-                                                weakself.fishStoreModel.collected = NO;
+                                                weakself.fishStoreModel.collectioned = NO;
                                             }
                                             else{
                                                 CLog(@"收藏 = %@", responseObject);
                                                 weakself.favoriteIcon.image = ZXHImageName(@"收藏_highlight");
-                                                weakself.fishStoreModel.collected = YES;
+                                                weakself.fishStoreModel.collectioned = YES;
                                             }
                                         }else if (![ZXHTool isEmptyString:responseObject[@"msg"]]){
                                             [CDTopAlertView showMsg:responseObject[@"msg"] alertType:TopAlertViewFailedType];
@@ -347,12 +362,29 @@
 - (void)reloadData{
     
     if(![ZXHTool isNilNullObject:_fishStoreModel]){
+        
         //1、header的数据
         self.storeHomeHeader.storeModel = _fishStoreModel;
         [self.storeHomeHeader reloadData];
         
         //2、cell的数据
         [self.tableView reloadData];
+        
+        //3、底部菜单-推荐（点赞）
+        if(_fishStoreModel.liked){
+            self.recommendIcon.image = ZXHImageName(@"点赞_highlight");
+        }
+        else{
+            self.recommendIcon.image = ZXHImageName(@"点赞_normal");
+        }
+        
+        //4、底部菜单-收藏
+        if(_fishStoreModel.collectioned){
+            self.favoriteIcon.image = ZXHImageName(@"收藏_highlight");
+        }
+        else{
+            self.favoriteIcon.image = ZXHImageName(@"收藏_normal");
+        }
     }
 }
 

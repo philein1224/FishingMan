@@ -19,9 +19,9 @@
  *接口请求地址 connectNumber为接口号
  */
 
-//#define CD_SERVER_ADDRESS(api_name)  [NSString stringWithFormat:@"https://diaoyuxiehui.cn%@",api_name]
+#define CD_SERVER_ADDRESS(api_name)  [NSString stringWithFormat:@"https://diaoyuxiehui.cn%@",api_name]
 
-#define CD_SERVER_ADDRESS(api_name)  [NSString stringWithFormat:@"http://192.168.0.104:8080%@",api_name]
+//#define CD_SERVER_ADDRESS(api_name)  [NSString stringWithFormat:@"http://192.168.0.104:8080%@",api_name]
 
 
 @interface CDServerAPIs : NSObject

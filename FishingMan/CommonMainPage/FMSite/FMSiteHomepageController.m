@@ -217,17 +217,31 @@
     
     //钓点的推荐（点赞）
     
-    [PHProgressHUD showSingleCustonImageSetmsg:@"" view:nil imageName:@"Checkmark" setSquare:YES];
+//    [PHProgressHUD showSingleCustonImageSetmsg:@"" view:nil imageName:@"Checkmark" setSquare:YES];
     
-    FMLoginUser * user = [FMLoginUser getCacheUserInfo];
+    //下一步是喜欢YES(还是不喜欢NO)
+    BOOL liked = !_fishSiteModel.liked;
+    
+    ZXH_WEAK_SELF
     [[CDServerAPIs shareAPI] contentLikeWithSourceId:_fishSiteModel.ID
                                           SourceType:FMSourceFishSiteType
-                                                Like:YES //默认只能点赞
+                                                Like:liked
                                               Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
                                                   
                                                   CLog(@"钓点的推荐（点赞）成功 = %@", responseObject);
+                                                  
                                                   if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
-                                                      [CDTopAlertView showMsg:@"点赞成功" alertType:TopAlertViewSuccessType];
+                                                      
+                                                      if(liked){
+                                                          self.recommendIcon.image = ZXHImageName(@"点赞_highlight");
+                                                          weakself.fishSiteModel.liked = YES;
+                                                          [CDTopAlertView showMsg:@"点赞成功" alertType:TopAlertViewSuccessType];
+                                                      }
+                                                      else{
+                                                          self.recommendIcon.image = ZXHImageName(@"点赞_normal");
+                                                          weakself.fishSiteModel.liked = NO;
+                                                          [CDTopAlertView showMsg:@"点赞取消成功" alertType:TopAlertViewSuccessType];
+                                                      }
                                                   }else if (![ZXHTool isEmptyString:responseObject[@"msg"]]){
                                                       [CDTopAlertView showMsg:responseObject[@"msg"] alertType:TopAlertViewFailedType];
                                                   }else{
@@ -296,7 +310,7 @@
     
     if(!IS_LOGIN_WITHOUT_ALERT) return;
     
-    BOOL isCollected = self.fishSiteModel.collected;
+    BOOL isCollected = self.fishSiteModel.collectioned;
     ZXH_WEAK_SELF
     [[CDServerAPIs shareAPI] contentFavorite:isCollected
                                    sourceId:_fishSiteModel.ID
@@ -308,12 +322,12 @@
                                             if(isCollected){
                                                 CLog(@"取消收藏 = %@", responseObject);
                                                 weakself.favoriteIcon.image = ZXHImageName(@"收藏_normal");
-                                                weakself.fishSiteModel.collected = NO;
+                                                weakself.fishSiteModel.collectioned = NO;
                                             }
                                             else{
                                                 CLog(@"收藏 = %@", responseObject);
                                                 weakself.favoriteIcon.image = ZXHImageName(@"收藏_highlight");
-                                                weakself.fishSiteModel.collected = YES;
+                                                weakself.fishSiteModel.collectioned = YES;
                                             }
                                         }else if (![ZXHTool isEmptyString:responseObject[@"msg"]]){
                                             [CDTopAlertView showMsg:responseObject[@"msg"] alertType:TopAlertViewFailedType];
@@ -352,12 +366,29 @@
 - (void)reloadData{
     
     if(![ZXHTool isNilNullObject:_fishSiteModel]){
-            //1、header的数据
+        
+        //1、header的数据
         self.siteHomeHeader.siteModel = _fishSiteModel;
         [self.siteHomeHeader reloadData];
         
-            //2、cell的数据
+        //2、cell的数据
         [self.tableView reloadData];
+        
+        //3、底部菜单-推荐（点赞）
+        if(_fishSiteModel.liked){
+            self.recommendIcon.image = ZXHImageName(@"点赞_highlight");
+        }
+        else{
+            self.recommendIcon.image = ZXHImageName(@"点赞_normal");
+        }
+        
+        //4、底部菜单-收藏
+        if(_fishSiteModel.collectioned){
+            self.favoriteIcon.image = ZXHImageName(@"收藏_highlight");
+        }
+        else{
+            self.favoriteIcon.image = ZXHImageName(@"收藏_normal");
+        }
     }
 }
 

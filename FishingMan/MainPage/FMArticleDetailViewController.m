@@ -394,7 +394,7 @@
     ZXH_WEAK_SELF
     [[CDServerAPIs shareAPI] contentLikeWithSourceId:_articleModel.ID
                                           SourceType:1
-                                                Like:isLiked
+                                                Like:!isLiked
       Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
         
           if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){

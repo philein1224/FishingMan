@@ -40,5 +40,9 @@
                                     isMyFans:(BOOL)isMyFans
                                      Success:(CDHttpSuccess)success
                                      Failure:(CDHttpFailure)failure;
+/**
+ 获取其他用户基本信息 user/getUserInfoById
+ */
+- (NSURLSessionDataTask *)requestUserInfoByUserId:(NSString *)friendUserId Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
 
 @end

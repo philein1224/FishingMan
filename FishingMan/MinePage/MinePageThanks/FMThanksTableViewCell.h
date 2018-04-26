@@ -11,6 +11,8 @@
 
 @interface FMThanksTableViewCell : FMBaseUserTableViewCell
 
+@property (nonatomic, strong) FMLoginUser * userInfo;
+
 - (void)reloadData;
 
 @end

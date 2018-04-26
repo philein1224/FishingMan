@@ -33,6 +33,14 @@
  */
 - (NSURLSessionDataTask *)articleDetailWithArticleId:(NSInteger)articleId Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
 
+#pragma mark 单个用户发表的文章列表
+/**
+ 单个用户发表的文章列表
+ string userId
+ int currentPage 当前第几页
+ */
+- (NSURLSessionDataTask *)articleListWithUserId:(NSString *)userId currentPage:(int)currentPage Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure;
+
 #pragma mark 公共 - 收藏相关接口（文章、钓点、渔具店）
 
 /**

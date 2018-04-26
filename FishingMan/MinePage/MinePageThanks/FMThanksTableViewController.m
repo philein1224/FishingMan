@@ -11,7 +11,7 @@
 #import "CDServerAPIs+Friend.h"
 
 @interface FMThanksTableViewController ()
-
+@property (nonatomic, strong) NSMutableArray * allFriendsArray;
 @end
 
 @implementation FMThanksTableViewController
@@ -24,6 +24,8 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.allFriendsArray = [[NSMutableArray alloc] init];
     
     self.navigationItem.leftBarButtonItem = [ZXHTool barBackButtonItemWithTitle:nil
                                                                           color:[UIColor grayColor]
@@ -59,7 +61,37 @@
     }
     
     [[CDServerAPIs shareAPI] friendListWithPage:1 isMyFans:isMyFans Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
+        CLog(@"获取 用户列表 responseObject %@", responseObject);
+        /*
+         avatarUrl = "http://diaoyudaxian01.b0.upaiyun.com/fish/201801/045d7499-92c3-4791-b3e0-62c6422f7058";
+         created = 1509893881000;
+         id = 2;
+         level = 0;
+         modified = 1509893886000;
+         name = haha;
+         nickName = 123;
+         orderFieldNextType = ASC;
+         point = 0;
+         sex = 1;
+         tel = 18782420423;
+         yn = 1;
+         */
         
+        ZXH_WEAK_SELF
+        if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
+            
+            NSDictionary *dic = responseObject[@"data"];
+            if(![ZXHTool isNilNullObject:dic]){
+                
+                weakself.allFriendsArray = [FMLoginUser mj_objectArrayWithKeyValuesArray:dic];
+                [weakself.tableView reloadData];
+            }else{
+                
+            }
+        }
+        else{
+            
+        }
     } Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
         
     }];
@@ -96,7 +128,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return self.allFriendsArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -104,6 +136,7 @@
     FMThanksTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FMThanksTableViewCell" forIndexPath:indexPath];
     
     cell.friendType = self.friendType;
+    cell.userInfo = [self.allFriendsArray objectAtIndex:indexPath.row];
     
     [cell reloadData];
     

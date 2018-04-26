@@ -39,8 +39,15 @@
                                                                          action:@selector(backButtonClicked:)];
     
     _phoneTextField.tag = 1001;
-    _phoneTextField.keyboardType = UIKeyboardTypeNumberPad;
-    _passwordTextField.tag = 1002;
+    
+    _register_smsCodeTextField.tag = 1002;
+    _timerButton.layer.cornerRadius = 4;
+    _timerButton.layer.masksToBounds = YES;
+    [_timerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
+    [_timerButton setBackgroundColor:[UIColor lightGrayColor]];
+    
+    _passwordTextField.tag = 1003;
+    
     _updateAccountButton.enabled = NO;
     [_updateAccountButton setBackgroundColor:[UIColor lightGrayColor]];
     
@@ -60,31 +67,47 @@
 
 - (IBAction)timerStartAction:(id)sender {
     
-    NSString *phone = self.phoneTextField.text;
-    if([phone length] != 11){
+    //手机号码格式校验
+    if ([ZXHTool isEmptyString:_phoneTextField.text]){
+        [CDTopAlertView showMsg:@"手机号码不能为空哦～" alertType:TopAlertViewWarningType];
+        return;
+    }
+    else if ([_phoneTextField.text length] < 11) {
+        [CDTopAlertView showMsg:@"手机号码不足11位哦～" alertType:TopAlertViewWarningType];
+        return;
+    }
+    else if (![ZXHTool isPhoneNumber:_phoneTextField.text]){
         [CDTopAlertView showMsg:@"手机号码有误哦～" alertType:TopAlertViewWarningType];
         return;
     }
+        //开始启动数秒
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerButtonRefresh:) userInfo:nil repeats:YES];
+    
+    return;
     
     //请求短信验证码
     ZXH_WEAK_SELF
-    [[CDServerAPIs shareAPI] requestSMSCodeForPhone:phone withType:@"bindTelephone" Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
+    [[CDServerAPIs shareAPI] requestSMSCodeForPhone:_phoneTextField.text withType:@"bindTelephone" Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
         
         CLog(@"请求绑定手机账号的短信验证码 responseObject %@", responseObject);
         
         if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
             
-            [CDTopAlertView showMsg:[NSString stringWithFormat:@"%@", responseObject[@"msg"]] isErrorState:NO inView:weakself.view];
+            [CDTopAlertView showMsg:[NSString stringWithFormat:@"%@", responseObject[@"msg"]] alertType:TopAlertViewSuccessType];
         }
         else{
-            [CDTopAlertView showMsg:[NSString stringWithFormat:@"%@", responseObject[@"msg"]] isErrorState:YES inView:weakself.view];
+            [CDTopAlertView showMsg:[NSString stringWithFormat:@"%@", responseObject[@"msg"]] alertType:TopAlertViewFailedType];
+            
+            [weakself timerDataRefreshWithLeftSeconds:-1];
         }
     } Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
         CLog(@"error %ld, %@", error.errorCode, error.errorMessage);
         
         [CDServerAPIs httpDataTask:dataTask error:error.error];
+        [weakself timerDataRefreshWithLeftSeconds:-1];
     }];
     
+    //开始启动数秒
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerButtonRefresh:) userInfo:nil repeats:YES];
 }
 
@@ -92,15 +115,24 @@
 
 - (IBAction)updateAccountButtonAction:(id)sender {
     
-    NSString *phone = self.phoneTextField.text;
-    if([phone length] != 11){
+    //1、手机号码格式校验
+    if ([ZXHTool isEmptyString:_phoneTextField.text]){
+        [CDTopAlertView showMsg:@"手机号码不能为空哦～" alertType:TopAlertViewWarningType];
+        return;
+    }
+    else if ([_phoneTextField.text length] < 11) {
+        [CDTopAlertView showMsg:@"手机号码不足11位哦～" alertType:TopAlertViewWarningType];
+        return;
+    }
+    else if (![ZXHTool isPhoneNumber:_phoneTextField.text]){
         [CDTopAlertView showMsg:@"手机号码有误哦～" alertType:TopAlertViewWarningType];
         return;
     }
     
+    //2、短信验证码
     NSString * validCode = _register_smsCodeTextField.text;
     if([ZXHTool isEmptyString:validCode]){
-        [CDTopAlertView showMsg:@"输入验证码哦～" alertType:TopAlertViewWarningType];
+        [CDTopAlertView showMsg:@"验证码不能为空哦～" alertType:TopAlertViewWarningType];
         return;
     }
     
@@ -112,8 +144,7 @@
         return;
     }
     
-    
-    [[CDServerAPIs shareAPI] bindThirdPartyWithTelephoneNum:phone
+    [[CDServerAPIs shareAPI] bindThirdPartyWithTelephoneNum:_phoneTextField.text
                                                   ValidCode:validCode
                                                    Password:password
                                                     Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
@@ -169,6 +200,7 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
+    //手机号码
     if (textField.tag == 1001){
         
         NSMutableString * newValue = [NSMutableString stringWithString:textField.text];
@@ -197,7 +229,24 @@
             [_updateAccountButton setBackgroundColor:[UIColor lightGrayColor]];
         }
     }
-    else if (textField.tag == 1002) {
+    //短信验证码
+    else if (textField.tag == 1003) {
+        
+        NSMutableString * newValue = [NSMutableString stringWithString:textField.text];
+        
+        if ([string isEqualToString:@""]) {
+            [newValue replaceCharactersInRange:range withString:@""];
+        }
+        else{
+            [newValue  insertString:string atIndex:range.location];
+        }
+        
+        if ([newValue length] > 6) {
+            return NO;
+        }
+    }
+    //登录密码
+    else if (textField.tag == 1003) {
         
         NSMutableString * newValue = [NSMutableString stringWithString:textField.text];
         

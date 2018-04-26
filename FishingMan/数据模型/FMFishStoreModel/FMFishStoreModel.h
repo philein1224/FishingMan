@@ -33,5 +33,5 @@
 #pragma mark 扩展数据
 @property (assign, nonatomic) int      score;      //推荐指数
 @property (assign, nonatomic) BOOL     liked;      //是否已经被点赞推荐
-@property (assign, nonatomic) BOOL     collected;  //是否已经被收藏：YES已经收藏／NO未收藏
+@property (assign, nonatomic) BOOL     collectioned;  //是否已经被收藏：YES已经收藏／NO未收藏
 @end

@@ -50,5 +50,16 @@
     return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
 }
 
-
+/**
+ 获取其他用户基本信息 user/getUserInfoById
+ */
+- (NSURLSessionDataTask *)requestUserInfoByUserId:(NSString *)friendUserId Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
+    
+    NSString *APIName = @"/user/getUserInfoById";
+    
+    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
+    [requestDic setObject:friendUserId forKey:@"id"];
+    
+    return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
+}
 @end

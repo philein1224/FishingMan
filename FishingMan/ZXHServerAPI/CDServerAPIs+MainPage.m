@@ -68,6 +68,26 @@
     return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
 }
 
+
+#pragma mark 单个用户发表的文章列表
+/**
+ 单个用户发表的文章列表
+ string userId
+ int currentPage 当前第几页
+ */
+- (NSURLSessionDataTask *)articleListWithUserId:(NSString *)userId currentPage:(int)currentPage Success:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
+    
+    NSString *APIName = @"/articalFish/articalFishList";
+    NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
+    
+    [requestDic setObject:userId forKey:@"userId"];
+    
+        //当前第n页
+    [requestDic setObject:[NSNumber numberWithInteger:currentPage] forKey:@"currentPage"];
+    
+    return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
+}
+
 #pragma mark 文章/钓点/渔具店收藏相关接口
 
 /**
@@ -170,7 +190,7 @@
     
     [requestDic setObject:[NSNumber numberWithInteger:sourceType] forKey:@"type"];//资源类型
     [requestDic setObject:[NSNumber numberWithLong:sourceId] forKey:@"topicId"];//资源id
-    [requestDic setObject:[NSNumber numberWithLong:currentPage] forKey:@"currrentPage"];//当前页
+    [requestDic setObject:[NSNumber numberWithLong:currentPage] forKey:@"currentPage"];//当前页
     
     return [self POSTRequestOperationWithURL:CD_SERVER_ADDRESS(APIName) connectNumber:APIName parameters:requestDic success:success failure:failure];
 }

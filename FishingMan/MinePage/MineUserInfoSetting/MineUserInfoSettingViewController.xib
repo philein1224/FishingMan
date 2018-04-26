@@ -121,7 +121,7 @@
                                         </imageView>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入昵称" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4zG-dC-WTj">
                                             <rect key="frame" x="155.5" y="0.0" width="187.5" height="44"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
@@ -347,7 +347,7 @@
                 <constraint firstItem="Ttb-7r-Tgc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="j52-Ke-EsJ"/>
                 <constraint firstAttribute="bottom" secondItem="Ttb-7r-Tgc" secondAttribute="bottom" id="pGk-Hb-yiZ"/>
             </constraints>
-            <point key="canvasLocation" x="-304" y="-497"/>
+            <point key="canvasLocation" x="-418" y="-524"/>
         </view>
     </objects>
     <resources>

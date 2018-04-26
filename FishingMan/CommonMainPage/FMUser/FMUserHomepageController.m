@@ -18,6 +18,8 @@
 #define kTableHeaderViewHeight 400  //tableHeaderView的高度
 
 #import "FMArticleDetailViewController.h"
+#import "CDServerAPIs+Friend.h"
+#import "CDServerAPIs+MainPage.h"
 
 @interface FMUserHomepageController()
 {
@@ -129,6 +131,37 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     
     [_naviBarView updateWithScrollViewContentOffsetY:10000];
+    
+#warning mamamamam
+    
+    //查询其他用户的信息
+//    [[CDServerAPIs shareAPI] requestUserInfoByUserId:<#(NSString *)#>
+//                                             Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
+//        CLog(@"获取 查询其他用户的信息 %@", responseObject);
+//
+//        if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
+//
+//        }
+//        else{
+//
+//        }
+//    } Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
+//
+//    }];
+    
+    
+    //用户的文章列表
+//    [[CDServerAPIs shareAPI] articleListWithUserId:000
+//                                       currentPage:1
+//                                           Success:^(NSURLSessionDataTask *dataTask, id responseObject) {
+//
+//                                               CLog(@"获取 查询其他用户的信息 %@", responseObject);
+//                                           } Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
+//
+//                                           }];
+    
+    
+    
     
     //加载头像数据
     [_userHomeHeader reloadData:nil userType:FMUserTypeFriend];
