@@ -17,7 +17,7 @@
  */
 - (NSURLSessionDataTask *)articleTypesInfoListSuccess:(CDHttpSuccess)success Failure:(CDHttpFailure)failure{
     
-    NSString *APIName = @"/articalFish/typeList";
+    NSString *APIName = @"/articalFish/getArticleTypeInfo";
     
     NSMutableDictionary *requestDic = [NSMutableDictionary dictionary];
     

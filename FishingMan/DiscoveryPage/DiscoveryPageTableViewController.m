@@ -14,14 +14,33 @@
 
 #import "CDServerAPIs+MainPage.h"
 
+#pragma mark 发现-文章分类数据模型
+
+@interface FMArticleTypeInfoModel : ZXHBaseModel
+@property (assign, nonatomic) long     count;        //单个文章的数量
+@property (assign, nonatomic) int      articleType;  //文章类型
+@end
+
+@implementation FMArticleTypeInfoModel
+MJExtensionCodingImplementation
+- (id)init{
+    self = [super init];
+    if (self) {
+    }
+    return self;
+}
+@end
+
+#pragma mark 发现-文章分类总列表
+
 @interface DiscoveryPageTableViewController ()
 {
     NSMutableArray * ArticleTypeTitleArray;
     NSMutableArray * ArticleTypeIconArray;
-    
-    NSMutableArray * ArticleTypeInfoDataArray;
 }
 
+@property (nonatomic, strong) NSMutableArray * articleTypeInfoDataArray;
+@property (nonatomic, strong) NSMutableArray * articleTypeCountArray;
 @property (nonatomic, strong) CMAltimeter * altimeter;
 @end
 
@@ -43,7 +62,7 @@
     tempfooterview.backgroundColor = ZXHColorRGB(248, 248, 248, 1);
     self.tableView.tableFooterView = tempfooterview;
     
-    /*** 加载数据 ***/
+    /*** 加载默认数据 ***/
     [self loadListData];
     
 //    _altimeter = [[CMAltimeter alloc]init];
@@ -65,7 +84,7 @@
     
     [super viewWillAppear:animated];
     
-//    [self loadArticleTypeListData];
+    [self loadArticleTypeListData];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     
@@ -75,8 +94,6 @@
     [super didReceiveMemoryWarning];
     
     [self.altimeter stopRelativeAltitudeUpdates];
-
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)updateLabels:(CMAltitudeData *)altitudeData {
@@ -112,28 +129,45 @@
     ArticleTypeIconArray = [[NSMutableArray alloc] init];
     [ArticleTypeIconArray addObjectsFromArray:allTypes];
     
-    ArticleTypeInfoDataArray = [[NSMutableArray alloc] init];
+    //分类文章的数量
+    _articleTypeInfoDataArray = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < ArticleTypeTitleArray.count; i++) {
         NSMutableDictionary *tempDic = [[NSMutableDictionary alloc]init];
-        [tempDic setObject:ArticleTypeTitleArray[i] forKey:@"keyName"];
-        [tempDic setObject:[NSNumber numberWithInt:1001] forKey:@"keyValue"];
-        [tempDic setObject:ArticleTypeIconArray[i] forKey:@"keyIconName"];
-        [tempDic setObject:[NSNumber numberWithBool:YES] forKey:@"keyFlag"];
-        [tempDic setObject:[NSNumber numberWithInt:i] forKey:@"ArticleType"];
-        [ArticleTypeInfoDataArray addObject:tempDic];
+        [tempDic setObject:ArticleTypeTitleArray[i] forKey:@"keyName"];   //名称
+        [tempDic setObject:[NSNumber numberWithInt:0] forKey:@"keyValue"];//数量
+        [tempDic setObject:ArticleTypeIconArray[i] forKey:@"keyIconName"]; //icon名称
+        [tempDic setObject:[NSNumber numberWithBool:YES] forKey:@"keyFlag"];//是否有提醒标示
+        [tempDic setObject:[NSNumber numberWithInt:i] forKey:@"ArticleType"];//文章类型
+        [_articleTypeInfoDataArray addObject:tempDic];
     }
 }
 
 //文章大类型信息列表
 - (void)loadArticleTypeListData{
     
+    ZXH_WEAK_SELF
     [[CDServerAPIs shareAPI] articleTypesInfoListSuccess:^(NSURLSessionDataTask *dataTask, id responseObject) {
         
         CLog(@"文章大类型信息列表 : %@", responseObject);
         
         if([CDServerAPIs httpResponse:responseObject showAlert:NO DataTask:dataTask]){
             
+            weakself.articleTypeCountArray = [FMArticleTypeInfoModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+            
+            for (int i = 0; i < weakself.articleTypeInfoDataArray.count; i++) {
+                
+                for (FMArticleTypeInfoModel *countInfo in weakself.articleTypeCountArray) {
+                    
+                    if(i == countInfo.articleType){
+                        NSMutableDictionary *tempDic = weakself.articleTypeInfoDataArray[i];
+                        [tempDic setObject:[NSNumber numberWithInt:countInfo.count] forKey:@"keyValue"];
+                        break;
+                    }
+                }
+            }
+            
+            [weakself.tableView reloadData];
         }
     } Failure:^(NSURLSessionDataTask *dataTask, CDHttpError *error) {
         [CDServerAPIs httpDataTask:dataTask error:error.error];
@@ -146,7 +180,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return ArticleTypeTitleArray.count;
+    return self.articleTypeInfoDataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -157,7 +191,7 @@
     
     DiscoveryPageTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"DiscoveryPageTableViewCell" forIndexPath:indexPath];
     
-    [cell loadData:ArticleTypeInfoDataArray[indexPath.row]];
+    [cell loadData:self.articleTypeInfoDataArray[indexPath.row]];
     
     return cell;
 }
@@ -167,7 +201,8 @@
     if (indexPath.section == 0) {
         
         FMSingleArticleTypeTableViewController * oneKindArticleTypeVC = [[FMSingleArticleTypeTableViewController alloc] init];
-        oneKindArticleTypeVC.typeObjInfo = ArticleTypeInfoDataArray[indexPath.row];
+
+        oneKindArticleTypeVC.typeObjInfo = _articleTypeInfoDataArray[indexPath.row];
         oneKindArticleTypeVC.navigationTitle = ArticleTypeTitleArray[indexPath.row];
         [self.navigationController pushViewController:oneKindArticleTypeVC animated:YES];
     }
