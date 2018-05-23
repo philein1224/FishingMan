@@ -34,4 +34,8 @@
 @property (assign, nonatomic) int      score;      //推荐指数
 @property (assign, nonatomic) BOOL     liked;      //是否已经被点赞推荐
 @property (assign, nonatomic) BOOL     collectioned;  //是否已经被收藏：YES已经收藏／NO未收藏
+
+@property (assign, nonatomic) int      likeCount;   //喜欢人数【暂未使用】
+@property (assign, nonatomic) int      collectCount;//收藏人数
+@property (assign, nonatomic) int      scanCount;   //围观人数
 @end

@@ -35,7 +35,7 @@
 @property (copy, nonatomic) NSString * sitePhone;     //钓点联系电话
 
 @property (assign, nonatomic) int      publishType;//发布类型（钓友、场主、平台）
-@property (assign, nonatomic) long     userId;     //用户id（发布者的userId）
+@property (assign, nonatomic) long     userId;     //用户id（发布者／创建者的userId）
 
 @property (copy, nonatomic) NSString * orderFieldNextType;      //ASC排序方式
 @property (assign, nonatomic) long        yn;      //是否已经软删除
@@ -44,6 +44,11 @@
 @property (assign, nonatomic) int      score;      //推荐指数
 @property (assign, nonatomic) BOOL     liked;      //是否已经被点赞推荐
 @property (assign, nonatomic) BOOL     collectioned;  //是否已经被收藏：YES已经收藏／NO未收藏
+
+
+@property (assign, nonatomic) int      likeCount;   //喜欢人数【暂未使用】
+@property (assign, nonatomic) int      collectCount;//收藏人数
+@property (assign, nonatomic) int      scanCount;   //围观人数
 
 
 

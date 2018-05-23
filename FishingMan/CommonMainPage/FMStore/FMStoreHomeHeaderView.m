@@ -26,8 +26,8 @@
     }];
     
     self.siteNameLabel.text = [NSString stringWithFormat:@"%@", self.storeModel.title?self.storeModel.title:@""];
-    self.surroundLabel.text = [NSString stringWithFormat:@"围观人数：%d", 800];
-    self.favoritesLabel.text = [NSString stringWithFormat:@"收藏人数：%d", 60];
+    self.surroundLabel.text = [NSString stringWithFormat:@"围观人数：%d", self.storeModel.scanCount];
+    self.favoritesLabel.text = [NSString stringWithFormat:@"收藏人数：%d", self.storeModel.collectCount];
 }
 
 @end
