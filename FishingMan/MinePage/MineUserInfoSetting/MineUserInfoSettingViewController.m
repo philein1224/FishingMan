@@ -327,8 +327,7 @@
                                                                [FMLoginUser setCacheUserInfo:user];
                                                            }
                                                            
-                                                               //修改成功
-                                                           NSString * msg = [ZXHTool isEmptyString:responseObject[@"msg"]]?@"修改成功":responseObject[@"msg"];
+                                                           NSString * msg = [ZXHTool isEmptyString:responseObject[@"msg"]] ? @"更新成功":responseObject[@"msg"];
                                                            [CDTopAlertView showMsg:[NSString stringWithFormat:@"%@", msg]alertType:TopAlertViewSuccessType];
                                                            [weakself.navigationController popViewControllerAnimated:YES];
                                                            

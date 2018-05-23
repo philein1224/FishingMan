@@ -40,6 +40,7 @@
     [self.alphaBGView addGestureRecognizer:pan];
 }
 
+//单选
 + (instancetype)shareWithTarget:(id)target
                           array:(NSArray *)array
                        callback:(PickerChooseMenuCallback) callback{
@@ -77,6 +78,7 @@
     return chooseMenu;
 }
 
+//双选
 + (instancetype)shareWithTarget:(id)target
                      wholeArray:(NSArray<NSArray *> *)array
                      kindTitles:(NSArray *)titles

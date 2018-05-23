@@ -13,11 +13,11 @@ typedef void (^PickerChooseMenuCallback) (NSMutableArray * arrayOfDic);
 @interface FMPickerChooseMenu : UIView
 
 @property (copy, nonatomic) PickerChooseMenuCallback callback;
-
+//单选
 + (instancetype)shareWithTarget:(id)target
                           array:(NSArray *)array
                        callback:(PickerChooseMenuCallback) callback;
-
+//双选
 + (instancetype)shareWithTarget:(id)target
                      wholeArray:(NSArray<NSArray *> *)array   //分组的队列
                      kindTitles:(NSArray *)titles

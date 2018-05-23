@@ -460,7 +460,9 @@ static int count = 0;
 //多选
 - (void)muiltychooseWithArray:(NSArray *)array button:(UIButton *)button{
     ZXH_WEAK_SELF
-    FMMultiChooseMenu * picker = [FMMultiChooseMenu shareWithTarget:self array:array callback:^(NSArray *array) {
+    FMMultiChooseMenu * picker = [FMMultiChooseMenu shareWithTarget:self
+                                                              array:array
+                                                           callback:^(NSArray *array) {
         
         NSString * valueStr = @"";
         if (array.count > 0) {

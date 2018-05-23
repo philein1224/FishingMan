@@ -42,12 +42,12 @@
                   moduleName = "AFNetworking"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zima/FishingMan/Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "546450548.03233"
+                  timestampString = "548780395.244767"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "470"
                   endingLineNumber = "470"
-                  offsetFromSymbolStart = "58">
+                  offsetFromSymbolStart = "94">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -57,12 +57,12 @@
                   moduleName = "AFNetworking"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zima/FishingMan/Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "546450548.03504"
+                  timestampString = "548780395.2483619"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "470"
                   endingLineNumber = "470"
-                  offsetFromSymbolStart = "124">
+                  offsetFromSymbolStart = "129">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -154,12 +154,12 @@
                   moduleName = "FishingMan"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zima/FishingMan/FishingMan/MinePage/MinePageSetting/FMSettingTableViewController.m"
-                  timestampString = "546450548.056255"
+                  timestampString = "548780394.948979"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "140"
                   endingLineNumber = "140"
-                  offsetFromSymbolStart = "42">
+                  offsetFromSymbolStart = "16">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -169,12 +169,12 @@
                   moduleName = "FishingMan"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zima/FishingMan/FishingMan/MinePage/MinePageSetting/FMSettingTableViewController.m"
-                  timestampString = "546450548.057652"
+                  timestampString = "548780394.9518"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "141"
                   endingLineNumber = "141"
-                  offsetFromSymbolStart = "54">
+                  offsetFromSymbolStart = "76">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -191,22 +191,6 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "129"
             endingLineNumber = "129"
-            landmarkName = "-logoutAction:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FishingMan/MinePage/MinePageSetting/FMSettingTableViewController.m"
-            timestampString = "546088028.715045"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
             landmarkName = "-logoutAction:"
             landmarkType = "7">
          </BreakpointContent>
@@ -272,6 +256,22 @@
             startingLineNumber = "83"
             endingLineNumber = "83"
             landmarkName = "-viewWillAppear:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FishingMan/MinePage/MinePageSetting/FMSettingTableViewController.m"
+            timestampString = "548695288.730872"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "-logoutAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -25,6 +25,10 @@
     [super awakeFromNib];
     
     _avatarImageView.layer.cornerRadius = _avatarImageView.frame.size.width/2.0 * ZXHRatioWithReal375;
+    
+    [_nickNameLabel setUserInteractionEnabled:YES];
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userAvatarButtonAction:)];
+    [_nickNameLabel addGestureRecognizer:tap];
 }
 
 - (NSString *)sexImageNameConvertFromType:(int)sexType{
@@ -36,7 +40,7 @@
         case 1:
             sexName = @"Mine_women";
             break;
-        case 3:
+        case 2:
         default:
             sexName = @"Mine_unknown";
             break;
@@ -54,7 +58,7 @@
             FMLoginUser * user = [FMLoginUser getCacheUserInfo];
             [ZXHViewTool setImageView:_avatarImageView WithImageURL:[NSURL URLWithString:user.avatarUrl] AndPlaceHolderName:@"Mine_avatar" CompletedBlock:nil];
             
-            _nickNameLabel.text = [ZXHTool isEmptyString:user.nickName]?@"钓鱼大仙":user.nickName;
+            _nickNameLabel.text = [ZXHTool isEmptyString:user.nickName] ? @"登录／注册" : user.nickName;
             
             _levelLabel.text = [FMLoginUser levelConvertFromType:user.level];
             
@@ -65,7 +69,7 @@
             //未登录
             _avatarImageView.image = ZXHImageName(@"Mine_avatar");
             
-            _nickNameLabel.text = @"钓鱼大仙";
+            _nickNameLabel.text = @"登录／注册";
             
             _levelLabel.text = [FMLoginUser levelConvertFromType:0];
             _sexImageView.image = ZXHImageName(@"Mine_men");

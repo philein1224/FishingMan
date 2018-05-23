@@ -63,6 +63,6 @@
 + (NSString *)levelConvertFromType:(int)levelType;
 //性别类型转成性别名
 + (NSString *)sexNameConvertFromType:(int)sexType;
-//性别名转成性别类型
+//性别名【男，女，保密／未知】转成性别类型
 + (int)sexTypeConvertFromName:(NSString *)sexName;
 @end
