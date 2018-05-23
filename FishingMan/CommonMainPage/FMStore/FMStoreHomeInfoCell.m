@@ -76,7 +76,7 @@
     
     _siteAddressLabel.text = self.storeModel.address ? self.storeModel.address:@"";
     
-    _siteTelLabel.text = self.storeModel.sitePhone ? self.storeModel.sitePhone:@"";
+    _siteTelLabel.text = [ZXHTool phoneNumberHiddenFormat:self.storeModel.sitePhone];
 }
 
 @end

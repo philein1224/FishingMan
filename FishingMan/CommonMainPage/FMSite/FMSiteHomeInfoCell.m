@@ -94,7 +94,7 @@
     
     _siteAddressLabel.text = self.siteModel.address ? self.siteModel.address:@"";
     
-    _siteTelLabel.text = self.siteModel.sitePhone ? self.siteModel.sitePhone:@"";
+    _siteTelLabel.text = [ZXHTool phoneNumberHiddenFormat:self.siteModel.sitePhone];
     
     [_parkingButton setBackgroundImage:self.siteModel.canPark ? ZXHImageName(@"钓点_可停车icon"):ZXHImageName(@"钓点_可停车_灰色")
                               forState:UIControlStateNormal];
