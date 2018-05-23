@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="xP4-9N-kQ4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="xP4-9N-kQ4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -67,7 +67,7 @@
                 <navigationController id="khp-Ef-lIP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我的" id="LfK-pE-hm2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aoV-MG-4rj">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -78,13 +78,13 @@
             </objects>
             <point key="canvasLocation" x="460.9375" y="-397.42083333333329"/>
         </scene>
-        <!--发现-->
+        <!--文章-->
         <scene sceneID="gTd-xN-1wN">
             <objects>
                 <navigationController id="NcD-RB-Efi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="发现" id="Ekv-jo-Hei"/>
+                    <tabBarItem key="tabBarItem" title="文章" id="Ekv-jo-Hei"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JuD-On-5Np">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -121,7 +121,7 @@
                 <navigationController id="7QG-il-NqJ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="本地" id="lY0-3y-IjF" userLabel="本地"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ayk-kH-BZi">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -324,7 +324,7 @@
                 <navigationController title="MainPageNav" id="tTz-AM-s7K" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="首页" id="Ob1-DH-3NK"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pUy-ha-fYT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -339,9 +339,4 @@
     <resources>
         <image name="MainPageEditMenu.png" width="96" height="96"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
-    </simulatedMetricsContainer>
 </document>

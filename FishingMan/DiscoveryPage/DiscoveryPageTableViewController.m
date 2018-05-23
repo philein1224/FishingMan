@@ -49,7 +49,7 @@ MJExtensionCodingImplementation
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setTitle:@"发现"];
+    [self setTitle:@"文章"];
     
     /*** 注册表单元 ***/
     [self.tableView registerNib:[UINib nibWithNibName:@"DiscoveryPageTableViewCell" bundle:nil] forCellReuseIdentifier:@"DiscoveryPageTableViewCell"];
