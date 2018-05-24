@@ -292,7 +292,7 @@
     FMArticleModel * articleModel = _articleModelArray[indexPath.row];
     articleDetailVC.articleModel = articleModel;
     
-    self.hidesBottomBarWhenPushed = YES;
+    articleDetailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:articleDetailVC animated:YES];
 }
 

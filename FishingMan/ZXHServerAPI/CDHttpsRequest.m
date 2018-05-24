@@ -184,14 +184,14 @@
             CDHttpError *httpError = [[CDHttpError alloc] init];
             httpError.error = error;
             httpError.errorCode = error.code;
-            CLog(@"接口名(%@): \n errorCode:%ld, \n msg:%@, \n error:%@",apiName,httpError.errorCode,httpError.errorMessage,error);
+            //CLog(@"接口名(%@): \n errorCode:%ld, \n msg:%@, \n error:%@",apiName,httpError.errorCode,httpError.errorMessage,error);
             failure(dataTask, httpError);
             
         } else {
             
             NSString *jsonString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
             NSDictionary *jsonObject = [ZXHTool jsonObjectFromJsonString:jsonString];
-            CLog(@"接口名(%@): \n jsonString:%@",apiName,jsonObject);
+            //CLog(@"接口名(%@): \n jsonString:%@",apiName,jsonObject);
             success(dataTask, jsonObject);
         }
     }];

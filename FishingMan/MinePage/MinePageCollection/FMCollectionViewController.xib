@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JfH-2s-s7z">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JfH-2s-s7z">
                     <rect key="frame" x="0.0" y="293.5" width="80" height="80"/>
                     <color key="backgroundColor" red="0.92549019610000005" green="0.28627450980000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -28,7 +28,7 @@
                         <constraint firstAttribute="width" constant="80" id="IrW-qQ-E9s"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="riQ-8Q-ZmU">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="riQ-8Q-ZmU">
                     <rect key="frame" x="295" y="293.5" width="80" height="80"/>
                     <color key="backgroundColor" red="0.92549019610000005" green="0.28627450980000002" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -55,7 +55,7 @@
                 <constraint firstItem="JfH-2s-s7z" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dlM-4D-Mib"/>
                 <constraint firstAttribute="trailing" secondItem="smS-Ud-UYg" secondAttribute="trailing" id="hRr-Cr-8CT"/>
             </constraints>
-            <point key="canvasLocation" x="-147" y="-504"/>
+            <point key="canvasLocation" x="-310" y="-618"/>
         </view>
     </objects>
 </document>

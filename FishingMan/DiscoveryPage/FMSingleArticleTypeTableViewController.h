@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface FMSingleArticleTypeTableViewController : UITableViewController
-@property (nonatomic, assign) BOOL hideNavigationWhenPopOut;
 @property (nonatomic, strong) NSMutableDictionary * typeObjInfo;   //只用于发现文章分类，其他情况下不传值
 @end

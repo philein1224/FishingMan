@@ -58,8 +58,10 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    
+
     [super viewWillAppear:animated];
+    
+    self.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
@@ -133,8 +135,6 @@
  *  @param sender
  */
 - (void)topSegmentdControlChanged:(UISegmentedControl *)segCtl {
-    
-    NSLog(@"收藏菜单选择 %ld", segCtl.selectedSegmentIndex);
     
     [self.scrollView setContentOffset:CGPointMake(segCtl.selectedSegmentIndex * ZXHScreenWidth, 0) animated:YES];
 }

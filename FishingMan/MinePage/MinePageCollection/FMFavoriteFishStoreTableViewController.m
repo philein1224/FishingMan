@@ -180,6 +180,8 @@
     
     FMStoreHomepageController * storeHP = [[FMStoreHomepageController alloc] initWithNibName:@"FMStoreHomepageController" bundle:nil];
     storeHP.fishStoreModel = [self.allStoreModelArray objectAtIndex:indexPath.row];
+    
+    storeHP.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:storeHP animated:YES];
 }
 @end

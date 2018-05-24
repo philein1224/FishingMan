@@ -176,6 +176,8 @@
     
     FMSiteHomepageController * siteHP = [[FMSiteHomepageController alloc] initWithNibName:@"FMSiteHomepageController" bundle:nil];
     siteHP.fishSiteModel = [self.allSiteModelArray objectAtIndex:indexPath.row];
+    
+    siteHP.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:siteHP animated:YES];
 }
 

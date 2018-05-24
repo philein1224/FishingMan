@@ -428,19 +428,19 @@ static NSString * const kAppKey = @"23855996";
             return;
         }
         else {
+            
             self.hidesBottomBarWhenPushed = YES;
             
             NSMutableDictionary * tempDic = mine1stArray[indexPath.row-1];
             NSString * title = [tempDic objectForKey:@"keyName"];
             
             if ([title isEqualToString:@"收藏"]) {
-                FMCollectionViewController * feedbackVC = [[FMCollectionViewController alloc] initWithNibName:@"FMCollectionViewController" bundle:nil];
-                [self.navigationController pushViewController:feedbackVC animated:YES];
+                FMCollectionViewController * collectionVC = [[FMCollectionViewController alloc] initWithNibName:@"FMCollectionViewController" bundle:nil];
+                [self.navigationController pushViewController:collectionVC animated:YES];
             }
             else{
                 FMSingleArticleTypeTableViewController * oneKindArticleVC = [[FMSingleArticleTypeTableViewController alloc] init];
                 oneKindArticleVC.navigationTitle = title;
-                oneKindArticleVC.hideNavigationWhenPopOut = YES;
                 [self.navigationController pushViewController:oneKindArticleVC animated:YES];
             }
             

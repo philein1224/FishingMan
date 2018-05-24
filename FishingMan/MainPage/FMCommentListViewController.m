@@ -83,7 +83,7 @@
         
         CLog(@"requestCommentList = %@", responseObject);
         
-        if([CDServerAPIs httpResponse:responseObject showAlert:YES DataTask:dataTask]){
+        if([CDServerAPIs httpResponse:responseObject showAlert:NO DataTask:dataTask]){
             
             //判断是否继续
             NSDictionary * dataDic = responseObject[@"data"];
