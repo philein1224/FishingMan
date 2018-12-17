@@ -2439,6 +2439,7 @@
 				281AA8EA1EB1EDF000DC767F /* MapViewAnnotation.m */,
 				281AA8EC1EB234C400DC767F /* MKCustomAnnotationView.h */,
 				281AA8ED1EB234C400DC767F /* MKCustomAnnotationView.m */,
+				281AA8EF1EB23F2300DC767F /* CheckInstalledMapAPP.h */,
 				281AA8F01EB23F2300DC767F /* CheckInstalledMapAPP.m */,
 				285CA38E1EB2518500837682 /* LocationChange.h */,
 				285CA38F1EB2518500837682 /* LocationChange.m */,
@@ -2481,7 +2482,6 @@
 				288419101EA8B1DC0034004F /* FMCommentListViewController.m */,
 				288419111EA8B1DC0034004F /* FMCommentListViewController.xib */,
 				288419141EA8BBFF0034004F /* FMCommentListCell.h */,
-				281AA8EF1EB23F2300DC767F /* CheckInstalledMapAPP.h */,
 				288419151EA8BBFF0034004F /* FMCommentListCell.m */,
 				288419161EA8BBFF0034004F /* FMCommentListCell.xib */,
 			);
